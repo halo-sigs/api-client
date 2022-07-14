@@ -84,6 +84,19 @@ export interface FileReverseProxyProvider {
 /**
  *
  * @export
+ * @interface GrantRequest
+ */
+export interface GrantRequest {
+  /**
+   *
+   * @type {Set<string>}
+   * @memberof GrantRequest
+   */
+  roles?: Set<string>
+}
+/**
+ *
+ * @export
  * @interface License
  */
 export interface License {
@@ -1041,6 +1054,82 @@ export const ApiHaloRunV1alpha1UserApiAxiosParamCreator = function (configuratio
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Get permissions of user
+     * @param {string} name User name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPermissions: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getPermissions', 'name', name)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/users/{name}/permissions`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Grant permissions to user
+     * @param {string} name User name
+     * @param {GrantRequest} grantRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    grantPermission: async (
+      name: string,
+      grantRequest: GrantRequest,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('grantPermission', 'name', name)
+      // verify required parameter 'grantRequest' is not null or undefined
+      assertParamExists('grantPermission', 'grantRequest', grantRequest)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/users/{name}/permissions`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(grantRequest, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -1060,6 +1149,34 @@ export const ApiHaloRunV1alpha1UserApiFp = function (configuration?: Configurati
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getCurrentUserDetail(options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get permissions of user
+     * @param {string} name User name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getPermissions(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getPermissions(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Grant permissions to user
+     * @param {string} name User name
+     * @param {GrantRequest} grantRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async grantPermission(
+      name: string,
+      grantRequest: GrantRequest,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.grantPermission(name, grantRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
   }
@@ -1084,6 +1201,25 @@ export const ApiHaloRunV1alpha1UserApiFactory = function (
     getCurrentUserDetail(options?: any): AxiosPromise<User> {
       return localVarFp.getCurrentUserDetail(options).then((request) => request(axios, basePath))
     },
+    /**
+     * Get permissions of user
+     * @param {string} name User name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPermissions(name: string, options?: any): AxiosPromise<string> {
+      return localVarFp.getPermissions(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Grant permissions to user
+     * @param {string} name User name
+     * @param {GrantRequest} grantRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    grantPermission(name: string, grantRequest: GrantRequest, options?: any): AxiosPromise<User> {
+      return localVarFp.grantPermission(name, grantRequest, options).then((request) => request(axios, basePath))
+    },
   }
 }
 
@@ -1103,6 +1239,33 @@ export class ApiHaloRunV1alpha1UserApi extends BaseAPI {
   public getCurrentUserDetail(options?: AxiosRequestConfig) {
     return ApiHaloRunV1alpha1UserApiFp(this.configuration)
       .getCurrentUserDetail(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get permissions of user
+   * @param {string} name User name
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiHaloRunV1alpha1UserApi
+   */
+  public getPermissions(name: string, options?: AxiosRequestConfig) {
+    return ApiHaloRunV1alpha1UserApiFp(this.configuration)
+      .getPermissions(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Grant permissions to user
+   * @param {string} name User name
+   * @param {GrantRequest} grantRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiHaloRunV1alpha1UserApi
+   */
+  public grantPermission(name: string, grantRequest: GrantRequest, options?: AxiosRequestConfig) {
+    return ApiHaloRunV1alpha1UserApiFp(this.configuration)
+      .grantPermission(name, grantRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
