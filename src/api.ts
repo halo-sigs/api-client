@@ -65,6 +65,61 @@ export interface ConfigMap {
 /**
  *
  * @export
+ * @interface ConfigMapList
+ */
+export interface ConfigMapList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof ConfigMapList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof ConfigMapList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof ConfigMapList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<ConfigMap>}
+   * @memberof ConfigMapList
+   */
+  items: Array<ConfigMap>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof ConfigMapList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof ConfigMapList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof ConfigMapList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof ConfigMapList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
  * @interface FileReverseProxyProvider
  */
 export interface FileReverseProxyProvider {
@@ -351,6 +406,61 @@ export interface PersonalAccessToken {
 /**
  *
  * @export
+ * @interface PersonalAccessTokenList
+ */
+export interface PersonalAccessTokenList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PersonalAccessTokenList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PersonalAccessTokenList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof PersonalAccessTokenList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<PersonalAccessToken>}
+   * @memberof PersonalAccessTokenList
+   */
+  items: Array<PersonalAccessToken>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof PersonalAccessTokenList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof PersonalAccessTokenList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PersonalAccessTokenList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PersonalAccessTokenList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
  * @interface PersonalAccessTokenSpec
  */
 export interface PersonalAccessTokenSpec {
@@ -427,6 +537,61 @@ export interface Plugin {
    * @memberof Plugin
    */
   metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface PluginList
+ */
+export interface PluginList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PluginList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PluginList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof PluginList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<Plugin>}
+   * @memberof PluginList
+   */
+  items: Array<Plugin>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof PluginList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof PluginList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PluginList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PluginList
+   */
+  hasPrevious: boolean
 }
 /**
  *
@@ -707,6 +872,61 @@ export interface ReverseProxy {
 /**
  *
  * @export
+ * @interface ReverseProxyList
+ */
+export interface ReverseProxyList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof ReverseProxyList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof ReverseProxyList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof ReverseProxyList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<ReverseProxy>}
+   * @memberof ReverseProxyList
+   */
+  items: Array<ReverseProxy>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof ReverseProxyList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof ReverseProxyList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof ReverseProxyList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof ReverseProxyList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
  * @interface ReverseProxyRule
  */
 export interface ReverseProxyRule {
@@ -794,6 +1014,116 @@ export interface RoleBinding {
 /**
  *
  * @export
+ * @interface RoleBindingList
+ */
+export interface RoleBindingList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof RoleBindingList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof RoleBindingList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof RoleBindingList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<RoleBinding>}
+   * @memberof RoleBindingList
+   */
+  items: Array<RoleBinding>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof RoleBindingList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof RoleBindingList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof RoleBindingList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof RoleBindingList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
+ * @interface RoleList
+ */
+export interface RoleList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof RoleList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof RoleList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof RoleList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<Role>}
+   * @memberof RoleList
+   */
+  items: Array<Role>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof RoleList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof RoleList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof RoleList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof RoleList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
  * @interface RoleRef
  */
 export interface RoleRef {
@@ -846,6 +1176,61 @@ export interface Setting {
    * @memberof Setting
    */
   metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface SettingList
+ */
+export interface SettingList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof SettingList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof SettingList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof SettingList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<Setting>}
+   * @memberof SettingList
+   */
+  items: Array<Setting>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof SettingList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof SettingList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof SettingList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof SettingList
+   */
+  hasPrevious: boolean
 }
 /**
  *
@@ -933,6 +1318,61 @@ export interface User {
    * @memberof User
    */
   metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface UserList
+ */
+export interface UserList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof UserList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof UserList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof UserList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<User>}
+   * @memberof UserList
+   */
+  items: Array<User>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof UserList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof UserList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof UserList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof UserList
+   */
+  hasPrevious: boolean
 }
 /**
  *
@@ -1523,7 +1963,7 @@ export const CoreHaloRunV1alpha1LinkApiFp = function (configuration?: Configurat
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Link>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1Link(page, size, sort, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -1591,7 +2031,7 @@ export const CoreHaloRunV1alpha1LinkApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listcoreHaloRunV1alpha1Link(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<Array<Link>> {
+    listcoreHaloRunV1alpha1Link(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
       return localVarFp
         .listcoreHaloRunV1alpha1Link(page, size, sort, options)
         .then((request) => request(axios, basePath))
@@ -1944,7 +2384,7 @@ export const CoreHaloRunV1alpha1LinkGroupApiFp = function (configuration?: Confi
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LinkGroup>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1LinkGroup(
         page,
         size,
@@ -2023,12 +2463,7 @@ export const CoreHaloRunV1alpha1LinkGroupApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listcoreHaloRunV1alpha1LinkGroup(
-      page?: number,
-      size?: number,
-      sort?: string,
-      options?: any,
-    ): AxiosPromise<Array<LinkGroup>> {
+    listcoreHaloRunV1alpha1LinkGroup(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
       return localVarFp
         .listcoreHaloRunV1alpha1LinkGroup(page, size, sort, options)
         .then((request) => request(axios, basePath))
@@ -2377,7 +2812,7 @@ export const CoreHaloRunV1alpha1PostApiFp = function (configuration?: Configurat
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Post>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1Post(page, size, sort, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -2445,7 +2880,7 @@ export const CoreHaloRunV1alpha1PostApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listcoreHaloRunV1alpha1Post(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<Array<Post>> {
+    listcoreHaloRunV1alpha1Post(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
       return localVarFp
         .listcoreHaloRunV1alpha1Post(page, size, sort, options)
         .then((request) => request(axios, basePath))
@@ -2795,7 +3230,7 @@ export const PluginHaloRunV1alpha1PluginApiFp = function (configuration?: Config
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Plugin>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PluginList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listpluginHaloRunV1alpha1Plugin(
         page,
         size,
@@ -2873,7 +3308,7 @@ export const PluginHaloRunV1alpha1PluginApiFactory = function (
       size?: number,
       sort?: string,
       options?: any,
-    ): AxiosPromise<Array<Plugin>> {
+    ): AxiosPromise<PluginList> {
       return localVarFp
         .listpluginHaloRunV1alpha1Plugin(page, size, sort, options)
         .then((request) => request(axios, basePath))
@@ -3234,7 +3669,7 @@ export const PluginHaloRunV1alpha1ReverseProxyApiFp = function (configuration?: 
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReverseProxy>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReverseProxyList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listpluginHaloRunV1alpha1ReverseProxy(
         page,
         size,
@@ -3320,7 +3755,7 @@ export const PluginHaloRunV1alpha1ReverseProxyApiFactory = function (
       size?: number,
       sort?: string,
       options?: any,
-    ): AxiosPromise<Array<ReverseProxy>> {
+    ): AxiosPromise<ReverseProxyList> {
       return localVarFp
         .listpluginHaloRunV1alpha1ReverseProxy(page, size, sort, options)
         .then((request) => request(axios, basePath))
@@ -3673,7 +4108,7 @@ export const V1alpha1ConfigMapApiFp = function (configuration?: Configuration) {
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ConfigMap>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfigMapList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1ConfigMap(page, size, sort, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -3741,7 +4176,7 @@ export const V1alpha1ConfigMapApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1ConfigMap(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<Array<ConfigMap>> {
+    listv1alpha1ConfigMap(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<ConfigMapList> {
       return localVarFp.listv1alpha1ConfigMap(page, size, sort, options).then((request) => request(axios, basePath))
     },
     /**
@@ -4092,7 +4527,7 @@ export const V1alpha1PersonalAccessTokenApiFp = function (configuration?: Config
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PersonalAccessToken>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonalAccessTokenList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1PersonalAccessToken(
         page,
         size,
@@ -4179,7 +4614,7 @@ export const V1alpha1PersonalAccessTokenApiFactory = function (
       size?: number,
       sort?: string,
       options?: any,
-    ): AxiosPromise<Array<PersonalAccessToken>> {
+    ): AxiosPromise<PersonalAccessTokenList> {
       return localVarFp
         .listv1alpha1PersonalAccessToken(page, size, sort, options)
         .then((request) => request(axios, basePath))
@@ -4523,7 +4958,7 @@ export const V1alpha1RoleApiFp = function (configuration?: Configuration) {
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Role>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1Role(page, size, sort, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -4591,7 +5026,7 @@ export const V1alpha1RoleApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1Role(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<Array<Role>> {
+    listv1alpha1Role(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<RoleList> {
       return localVarFp.listv1alpha1Role(page, size, sort, options).then((request) => request(axios, basePath))
     },
     /**
@@ -4930,7 +5365,7 @@ export const V1alpha1RoleBindingApiFp = function (configuration?: Configuration)
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleBinding>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleBindingList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1RoleBinding(page, size, sort, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -4998,12 +5433,7 @@ export const V1alpha1RoleBindingApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1RoleBinding(
-      page?: number,
-      size?: number,
-      sort?: string,
-      options?: any,
-    ): AxiosPromise<Array<RoleBinding>> {
+    listv1alpha1RoleBinding(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<RoleBindingList> {
       return localVarFp.listv1alpha1RoleBinding(page, size, sort, options).then((request) => request(axios, basePath))
     },
     /**
@@ -5341,7 +5771,7 @@ export const V1alpha1SettingApiFp = function (configuration?: Configuration) {
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Setting>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1Setting(page, size, sort, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -5409,7 +5839,7 @@ export const V1alpha1SettingApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1Setting(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<Array<Setting>> {
+    listv1alpha1Setting(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<SettingList> {
       return localVarFp.listv1alpha1Setting(page, size, sort, options).then((request) => request(axios, basePath))
     },
     /**
@@ -5741,7 +6171,7 @@ export const V1alpha1UserApiFp = function (configuration?: Configuration) {
       size?: number,
       sort?: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1User(page, size, sort, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -5809,7 +6239,7 @@ export const V1alpha1UserApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1User(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<Array<User>> {
+    listv1alpha1User(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<UserList> {
       return localVarFp.listv1alpha1User(page, size, sort, options).then((request) => request(axios, basePath))
     },
     /**
