@@ -1377,6 +1377,25 @@ export interface UserList {
 /**
  *
  * @export
+ * @interface UserPermission
+ */
+export interface UserPermission {
+  /**
+   *
+   * @type {Set<Role>}
+   * @memberof UserPermission
+   */
+  roles: Set<Role>
+  /**
+   *
+   * @type {Set<string>}
+   * @memberof UserPermission
+   */
+  uiPermissions: Set<string>
+}
+/**
+ *
+ * @export
  * @interface UserSpec
  */
 export interface UserSpec {
@@ -1600,7 +1619,7 @@ export const ApiHaloRunV1alpha1UserApiFp = function (configuration?: Configurati
     async getPermissions(
       name: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserPermission>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getPermissions(name, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -1647,7 +1666,7 @@ export const ApiHaloRunV1alpha1UserApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPermissions(name: string, options?: any): AxiosPromise<string> {
+    getPermissions(name: string, options?: any): AxiosPromise<UserPermission> {
       return localVarFp.getPermissions(name, options).then((request) => request(axios, basePath))
     },
     /**
