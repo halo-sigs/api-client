@@ -34,68 +34,6 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  *
  * @export
- * @interface Apple
- */
-export interface Apple {
-  /**
-   *
-   * @type {AppleSpec}
-   * @memberof Apple
-   */
-  spec?: AppleSpec
-  /**
-   *
-   * @type {string}
-   * @memberof Apple
-   */
-  apiVersion: string
-  /**
-   *
-   * @type {string}
-   * @memberof Apple
-   */
-  kind: string
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Apple
-   */
-  metadata: Metadata
-}
-/**
- *
- * @export
- * @interface AppleSpec
- */
-export interface AppleSpec {
-  /**
-   *
-   * @type {string}
-   * @memberof AppleSpec
-   */
-  varieties: string
-  /**
-   *
-   * @type {string}
-   * @memberof AppleSpec
-   */
-  color?: string
-  /**
-   *
-   * @type {string}
-   * @memberof AppleSpec
-   */
-  size?: string
-  /**
-   *
-   * @type {string}
-   * @memberof AppleSpec
-   */
-  producingArea?: string
-}
-/**
- *
- * @export
  * @interface ChangePasswordRequest
  */
 export interface ChangePasswordRequest {
@@ -251,121 +189,16 @@ export interface License {
 export interface Link {
   /**
    *
-   * @type {LinkSpec}
-   * @memberof Link
-   */
-  spec?: LinkSpec
-  /**
-   *
    * @type {string}
    * @memberof Link
    */
-  apiVersion: string
+  href?: string
   /**
    *
-   * @type {string}
+   * @type {boolean}
    * @memberof Link
    */
-  kind: string
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Link
-   */
-  metadata: Metadata
-}
-/**
- *
- * @export
- * @interface LinkGroup
- */
-export interface LinkGroup {
-  /**
-   *
-   * @type {LinkGroupSpec}
-   * @memberof LinkGroup
-   */
-  spec?: LinkGroupSpec
-  /**
-   *
-   * @type {string}
-   * @memberof LinkGroup
-   */
-  apiVersion: string
-  /**
-   *
-   * @type {string}
-   * @memberof LinkGroup
-   */
-  kind: string
-  /**
-   *
-   * @type {Metadata}
-   * @memberof LinkGroup
-   */
-  metadata: Metadata
-}
-/**
- *
- * @export
- * @interface LinkGroupSpec
- */
-export interface LinkGroupSpec {
-  /**
-   *
-   * @type {string}
-   * @memberof LinkGroupSpec
-   */
-  displayName: string
-  /**
-   *
-   * @type {number}
-   * @memberof LinkGroupSpec
-   */
-  priority?: number
-}
-/**
- *
- * @export
- * @interface LinkSpec
- */
-export interface LinkSpec {
-  /**
-   *
-   * @type {string}
-   * @memberof LinkSpec
-   */
-  url: string
-  /**
-   *
-   * @type {string}
-   * @memberof LinkSpec
-   */
-  displayName: string
-  /**
-   *
-   * @type {string}
-   * @memberof LinkSpec
-   */
-  logo?: string
-  /**
-   *
-   * @type {string}
-   * @memberof LinkSpec
-   */
-  description?: string
-  /**
-   *
-   * @type {string}
-   * @memberof LinkSpec
-   */
-  groupName?: string
-  /**
-   *
-   * @type {number}
-   * @memberof LinkSpec
-   */
-  priority?: number
+  templated?: boolean
 }
 /**
  *
@@ -732,6 +565,7 @@ export interface PluginSpec {
    *
    * @type {string}
    * @memberof PluginSpec
+   * @deprecated
    */
   pluginClass?: string
   /**
@@ -740,12 +574,6 @@ export interface PluginSpec {
    * @memberof PluginSpec
    */
   enabled?: boolean
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof PluginSpec
-   */
-  extensionLocations?: Array<string>
   /**
    *
    * @type {string}
@@ -1500,6 +1328,350 @@ export interface UserStatus {
 }
 
 /**
+ * ActuatorApi - axios parameter creator
+ * @export
+ */
+export const ActuatorApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @summary Actuator web endpoint \'health\'
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    health: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/actuator/health`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @summary Actuator web endpoint \'health-path\'
+     * @param {string} path
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    healthPath: async (path: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'path' is not null or undefined
+      assertParamExists('healthPath', 'path', path)
+      const localVarPath = `/actuator/health/{*path}`.replace(`{${'*path'}}`, encodeURIComponent(String(path)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @summary Actuator root web endpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    links: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/actuator`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * ActuatorApi - functional programming interface
+ * @export
+ */
+export const ActuatorApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ActuatorApiAxiosParamCreator(configuration)
+  return {
+    /**
+     *
+     * @summary Actuator web endpoint \'health\'
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async health(
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.health(options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     *
+     * @summary Actuator web endpoint \'health-path\'
+     * @param {string} path
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async healthPath(
+      path: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.healthPath(path, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     *
+     * @summary Actuator root web endpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async links(
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key: string]: { [key: string]: Link } }>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.links(options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * ActuatorApi - factory interface
+ * @export
+ */
+export const ActuatorApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+  const localVarFp = ActuatorApiFp(configuration)
+  return {
+    /**
+     *
+     * @summary Actuator web endpoint \'health\'
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    health(options?: any): AxiosPromise<object> {
+      return localVarFp.health(options).then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @summary Actuator web endpoint \'health-path\'
+     * @param {string} path
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    healthPath(path: string, options?: any): AxiosPromise<object> {
+      return localVarFp.healthPath(path, options).then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @summary Actuator root web endpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    links(options?: any): AxiosPromise<{ [key: string]: { [key: string]: Link } }> {
+      return localVarFp.links(options).then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * ActuatorApi - object-oriented interface
+ * @export
+ * @class ActuatorApi
+ * @extends {BaseAPI}
+ */
+export class ActuatorApi extends BaseAPI {
+  /**
+   *
+   * @summary Actuator web endpoint \'health\'
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ActuatorApi
+   */
+  public health(options?: AxiosRequestConfig) {
+    return ActuatorApiFp(this.configuration)
+      .health(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @summary Actuator web endpoint \'health-path\'
+   * @param {string} path
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ActuatorApi
+   */
+  public healthPath(path: string, options?: AxiosRequestConfig) {
+    return ActuatorApiFp(this.configuration)
+      .healthPath(path, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @summary Actuator root web endpoint
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ActuatorApi
+   */
+  public links(options?: AxiosRequestConfig) {
+    return ActuatorApiFp(this.configuration)
+      .links(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * ApiHaloRunV1alpha1PluginApi - axios parameter creator
+ * @export
+ */
+export const ApiHaloRunV1alpha1PluginApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Install a plugin by uploading a Jar file.
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    installPlugin: async (file: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'file' is not null or undefined
+      assertParamExists('installPlugin', 'file', file)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/plugins/install`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+      const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)()
+
+      if (file !== undefined) {
+        localVarFormParams.append('file', file as any)
+      }
+
+      localVarHeaderParameter['Content-Type'] = 'multipart/form-data'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = localVarFormParams
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * ApiHaloRunV1alpha1PluginApi - functional programming interface
+ * @export
+ */
+export const ApiHaloRunV1alpha1PluginApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ApiHaloRunV1alpha1PluginApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Install a plugin by uploading a Jar file.
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async installPlugin(
+      file: any,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.installPlugin(file, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * ApiHaloRunV1alpha1PluginApi - factory interface
+ * @export
+ */
+export const ApiHaloRunV1alpha1PluginApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = ApiHaloRunV1alpha1PluginApiFp(configuration)
+  return {
+    /**
+     * Install a plugin by uploading a Jar file.
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    installPlugin(file: any, options?: any): AxiosPromise<void> {
+      return localVarFp.installPlugin(file, options).then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * ApiHaloRunV1alpha1PluginApi - object-oriented interface
+ * @export
+ * @class ApiHaloRunV1alpha1PluginApi
+ * @extends {BaseAPI}
+ */
+export class ApiHaloRunV1alpha1PluginApi extends BaseAPI {
+  /**
+   * Install a plugin by uploading a Jar file.
+   * @param {any} file
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiHaloRunV1alpha1PluginApi
+   */
+  public installPlugin(file: any, options?: AxiosRequestConfig) {
+    return ApiHaloRunV1alpha1PluginApiFp(this.configuration)
+      .installPlugin(file, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
  * ApiHaloRunV1alpha1UserApi - axios parameter creator
  * @export
  */
@@ -1826,1379 +1998,6 @@ export class ApiHaloRunV1alpha1UserApi extends BaseAPI {
   public grantPermission(name: string, grantRequest: GrantRequest, options?: AxiosRequestConfig) {
     return ApiHaloRunV1alpha1UserApiFp(this.configuration)
       .grantPermission(name, grantRequest, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-}
-
-/**
- * AppleGuqingXyzV1alpha1AppleApi - axios parameter creator
- * @export
- */
-export const AppleGuqingXyzV1alpha1AppleApiAxiosParamCreator = function (configuration?: Configuration) {
-  return {
-    /**
-     * Create apple.guqing.xyz/v1alpha1/Apple
-     * @param {Apple} [apple] Fresh apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createappleGuqingXyzV1alpha1Apple: async (
-      apple?: Apple,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/apple.guqing.xyz/v1alpha1/apples`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(apple, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Delete apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteappleGuqingXyzV1alpha1Apple: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('deleteappleGuqingXyzV1alpha1Apple', 'name', name)
-      const localVarPath = `/apis/apple.guqing.xyz/v1alpha1/apples/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Get apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getappleGuqingXyzV1alpha1Apple: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('getappleGuqingXyzV1alpha1Apple', 'name', name)
-      const localVarPath = `/apis/apple.guqing.xyz/v1alpha1/apples/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * List apple.guqing.xyz/v1alpha1/Apple
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listappleGuqingXyzV1alpha1Apple: async (
-      page?: number,
-      size?: number,
-      sort?: string,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/apple.guqing.xyz/v1alpha1/apples`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
-      }
-
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
-      }
-
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
-      }
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Update apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {Apple} [apple] Updated apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateappleGuqingXyzV1alpha1Apple: async (
-      name: string,
-      apple?: Apple,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('updateappleGuqingXyzV1alpha1Apple', 'name', name)
-      const localVarPath = `/apis/apple.guqing.xyz/v1alpha1/apples/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(apple, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-  }
-}
-
-/**
- * AppleGuqingXyzV1alpha1AppleApi - functional programming interface
- * @export
- */
-export const AppleGuqingXyzV1alpha1AppleApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = AppleGuqingXyzV1alpha1AppleApiAxiosParamCreator(configuration)
-  return {
-    /**
-     * Create apple.guqing.xyz/v1alpha1/Apple
-     * @param {Apple} [apple] Fresh apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async createappleGuqingXyzV1alpha1Apple(
-      apple?: Apple,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Apple>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.createappleGuqingXyzV1alpha1Apple(apple, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Delete apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async deleteappleGuqingXyzV1alpha1Apple(
-      name: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.deleteappleGuqingXyzV1alpha1Apple(name, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Get apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getappleGuqingXyzV1alpha1Apple(
-      name: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Apple>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.getappleGuqingXyzV1alpha1Apple(name, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * List apple.guqing.xyz/v1alpha1/Apple
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async listappleGuqingXyzV1alpha1Apple(
-      page?: number,
-      size?: number,
-      sort?: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listappleGuqingXyzV1alpha1Apple(
-        page,
-        size,
-        sort,
-        options,
-      )
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Update apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {Apple} [apple] Updated apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async updateappleGuqingXyzV1alpha1Apple(
-      name: string,
-      apple?: Apple,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Apple>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.updateappleGuqingXyzV1alpha1Apple(name, apple, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-  }
-}
-
-/**
- * AppleGuqingXyzV1alpha1AppleApi - factory interface
- * @export
- */
-export const AppleGuqingXyzV1alpha1AppleApiFactory = function (
-  configuration?: Configuration,
-  basePath?: string,
-  axios?: AxiosInstance,
-) {
-  const localVarFp = AppleGuqingXyzV1alpha1AppleApiFp(configuration)
-  return {
-    /**
-     * Create apple.guqing.xyz/v1alpha1/Apple
-     * @param {Apple} [apple] Fresh apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createappleGuqingXyzV1alpha1Apple(apple?: Apple, options?: any): AxiosPromise<Apple> {
-      return localVarFp.createappleGuqingXyzV1alpha1Apple(apple, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * Delete apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteappleGuqingXyzV1alpha1Apple(name: string, options?: any): AxiosPromise<void> {
-      return localVarFp.deleteappleGuqingXyzV1alpha1Apple(name, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * Get apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getappleGuqingXyzV1alpha1Apple(name: string, options?: any): AxiosPromise<Apple> {
-      return localVarFp.getappleGuqingXyzV1alpha1Apple(name, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * List apple.guqing.xyz/v1alpha1/Apple
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listappleGuqingXyzV1alpha1Apple(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
-      return localVarFp
-        .listappleGuqingXyzV1alpha1Apple(page, size, sort, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * Update apple.guqing.xyz/v1alpha1/Apple
-     * @param {string} name Name of apple
-     * @param {Apple} [apple] Updated apple
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateappleGuqingXyzV1alpha1Apple(name: string, apple?: Apple, options?: any): AxiosPromise<Apple> {
-      return localVarFp
-        .updateappleGuqingXyzV1alpha1Apple(name, apple, options)
-        .then((request) => request(axios, basePath))
-    },
-  }
-}
-
-/**
- * AppleGuqingXyzV1alpha1AppleApi - object-oriented interface
- * @export
- * @class AppleGuqingXyzV1alpha1AppleApi
- * @extends {BaseAPI}
- */
-export class AppleGuqingXyzV1alpha1AppleApi extends BaseAPI {
-  /**
-   * Create apple.guqing.xyz/v1alpha1/Apple
-   * @param {Apple} [apple] Fresh apple
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AppleGuqingXyzV1alpha1AppleApi
-   */
-  public createappleGuqingXyzV1alpha1Apple(apple?: Apple, options?: AxiosRequestConfig) {
-    return AppleGuqingXyzV1alpha1AppleApiFp(this.configuration)
-      .createappleGuqingXyzV1alpha1Apple(apple, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Delete apple.guqing.xyz/v1alpha1/Apple
-   * @param {string} name Name of apple
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AppleGuqingXyzV1alpha1AppleApi
-   */
-  public deleteappleGuqingXyzV1alpha1Apple(name: string, options?: AxiosRequestConfig) {
-    return AppleGuqingXyzV1alpha1AppleApiFp(this.configuration)
-      .deleteappleGuqingXyzV1alpha1Apple(name, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Get apple.guqing.xyz/v1alpha1/Apple
-   * @param {string} name Name of apple
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AppleGuqingXyzV1alpha1AppleApi
-   */
-  public getappleGuqingXyzV1alpha1Apple(name: string, options?: AxiosRequestConfig) {
-    return AppleGuqingXyzV1alpha1AppleApiFp(this.configuration)
-      .getappleGuqingXyzV1alpha1Apple(name, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * List apple.guqing.xyz/v1alpha1/Apple
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AppleGuqingXyzV1alpha1AppleApi
-   */
-  public listappleGuqingXyzV1alpha1Apple(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
-    return AppleGuqingXyzV1alpha1AppleApiFp(this.configuration)
-      .listappleGuqingXyzV1alpha1Apple(page, size, sort, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Update apple.guqing.xyz/v1alpha1/Apple
-   * @param {string} name Name of apple
-   * @param {Apple} [apple] Updated apple
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AppleGuqingXyzV1alpha1AppleApi
-   */
-  public updateappleGuqingXyzV1alpha1Apple(name: string, apple?: Apple, options?: AxiosRequestConfig) {
-    return AppleGuqingXyzV1alpha1AppleApiFp(this.configuration)
-      .updateappleGuqingXyzV1alpha1Apple(name, apple, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-}
-
-/**
- * ApplesControllerApi - axios parameter creator
- * @export
- */
-export const ApplesControllerApiAxiosParamCreator = function (configuration?: Configuration) {
-  return {
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hello: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      const localVarPath = `/apis/plugin.api.halo.run/v1alpha1/plugins/PluginTemplate/apples`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-  }
-}
-
-/**
- * ApplesControllerApi - functional programming interface
- * @export
- */
-export const ApplesControllerApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = ApplesControllerApiAxiosParamCreator(configuration)
-  return {
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async hello(
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.hello(options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-  }
-}
-
-/**
- * ApplesControllerApi - factory interface
- * @export
- */
-export const ApplesControllerApiFactory = function (
-  configuration?: Configuration,
-  basePath?: string,
-  axios?: AxiosInstance,
-) {
-  const localVarFp = ApplesControllerApiFp(configuration)
-  return {
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hello(options?: any): AxiosPromise<string> {
-      return localVarFp.hello(options).then((request) => request(axios, basePath))
-    },
-  }
-}
-
-/**
- * ApplesControllerApi - object-oriented interface
- * @export
- * @class ApplesControllerApi
- * @extends {BaseAPI}
- */
-export class ApplesControllerApi extends BaseAPI {
-  /**
-   *
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof ApplesControllerApi
-   */
-  public hello(options?: AxiosRequestConfig) {
-    return ApplesControllerApiFp(this.configuration)
-      .hello(options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkApi - axios parameter creator
- * @export
- */
-export const CoreHaloRunV1alpha1LinkApiAxiosParamCreator = function (configuration?: Configuration) {
-  return {
-    /**
-     * Create core.halo.run/v1alpha1/Link
-     * @param {Link} [link] Fresh link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createcoreHaloRunV1alpha1Link: async (link?: Link, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      const localVarPath = `/apis/core.halo.run/v1alpha1/links`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(link, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Delete core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deletecoreHaloRunV1alpha1Link: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('deletecoreHaloRunV1alpha1Link', 'name', name)
-      const localVarPath = `/apis/core.halo.run/v1alpha1/links/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Get core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getcoreHaloRunV1alpha1Link: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('getcoreHaloRunV1alpha1Link', 'name', name)
-      const localVarPath = `/apis/core.halo.run/v1alpha1/links/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * List core.halo.run/v1alpha1/Link
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listcoreHaloRunV1alpha1Link: async (
-      page?: number,
-      size?: number,
-      sort?: string,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/core.halo.run/v1alpha1/links`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
-      }
-
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
-      }
-
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
-      }
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Update core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {Link} [link] Updated link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updatecoreHaloRunV1alpha1Link: async (
-      name: string,
-      link?: Link,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('updatecoreHaloRunV1alpha1Link', 'name', name)
-      const localVarPath = `/apis/core.halo.run/v1alpha1/links/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(link, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkApi - functional programming interface
- * @export
- */
-export const CoreHaloRunV1alpha1LinkApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = CoreHaloRunV1alpha1LinkApiAxiosParamCreator(configuration)
-  return {
-    /**
-     * Create core.halo.run/v1alpha1/Link
-     * @param {Link} [link] Fresh link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async createcoreHaloRunV1alpha1Link(
-      link?: Link,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Link>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.createcoreHaloRunV1alpha1Link(link, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Delete core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async deletecoreHaloRunV1alpha1Link(
-      name: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.deletecoreHaloRunV1alpha1Link(name, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Get core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getcoreHaloRunV1alpha1Link(
-      name: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Link>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.getcoreHaloRunV1alpha1Link(name, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * List core.halo.run/v1alpha1/Link
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async listcoreHaloRunV1alpha1Link(
-      page?: number,
-      size?: number,
-      sort?: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1Link(page, size, sort, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Update core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {Link} [link] Updated link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async updatecoreHaloRunV1alpha1Link(
-      name: string,
-      link?: Link,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Link>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.updatecoreHaloRunV1alpha1Link(name, link, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkApi - factory interface
- * @export
- */
-export const CoreHaloRunV1alpha1LinkApiFactory = function (
-  configuration?: Configuration,
-  basePath?: string,
-  axios?: AxiosInstance,
-) {
-  const localVarFp = CoreHaloRunV1alpha1LinkApiFp(configuration)
-  return {
-    /**
-     * Create core.halo.run/v1alpha1/Link
-     * @param {Link} [link] Fresh link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createcoreHaloRunV1alpha1Link(link?: Link, options?: any): AxiosPromise<Link> {
-      return localVarFp.createcoreHaloRunV1alpha1Link(link, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * Delete core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deletecoreHaloRunV1alpha1Link(name: string, options?: any): AxiosPromise<void> {
-      return localVarFp.deletecoreHaloRunV1alpha1Link(name, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * Get core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getcoreHaloRunV1alpha1Link(name: string, options?: any): AxiosPromise<Link> {
-      return localVarFp.getcoreHaloRunV1alpha1Link(name, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * List core.halo.run/v1alpha1/Link
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listcoreHaloRunV1alpha1Link(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
-      return localVarFp
-        .listcoreHaloRunV1alpha1Link(page, size, sort, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * Update core.halo.run/v1alpha1/Link
-     * @param {string} name Name of link
-     * @param {Link} [link] Updated link
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updatecoreHaloRunV1alpha1Link(name: string, link?: Link, options?: any): AxiosPromise<Link> {
-      return localVarFp.updatecoreHaloRunV1alpha1Link(name, link, options).then((request) => request(axios, basePath))
-    },
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkApi - object-oriented interface
- * @export
- * @class CoreHaloRunV1alpha1LinkApi
- * @extends {BaseAPI}
- */
-export class CoreHaloRunV1alpha1LinkApi extends BaseAPI {
-  /**
-   * Create core.halo.run/v1alpha1/Link
-   * @param {Link} [link] Fresh link
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkApi
-   */
-  public createcoreHaloRunV1alpha1Link(link?: Link, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
-      .createcoreHaloRunV1alpha1Link(link, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Delete core.halo.run/v1alpha1/Link
-   * @param {string} name Name of link
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkApi
-   */
-  public deletecoreHaloRunV1alpha1Link(name: string, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
-      .deletecoreHaloRunV1alpha1Link(name, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Get core.halo.run/v1alpha1/Link
-   * @param {string} name Name of link
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkApi
-   */
-  public getcoreHaloRunV1alpha1Link(name: string, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
-      .getcoreHaloRunV1alpha1Link(name, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * List core.halo.run/v1alpha1/Link
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkApi
-   */
-  public listcoreHaloRunV1alpha1Link(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
-      .listcoreHaloRunV1alpha1Link(page, size, sort, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Update core.halo.run/v1alpha1/Link
-   * @param {string} name Name of link
-   * @param {Link} [link] Updated link
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkApi
-   */
-  public updatecoreHaloRunV1alpha1Link(name: string, link?: Link, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
-      .updatecoreHaloRunV1alpha1Link(name, link, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkGroupApi - axios parameter creator
- * @export
- */
-export const CoreHaloRunV1alpha1LinkGroupApiAxiosParamCreator = function (configuration?: Configuration) {
-  return {
-    /**
-     * Create core.halo.run/v1alpha1/LinkGroup
-     * @param {LinkGroup} [linkGroup] Fresh linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createcoreHaloRunV1alpha1LinkGroup: async (
-      linkGroup?: LinkGroup,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(linkGroup, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Delete core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deletecoreHaloRunV1alpha1LinkGroup: async (
-      name: string,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('deletecoreHaloRunV1alpha1LinkGroup', 'name', name)
-      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Get core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getcoreHaloRunV1alpha1LinkGroup: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('getcoreHaloRunV1alpha1LinkGroup', 'name', name)
-      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * List core.halo.run/v1alpha1/LinkGroup
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listcoreHaloRunV1alpha1LinkGroup: async (
-      page?: number,
-      size?: number,
-      sort?: string,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
-      }
-
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
-      }
-
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
-      }
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Update core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {LinkGroup} [linkGroup] Updated linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updatecoreHaloRunV1alpha1LinkGroup: async (
-      name: string,
-      linkGroup?: LinkGroup,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'name' is not null or undefined
-      assertParamExists('updatecoreHaloRunV1alpha1LinkGroup', 'name', name)
-      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups/{name}`.replace(
-        `{${'name'}}`,
-        encodeURIComponent(String(name)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(linkGroup, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkGroupApi - functional programming interface
- * @export
- */
-export const CoreHaloRunV1alpha1LinkGroupApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = CoreHaloRunV1alpha1LinkGroupApiAxiosParamCreator(configuration)
-  return {
-    /**
-     * Create core.halo.run/v1alpha1/LinkGroup
-     * @param {LinkGroup} [linkGroup] Fresh linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async createcoreHaloRunV1alpha1LinkGroup(
-      linkGroup?: LinkGroup,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LinkGroup>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.createcoreHaloRunV1alpha1LinkGroup(linkGroup, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Delete core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async deletecoreHaloRunV1alpha1LinkGroup(
-      name: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.deletecoreHaloRunV1alpha1LinkGroup(name, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Get core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getcoreHaloRunV1alpha1LinkGroup(
-      name: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LinkGroup>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.getcoreHaloRunV1alpha1LinkGroup(name, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * List core.halo.run/v1alpha1/LinkGroup
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async listcoreHaloRunV1alpha1LinkGroup(
-      page?: number,
-      size?: number,
-      sort?: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1LinkGroup(
-        page,
-        size,
-        sort,
-        options,
-      )
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Update core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {LinkGroup} [linkGroup] Updated linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async updatecoreHaloRunV1alpha1LinkGroup(
-      name: string,
-      linkGroup?: LinkGroup,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LinkGroup>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.updatecoreHaloRunV1alpha1LinkGroup(
-        name,
-        linkGroup,
-        options,
-      )
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkGroupApi - factory interface
- * @export
- */
-export const CoreHaloRunV1alpha1LinkGroupApiFactory = function (
-  configuration?: Configuration,
-  basePath?: string,
-  axios?: AxiosInstance,
-) {
-  const localVarFp = CoreHaloRunV1alpha1LinkGroupApiFp(configuration)
-  return {
-    /**
-     * Create core.halo.run/v1alpha1/LinkGroup
-     * @param {LinkGroup} [linkGroup] Fresh linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createcoreHaloRunV1alpha1LinkGroup(linkGroup?: LinkGroup, options?: any): AxiosPromise<LinkGroup> {
-      return localVarFp
-        .createcoreHaloRunV1alpha1LinkGroup(linkGroup, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * Delete core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deletecoreHaloRunV1alpha1LinkGroup(name: string, options?: any): AxiosPromise<void> {
-      return localVarFp.deletecoreHaloRunV1alpha1LinkGroup(name, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * Get core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getcoreHaloRunV1alpha1LinkGroup(name: string, options?: any): AxiosPromise<LinkGroup> {
-      return localVarFp.getcoreHaloRunV1alpha1LinkGroup(name, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * List core.halo.run/v1alpha1/LinkGroup
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listcoreHaloRunV1alpha1LinkGroup(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
-      return localVarFp
-        .listcoreHaloRunV1alpha1LinkGroup(page, size, sort, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * Update core.halo.run/v1alpha1/LinkGroup
-     * @param {string} name Name of linkgroup
-     * @param {LinkGroup} [linkGroup] Updated linkgroup
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updatecoreHaloRunV1alpha1LinkGroup(name: string, linkGroup?: LinkGroup, options?: any): AxiosPromise<LinkGroup> {
-      return localVarFp
-        .updatecoreHaloRunV1alpha1LinkGroup(name, linkGroup, options)
-        .then((request) => request(axios, basePath))
-    },
-  }
-}
-
-/**
- * CoreHaloRunV1alpha1LinkGroupApi - object-oriented interface
- * @export
- * @class CoreHaloRunV1alpha1LinkGroupApi
- * @extends {BaseAPI}
- */
-export class CoreHaloRunV1alpha1LinkGroupApi extends BaseAPI {
-  /**
-   * Create core.halo.run/v1alpha1/LinkGroup
-   * @param {LinkGroup} [linkGroup] Fresh linkgroup
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkGroupApi
-   */
-  public createcoreHaloRunV1alpha1LinkGroup(linkGroup?: LinkGroup, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
-      .createcoreHaloRunV1alpha1LinkGroup(linkGroup, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Delete core.halo.run/v1alpha1/LinkGroup
-   * @param {string} name Name of linkgroup
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkGroupApi
-   */
-  public deletecoreHaloRunV1alpha1LinkGroup(name: string, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
-      .deletecoreHaloRunV1alpha1LinkGroup(name, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Get core.halo.run/v1alpha1/LinkGroup
-   * @param {string} name Name of linkgroup
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkGroupApi
-   */
-  public getcoreHaloRunV1alpha1LinkGroup(name: string, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
-      .getcoreHaloRunV1alpha1LinkGroup(name, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * List core.halo.run/v1alpha1/LinkGroup
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkGroupApi
-   */
-  public listcoreHaloRunV1alpha1LinkGroup(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
-      .listcoreHaloRunV1alpha1LinkGroup(page, size, sort, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Update core.halo.run/v1alpha1/LinkGroup
-   * @param {string} name Name of linkgroup
-   * @param {LinkGroup} [linkGroup] Updated linkgroup
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreHaloRunV1alpha1LinkGroupApi
-   */
-  public updatecoreHaloRunV1alpha1LinkGroup(name: string, linkGroup?: LinkGroup, options?: AxiosRequestConfig) {
-    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
-      .updatecoreHaloRunV1alpha1LinkGroup(name, linkGroup, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
