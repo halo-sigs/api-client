@@ -1,6 +1,6 @@
 {
   "name": "@halo-dev/api-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "scripts": {
     "build": "unbuild",
@@ -9,7 +9,7 @@
     "prettier": "prettier --write './src/**/*.{js,jsx,ts,tsx,json,yml,yaml}'",
     "typecheck": "tsc --noEmit",
     "release": "bumpp",
-    "gen": "openapi-generator-cli generate -i ./springdocDefault.json -g typescript-axios -o ./src && pnpm lint && pnpm prettier"
+    "gen": "openapi-generator-cli generate -i ./api-docs.json -g typescript-axios -o ./src && pnpm lint && pnpm prettier"
   },
   "keywords": [],
   "author": "@halo-dev",
