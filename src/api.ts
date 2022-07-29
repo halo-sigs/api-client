@@ -2215,16 +2215,18 @@ export const CoreHaloRunV1alpha1LinkApiAxiosParamCreator = function (configurati
     },
     /**
      * List core.halo.run/v1alpha1/Link
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listcoreHaloRunV1alpha1Link: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/core.halo.run/v1alpha1/links`
@@ -2255,8 +2257,12 @@ export const CoreHaloRunV1alpha1LinkApiAxiosParamCreator = function (configurati
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -2368,19 +2374,27 @@ export const CoreHaloRunV1alpha1LinkApiFp = function (configuration?: Configurat
     },
     /**
      * List core.halo.run/v1alpha1/Link
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listcoreHaloRunV1alpha1Link(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1Link(page, size, sort, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1Link(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -2441,15 +2455,22 @@ export const CoreHaloRunV1alpha1LinkApiFactory = function (
     },
     /**
      * List core.halo.run/v1alpha1/Link
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listcoreHaloRunV1alpha1Link(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
+    listcoreHaloRunV1alpha1Link(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<string> {
       return localVarFp
-        .listcoreHaloRunV1alpha1Link(page, size, sort, options)
+        .listcoreHaloRunV1alpha1Link(page, size, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -2513,16 +2534,23 @@ export class CoreHaloRunV1alpha1LinkApi extends BaseAPI {
 
   /**
    * List core.halo.run/v1alpha1/Link
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CoreHaloRunV1alpha1LinkApi
    */
-  public listcoreHaloRunV1alpha1Link(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listcoreHaloRunV1alpha1Link(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
-      .listcoreHaloRunV1alpha1Link(page, size, sort, options)
+      .listcoreHaloRunV1alpha1Link(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -2676,16 +2704,18 @@ export const CoreHaloRunV1alpha1LinkGroupApiAxiosParamCreator = function (config
     },
     /**
      * List core.halo.run/v1alpha1/LinkGroup
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listcoreHaloRunV1alpha1LinkGroup: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups`
@@ -2716,8 +2746,12 @@ export const CoreHaloRunV1alpha1LinkGroupApiAxiosParamCreator = function (config
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -2829,22 +2863,25 @@ export const CoreHaloRunV1alpha1LinkGroupApiFp = function (configuration?: Confi
     },
     /**
      * List core.halo.run/v1alpha1/LinkGroup
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listcoreHaloRunV1alpha1LinkGroup(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1LinkGroup(
         page,
         size,
-        sort,
+        labelSelector,
+        fieldSelector,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -2913,15 +2950,22 @@ export const CoreHaloRunV1alpha1LinkGroupApiFactory = function (
     },
     /**
      * List core.halo.run/v1alpha1/LinkGroup
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listcoreHaloRunV1alpha1LinkGroup(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
+    listcoreHaloRunV1alpha1LinkGroup(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<string> {
       return localVarFp
-        .listcoreHaloRunV1alpha1LinkGroup(page, size, sort, options)
+        .listcoreHaloRunV1alpha1LinkGroup(page, size, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -2987,16 +3031,23 @@ export class CoreHaloRunV1alpha1LinkGroupApi extends BaseAPI {
 
   /**
    * List core.halo.run/v1alpha1/LinkGroup
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CoreHaloRunV1alpha1LinkGroupApi
    */
-  public listcoreHaloRunV1alpha1LinkGroup(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listcoreHaloRunV1alpha1LinkGroup(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
-      .listcoreHaloRunV1alpha1LinkGroup(page, size, sort, options)
+      .listcoreHaloRunV1alpha1LinkGroup(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3147,16 +3198,18 @@ export const PluginHaloRunV1alpha1PluginApiAxiosParamCreator = function (configu
     },
     /**
      * List plugin.halo.run/v1alpha1/Plugin
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listpluginHaloRunV1alpha1Plugin: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/plugin.halo.run/v1alpha1/plugins`
@@ -3187,8 +3240,12 @@ export const PluginHaloRunV1alpha1PluginApiAxiosParamCreator = function (configu
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -3300,22 +3357,25 @@ export const PluginHaloRunV1alpha1PluginApiFp = function (configuration?: Config
     },
     /**
      * List plugin.halo.run/v1alpha1/Plugin
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listpluginHaloRunV1alpha1Plugin(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PluginList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listpluginHaloRunV1alpha1Plugin(
         page,
         size,
-        sort,
+        labelSelector,
+        fieldSelector,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -3378,20 +3438,22 @@ export const PluginHaloRunV1alpha1PluginApiFactory = function (
     },
     /**
      * List plugin.halo.run/v1alpha1/Plugin
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listpluginHaloRunV1alpha1Plugin(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: any,
     ): AxiosPromise<PluginList> {
       return localVarFp
-        .listpluginHaloRunV1alpha1Plugin(page, size, sort, options)
+        .listpluginHaloRunV1alpha1Plugin(page, size, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3457,16 +3519,23 @@ export class PluginHaloRunV1alpha1PluginApi extends BaseAPI {
 
   /**
    * List plugin.halo.run/v1alpha1/Plugin
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof PluginHaloRunV1alpha1PluginApi
    */
-  public listpluginHaloRunV1alpha1Plugin(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listpluginHaloRunV1alpha1Plugin(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return PluginHaloRunV1alpha1PluginApiFp(this.configuration)
-      .listpluginHaloRunV1alpha1Plugin(page, size, sort, options)
+      .listpluginHaloRunV1alpha1Plugin(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3623,16 +3692,18 @@ export const PluginHaloRunV1alpha1ReverseProxyApiAxiosParamCreator = function (c
     },
     /**
      * List plugin.halo.run/v1alpha1/ReverseProxy
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listpluginHaloRunV1alpha1ReverseProxy: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/plugin.halo.run/v1alpha1/reverseproxies`
@@ -3663,8 +3734,12 @@ export const PluginHaloRunV1alpha1ReverseProxyApiAxiosParamCreator = function (c
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -3779,22 +3854,25 @@ export const PluginHaloRunV1alpha1ReverseProxyApiFp = function (configuration?: 
     },
     /**
      * List plugin.halo.run/v1alpha1/ReverseProxy
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listpluginHaloRunV1alpha1ReverseProxy(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReverseProxyList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listpluginHaloRunV1alpha1ReverseProxy(
         page,
         size,
-        sort,
+        labelSelector,
+        fieldSelector,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -3865,20 +3943,22 @@ export const PluginHaloRunV1alpha1ReverseProxyApiFactory = function (
     },
     /**
      * List plugin.halo.run/v1alpha1/ReverseProxy
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listpluginHaloRunV1alpha1ReverseProxy(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: any,
     ): AxiosPromise<ReverseProxyList> {
       return localVarFp
-        .listpluginHaloRunV1alpha1ReverseProxy(page, size, sort, options)
+        .listpluginHaloRunV1alpha1ReverseProxy(page, size, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3948,9 +4028,10 @@ export class PluginHaloRunV1alpha1ReverseProxyApi extends BaseAPI {
 
   /**
    * List plugin.halo.run/v1alpha1/ReverseProxy
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof PluginHaloRunV1alpha1ReverseProxyApi
@@ -3958,11 +4039,12 @@ export class PluginHaloRunV1alpha1ReverseProxyApi extends BaseAPI {
   public listpluginHaloRunV1alpha1ReverseProxy(
     page?: number,
     size?: number,
-    sort?: string,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
     options?: AxiosRequestConfig,
   ) {
     return PluginHaloRunV1alpha1ReverseProxyApiFp(this.configuration)
-      .listpluginHaloRunV1alpha1ReverseProxy(page, size, sort, options)
+      .listpluginHaloRunV1alpha1ReverseProxy(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -4120,16 +4202,18 @@ export const RunHaloTemplateV1alpha1AppleApiAxiosParamCreator = function (config
     },
     /**
      * List run.halo.template/v1alpha1/Apple
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listrunHaloTemplateV1alpha1Apple: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/run.halo.template/v1alpha1/apples`
@@ -4160,8 +4244,12 @@ export const RunHaloTemplateV1alpha1AppleApiAxiosParamCreator = function (config
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -4273,22 +4361,25 @@ export const RunHaloTemplateV1alpha1AppleApiFp = function (configuration?: Confi
     },
     /**
      * List run.halo.template/v1alpha1/Apple
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listrunHaloTemplateV1alpha1Apple(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listrunHaloTemplateV1alpha1Apple(
         page,
         size,
-        sort,
+        labelSelector,
+        fieldSelector,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -4351,15 +4442,22 @@ export const RunHaloTemplateV1alpha1AppleApiFactory = function (
     },
     /**
      * List run.halo.template/v1alpha1/Apple
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listrunHaloTemplateV1alpha1Apple(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<string> {
+    listrunHaloTemplateV1alpha1Apple(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<string> {
       return localVarFp
-        .listrunHaloTemplateV1alpha1Apple(page, size, sort, options)
+        .listrunHaloTemplateV1alpha1Apple(page, size, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -4425,16 +4523,23 @@ export class RunHaloTemplateV1alpha1AppleApi extends BaseAPI {
 
   /**
    * List run.halo.template/v1alpha1/Apple
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof RunHaloTemplateV1alpha1AppleApi
    */
-  public listrunHaloTemplateV1alpha1Apple(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listrunHaloTemplateV1alpha1Apple(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return RunHaloTemplateV1alpha1AppleApiFp(this.configuration)
-      .listrunHaloTemplateV1alpha1Apple(page, size, sort, options)
+      .listrunHaloTemplateV1alpha1Apple(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -4576,16 +4681,18 @@ export const V1alpha1ConfigMapApiAxiosParamCreator = function (configuration?: C
     },
     /**
      * List v1alpha1/ConfigMap
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listv1alpha1ConfigMap: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/api/v1alpha1/configmaps`
@@ -4616,8 +4723,12 @@ export const V1alpha1ConfigMapApiAxiosParamCreator = function (configuration?: C
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -4726,19 +4837,27 @@ export const V1alpha1ConfigMapApiFp = function (configuration?: Configuration) {
     },
     /**
      * List v1alpha1/ConfigMap
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listv1alpha1ConfigMap(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfigMapList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1ConfigMap(page, size, sort, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1ConfigMap(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -4799,14 +4918,23 @@ export const V1alpha1ConfigMapApiFactory = function (
     },
     /**
      * List v1alpha1/ConfigMap
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1ConfigMap(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<ConfigMapList> {
-      return localVarFp.listv1alpha1ConfigMap(page, size, sort, options).then((request) => request(axios, basePath))
+    listv1alpha1ConfigMap(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<ConfigMapList> {
+      return localVarFp
+        .listv1alpha1ConfigMap(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
     },
     /**
      * Update v1alpha1/ConfigMap
@@ -4869,16 +4997,23 @@ export class V1alpha1ConfigMapApi extends BaseAPI {
 
   /**
    * List v1alpha1/ConfigMap
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof V1alpha1ConfigMapApi
    */
-  public listv1alpha1ConfigMap(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listv1alpha1ConfigMap(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return V1alpha1ConfigMapApiFp(this.configuration)
-      .listv1alpha1ConfigMap(page, size, sort, options)
+      .listv1alpha1ConfigMap(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -5029,16 +5164,18 @@ export const V1alpha1PersonalAccessTokenApiAxiosParamCreator = function (configu
     },
     /**
      * List v1alpha1/PersonalAccessToken
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listv1alpha1PersonalAccessToken: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/api/v1alpha1/personalaccesstokens`
@@ -5069,8 +5206,12 @@ export const V1alpha1PersonalAccessTokenApiAxiosParamCreator = function (configu
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -5185,22 +5326,25 @@ export const V1alpha1PersonalAccessTokenApiFp = function (configuration?: Config
     },
     /**
      * List v1alpha1/PersonalAccessToken
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listv1alpha1PersonalAccessToken(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonalAccessTokenList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1PersonalAccessToken(
         page,
         size,
-        sort,
+        labelSelector,
+        fieldSelector,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -5272,20 +5416,22 @@ export const V1alpha1PersonalAccessTokenApiFactory = function (
     },
     /**
      * List v1alpha1/PersonalAccessToken
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listv1alpha1PersonalAccessToken(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: any,
     ): AxiosPromise<PersonalAccessTokenList> {
       return localVarFp
-        .listv1alpha1PersonalAccessToken(page, size, sort, options)
+        .listv1alpha1PersonalAccessToken(page, size, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -5355,16 +5501,23 @@ export class V1alpha1PersonalAccessTokenApi extends BaseAPI {
 
   /**
    * List v1alpha1/PersonalAccessToken
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof V1alpha1PersonalAccessTokenApi
    */
-  public listv1alpha1PersonalAccessToken(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listv1alpha1PersonalAccessToken(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return V1alpha1PersonalAccessTokenApiFp(this.configuration)
-      .listv1alpha1PersonalAccessToken(page, size, sort, options)
+      .listv1alpha1PersonalAccessToken(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -5510,16 +5663,18 @@ export const V1alpha1RoleApiAxiosParamCreator = function (configuration?: Config
     },
     /**
      * List v1alpha1/Role
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listv1alpha1Role: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/api/v1alpha1/roles`
@@ -5550,8 +5705,12 @@ export const V1alpha1RoleApiAxiosParamCreator = function (configuration?: Config
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -5656,19 +5815,27 @@ export const V1alpha1RoleApiFp = function (configuration?: Configuration) {
     },
     /**
      * List v1alpha1/Role
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listv1alpha1Role(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1Role(page, size, sort, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1Role(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -5729,14 +5896,23 @@ export const V1alpha1RoleApiFactory = function (
     },
     /**
      * List v1alpha1/Role
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1Role(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<RoleList> {
-      return localVarFp.listv1alpha1Role(page, size, sort, options).then((request) => request(axios, basePath))
+    listv1alpha1Role(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<RoleList> {
+      return localVarFp
+        .listv1alpha1Role(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
     },
     /**
      * Update v1alpha1/Role
@@ -5799,16 +5975,23 @@ export class V1alpha1RoleApi extends BaseAPI {
 
   /**
    * List v1alpha1/Role
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof V1alpha1RoleApi
    */
-  public listv1alpha1Role(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listv1alpha1Role(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return V1alpha1RoleApiFp(this.configuration)
-      .listv1alpha1Role(page, size, sort, options)
+      .listv1alpha1Role(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -5953,16 +6136,18 @@ export const V1alpha1RoleBindingApiAxiosParamCreator = function (configuration?:
     },
     /**
      * List v1alpha1/RoleBinding
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listv1alpha1RoleBinding: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/api/v1alpha1/rolebindings`
@@ -5993,8 +6178,12 @@ export const V1alpha1RoleBindingApiAxiosParamCreator = function (configuration?:
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -6103,19 +6292,27 @@ export const V1alpha1RoleBindingApiFp = function (configuration?: Configuration)
     },
     /**
      * List v1alpha1/RoleBinding
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listv1alpha1RoleBinding(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleBindingList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1RoleBinding(page, size, sort, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1RoleBinding(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -6176,14 +6373,23 @@ export const V1alpha1RoleBindingApiFactory = function (
     },
     /**
      * List v1alpha1/RoleBinding
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1RoleBinding(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<RoleBindingList> {
-      return localVarFp.listv1alpha1RoleBinding(page, size, sort, options).then((request) => request(axios, basePath))
+    listv1alpha1RoleBinding(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<RoleBindingList> {
+      return localVarFp
+        .listv1alpha1RoleBinding(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
     },
     /**
      * Update v1alpha1/RoleBinding
@@ -6248,16 +6454,23 @@ export class V1alpha1RoleBindingApi extends BaseAPI {
 
   /**
    * List v1alpha1/RoleBinding
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof V1alpha1RoleBindingApi
    */
-  public listv1alpha1RoleBinding(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listv1alpha1RoleBinding(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return V1alpha1RoleBindingApiFp(this.configuration)
-      .listv1alpha1RoleBinding(page, size, sort, options)
+      .listv1alpha1RoleBinding(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -6399,16 +6612,18 @@ export const V1alpha1SettingApiAxiosParamCreator = function (configuration?: Con
     },
     /**
      * List v1alpha1/Setting
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listv1alpha1Setting: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/api/v1alpha1/settings`
@@ -6439,8 +6654,12 @@ export const V1alpha1SettingApiAxiosParamCreator = function (configuration?: Con
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -6549,19 +6768,27 @@ export const V1alpha1SettingApiFp = function (configuration?: Configuration) {
     },
     /**
      * List v1alpha1/Setting
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listv1alpha1Setting(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1Setting(page, size, sort, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1Setting(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -6622,14 +6849,23 @@ export const V1alpha1SettingApiFactory = function (
     },
     /**
      * List v1alpha1/Setting
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1Setting(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<SettingList> {
-      return localVarFp.listv1alpha1Setting(page, size, sort, options).then((request) => request(axios, basePath))
+    listv1alpha1Setting(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<SettingList> {
+      return localVarFp
+        .listv1alpha1Setting(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
     },
     /**
      * Update v1alpha1/Setting
@@ -6692,16 +6928,23 @@ export class V1alpha1SettingApi extends BaseAPI {
 
   /**
    * List v1alpha1/Setting
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof V1alpha1SettingApi
    */
-  public listv1alpha1Setting(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listv1alpha1Setting(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return V1alpha1SettingApiFp(this.configuration)
-      .listv1alpha1Setting(page, size, sort, options)
+      .listv1alpha1Setting(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -6843,16 +7086,18 @@ export const V1alpha1UserApiAxiosParamCreator = function (configuration?: Config
     },
     /**
      * List v1alpha1/User
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listv1alpha1User: async (
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/api/v1alpha1/users`
@@ -6883,8 +7128,12 @@ export const V1alpha1UserApiAxiosParamCreator = function (configuration?: Config
         localVarQueryParameter['size'] = size
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -6989,19 +7238,27 @@ export const V1alpha1UserApiFp = function (configuration?: Configuration) {
     },
     /**
      * List v1alpha1/User
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listv1alpha1User(
       page?: number,
       size?: number,
-      sort?: string,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1User(page, size, sort, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1User(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -7062,14 +7319,23 @@ export const V1alpha1UserApiFactory = function (
     },
     /**
      * List v1alpha1/User
-     * @param {number} [page] Page index
-     * @param {number} [size] Size of one page
-     * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listv1alpha1User(page?: number, size?: number, sort?: string, options?: any): AxiosPromise<UserList> {
-      return localVarFp.listv1alpha1User(page, size, sort, options).then((request) => request(axios, basePath))
+    listv1alpha1User(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<UserList> {
+      return localVarFp
+        .listv1alpha1User(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
     },
     /**
      * Update v1alpha1/User
@@ -7132,16 +7398,23 @@ export class V1alpha1UserApi extends BaseAPI {
 
   /**
    * List v1alpha1/User
-   * @param {number} [page] Page index
-   * @param {number} [size] Size of one page
-   * @param {string} [sort] Sort by some fields. Like metadata.name,desc
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof V1alpha1UserApi
    */
-  public listv1alpha1User(page?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+  public listv1alpha1User(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
     return V1alpha1UserApiFp(this.configuration)
-      .listv1alpha1User(page, size, sort, options)
+      .listv1alpha1User(page, size, labelSelector, fieldSelector, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
