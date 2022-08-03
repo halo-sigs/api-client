@@ -1448,13 +1448,25 @@ export interface ThemeSpec {
    * @type {string}
    * @memberof ThemeSpec
    */
-  version?: string
+  version: string
   /**
    *
    * @type {string}
    * @memberof ThemeSpec
    */
-  require?: string
+  require: string
+  /**
+   *
+   * @type {string}
+   * @memberof ThemeSpec
+   */
+  settingName?: string
+  /**
+   *
+   * @type {string}
+   * @memberof ThemeSpec
+   */
+  configMapName?: string
 }
 /**
  *
