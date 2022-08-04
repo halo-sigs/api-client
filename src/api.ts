@@ -1789,6 +1789,128 @@ export class ApiHaloRunV1alpha1PluginApi extends BaseAPI {
 }
 
 /**
+ * ApiHaloRunV1alpha1ThemeApi - axios parameter creator
+ * @export
+ */
+export const ApiHaloRunV1alpha1ThemeApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Install a theme by uploading a zip file.
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    installTheme: async (file: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'file' is not null or undefined
+      assertParamExists('installTheme', 'file', file)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/themes/install`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+      const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)()
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (file !== undefined) {
+        localVarFormParams.append('file', file as any)
+      }
+
+      localVarHeaderParameter['Content-Type'] = 'multipart/form-data'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = localVarFormParams
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * ApiHaloRunV1alpha1ThemeApi - functional programming interface
+ * @export
+ */
+export const ApiHaloRunV1alpha1ThemeApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ApiHaloRunV1alpha1ThemeApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Install a theme by uploading a zip file.
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async installTheme(
+      file: any,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.installTheme(file, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * ApiHaloRunV1alpha1ThemeApi - factory interface
+ * @export
+ */
+export const ApiHaloRunV1alpha1ThemeApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = ApiHaloRunV1alpha1ThemeApiFp(configuration)
+  return {
+    /**
+     * Install a theme by uploading a zip file.
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    installTheme(file: any, options?: any): AxiosPromise<void> {
+      return localVarFp.installTheme(file, options).then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * ApiHaloRunV1alpha1ThemeApi - object-oriented interface
+ * @export
+ * @class ApiHaloRunV1alpha1ThemeApi
+ * @extends {BaseAPI}
+ */
+export class ApiHaloRunV1alpha1ThemeApi extends BaseAPI {
+  /**
+   * Install a theme by uploading a zip file.
+   * @param {any} file
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiHaloRunV1alpha1ThemeApi
+   */
+  public installTheme(file: any, options?: AxiosRequestConfig) {
+    return ApiHaloRunV1alpha1ThemeApiFp(this.configuration)
+      .installTheme(file, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
  * ApiHaloRunV1alpha1UserApi - axios parameter creator
  * @export
  */
