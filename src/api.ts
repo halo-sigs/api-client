@@ -342,6 +342,12 @@ export interface LinkGroupSpec {
    * @memberof LinkGroupSpec
    */
   priority?: number
+  /**
+   * Names of links below this group.
+   * @type {Set<string>}
+   * @memberof LinkGroupSpec
+   */
+  links?: Set<string>
 }
 /**
  *
@@ -373,12 +379,6 @@ export interface LinkSpec {
    * @memberof LinkSpec
    */
   description?: string
-  /**
-   *
-   * @type {string}
-   * @memberof LinkSpec
-   */
-  groupName?: string
   /**
    *
    * @type {number}
@@ -422,6 +422,290 @@ export interface LoginHistory {
    * @memberof LoginHistory
    */
   reason?: string
+}
+/**
+ *
+ * @export
+ * @interface Menu
+ */
+export interface Menu {
+  /**
+   *
+   * @type {MenuSpec}
+   * @memberof Menu
+   */
+  spec: MenuSpec
+  /**
+   *
+   * @type {string}
+   * @memberof Menu
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof Menu
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof Menu
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface MenuItem
+ */
+export interface MenuItem {
+  /**
+   *
+   * @type {MenuItemSpec}
+   * @memberof MenuItem
+   */
+  spec: MenuItemSpec
+  /**
+   *
+   * @type {MenuItemStatus}
+   * @memberof MenuItem
+   */
+  status?: MenuItemStatus
+  /**
+   *
+   * @type {string}
+   * @memberof MenuItem
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof MenuItem
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof MenuItem
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface MenuItemList
+ */
+export interface MenuItemList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof MenuItemList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof MenuItemList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof MenuItemList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<MenuItem>}
+   * @memberof MenuItemList
+   */
+  items: Array<MenuItem>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof MenuItemList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof MenuItemList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof MenuItemList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof MenuItemList
+   */
+  hasPrevious: boolean
+}
+/**
+ * Page reference.
+ * @export
+ * @interface MenuItemRef
+ */
+export interface MenuItemRef {
+  /**
+   * Reference name.
+   * @type {string}
+   * @memberof MenuItemRef
+   */
+  name: string
+}
+/**
+ * The spec of menu item.
+ * @export
+ * @interface MenuItemSpec
+ */
+export interface MenuItemSpec {
+  /**
+   * The display name of menu item.
+   * @type {string}
+   * @memberof MenuItemSpec
+   */
+  displayName?: string
+  /**
+   * The href of this menu item.
+   * @type {string}
+   * @memberof MenuItemSpec
+   */
+  href?: string
+  /**
+   * The priority is for ordering.
+   * @type {number}
+   * @memberof MenuItemSpec
+   */
+  priority?: number
+  /**
+   * Children of this menu item
+   * @type {Set<string>}
+   * @memberof MenuItemSpec
+   */
+  children?: Set<string>
+  /**
+   *
+   * @type {MenuItemRef}
+   * @memberof MenuItemSpec
+   */
+  categoryRef?: MenuItemRef
+  /**
+   *
+   * @type {MenuItemRef}
+   * @memberof MenuItemSpec
+   */
+  tagRef?: MenuItemRef
+  /**
+   *
+   * @type {MenuItemRef}
+   * @memberof MenuItemSpec
+   */
+  postRef?: MenuItemRef
+  /**
+   *
+   * @type {MenuItemRef}
+   * @memberof MenuItemSpec
+   */
+  pageRef?: MenuItemRef
+}
+/**
+ * The status of menu item.
+ * @export
+ * @interface MenuItemStatus
+ */
+export interface MenuItemStatus {
+  /**
+   * Calculated Display name of menu item.
+   * @type {string}
+   * @memberof MenuItemStatus
+   */
+  displayName?: string
+  /**
+   * Calculated href of manu item.
+   * @type {string}
+   * @memberof MenuItemStatus
+   */
+  href?: string
+}
+/**
+ *
+ * @export
+ * @interface MenuList
+ */
+export interface MenuList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof MenuList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof MenuList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof MenuList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<Menu>}
+   * @memberof MenuList
+   */
+  items: Array<Menu>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof MenuList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof MenuList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof MenuList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof MenuList
+   */
+  hasPrevious: boolean
+}
+/**
+ * The spec of menu.
+ * @export
+ * @interface MenuSpec
+ */
+export interface MenuSpec {
+  /**
+   * The display name of the menu.
+   * @type {string}
+   * @memberof MenuSpec
+   */
+  displayName: string
+  /**
+   * Names of menu children below this menu.
+   * @type {Set<string>}
+   * @memberof MenuSpec
+   */
+  menuItems?: Set<string>
 }
 /**
  *
@@ -1859,7 +2143,7 @@ export const ApiHaloRunV1alpha1ThemeApiFp = function (configuration?: Configurat
     async installTheme(
       file: any,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Theme>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.installTheme(file, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -1883,7 +2167,7 @@ export const ApiHaloRunV1alpha1ThemeApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    installTheme(file: any, options?: any): AxiosPromise<void> {
+    installTheme(file: any, options?: any): AxiosPromise<Theme> {
       return localVarFp.installTheme(file, options).then((request) => request(axios, basePath))
     },
   }
@@ -5807,6 +6091,950 @@ export class V1alpha1ConfigMapApi extends BaseAPI {
   public updatev1alpha1ConfigMap(name: string, configMap?: ConfigMap, options?: AxiosRequestConfig) {
     return V1alpha1ConfigMapApiFp(this.configuration)
       .updatev1alpha1ConfigMap(name, configMap, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * V1alpha1MenuApi - axios parameter creator
+ * @export
+ */
+export const V1alpha1MenuApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create v1alpha1/Menu
+     * @param {Menu} [menu] Fresh menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createv1alpha1Menu: async (menu?: Menu, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/api/v1alpha1/menus`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(menu, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletev1alpha1Menu: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletev1alpha1Menu', 'name', name)
+      const localVarPath = `/api/v1alpha1/menus/{name}`.replace(`{${'name'}}`, encodeURIComponent(String(name)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getv1alpha1Menu: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getv1alpha1Menu', 'name', name)
+      const localVarPath = `/api/v1alpha1/menus/{name}`.replace(`{${'name'}}`, encodeURIComponent(String(name)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List v1alpha1/Menu
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listv1alpha1Menu: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/api/v1alpha1/menus`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {Menu} [menu] Updated menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatev1alpha1Menu: async (name: string, menu?: Menu, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatev1alpha1Menu', 'name', name)
+      const localVarPath = `/api/v1alpha1/menus/{name}`.replace(`{${'name'}}`, encodeURIComponent(String(name)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(menu, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * V1alpha1MenuApi - functional programming interface
+ * @export
+ */
+export const V1alpha1MenuApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = V1alpha1MenuApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create v1alpha1/Menu
+     * @param {Menu} [menu] Fresh menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createv1alpha1Menu(
+      menu?: Menu,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Menu>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createv1alpha1Menu(menu, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletev1alpha1Menu(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletev1alpha1Menu(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getv1alpha1Menu(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Menu>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getv1alpha1Menu(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List v1alpha1/Menu
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listv1alpha1Menu(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MenuList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1Menu(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {Menu} [menu] Updated menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatev1alpha1Menu(
+      name: string,
+      menu?: Menu,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Menu>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatev1alpha1Menu(name, menu, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * V1alpha1MenuApi - factory interface
+ * @export
+ */
+export const V1alpha1MenuApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = V1alpha1MenuApiFp(configuration)
+  return {
+    /**
+     * Create v1alpha1/Menu
+     * @param {Menu} [menu] Fresh menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createv1alpha1Menu(menu?: Menu, options?: any): AxiosPromise<Menu> {
+      return localVarFp.createv1alpha1Menu(menu, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletev1alpha1Menu(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp.deletev1alpha1Menu(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Get v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getv1alpha1Menu(name: string, options?: any): AxiosPromise<Menu> {
+      return localVarFp.getv1alpha1Menu(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * List v1alpha1/Menu
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listv1alpha1Menu(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<MenuList> {
+      return localVarFp
+        .listv1alpha1Menu(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update v1alpha1/Menu
+     * @param {string} name Name of menu
+     * @param {Menu} [menu] Updated menu
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatev1alpha1Menu(name: string, menu?: Menu, options?: any): AxiosPromise<Menu> {
+      return localVarFp.updatev1alpha1Menu(name, menu, options).then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * V1alpha1MenuApi - object-oriented interface
+ * @export
+ * @class V1alpha1MenuApi
+ * @extends {BaseAPI}
+ */
+export class V1alpha1MenuApi extends BaseAPI {
+  /**
+   * Create v1alpha1/Menu
+   * @param {Menu} [menu] Fresh menu
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuApi
+   */
+  public createv1alpha1Menu(menu?: Menu, options?: AxiosRequestConfig) {
+    return V1alpha1MenuApiFp(this.configuration)
+      .createv1alpha1Menu(menu, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete v1alpha1/Menu
+   * @param {string} name Name of menu
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuApi
+   */
+  public deletev1alpha1Menu(name: string, options?: AxiosRequestConfig) {
+    return V1alpha1MenuApiFp(this.configuration)
+      .deletev1alpha1Menu(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get v1alpha1/Menu
+   * @param {string} name Name of menu
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuApi
+   */
+  public getv1alpha1Menu(name: string, options?: AxiosRequestConfig) {
+    return V1alpha1MenuApiFp(this.configuration)
+      .getv1alpha1Menu(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List v1alpha1/Menu
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuApi
+   */
+  public listv1alpha1Menu(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return V1alpha1MenuApiFp(this.configuration)
+      .listv1alpha1Menu(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update v1alpha1/Menu
+   * @param {string} name Name of menu
+   * @param {Menu} [menu] Updated menu
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuApi
+   */
+  public updatev1alpha1Menu(name: string, menu?: Menu, options?: AxiosRequestConfig) {
+    return V1alpha1MenuApiFp(this.configuration)
+      .updatev1alpha1Menu(name, menu, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * V1alpha1MenuItemApi - axios parameter creator
+ * @export
+ */
+export const V1alpha1MenuItemApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create v1alpha1/MenuItem
+     * @param {MenuItem} [menuItem] Fresh menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createv1alpha1MenuItem: async (menuItem?: MenuItem, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/api/v1alpha1/menuitems`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(menuItem, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletev1alpha1MenuItem: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletev1alpha1MenuItem', 'name', name)
+      const localVarPath = `/api/v1alpha1/menuitems/{name}`.replace(`{${'name'}}`, encodeURIComponent(String(name)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getv1alpha1MenuItem: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getv1alpha1MenuItem', 'name', name)
+      const localVarPath = `/api/v1alpha1/menuitems/{name}`.replace(`{${'name'}}`, encodeURIComponent(String(name)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List v1alpha1/MenuItem
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listv1alpha1MenuItem: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/api/v1alpha1/menuitems`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {MenuItem} [menuItem] Updated menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatev1alpha1MenuItem: async (
+      name: string,
+      menuItem?: MenuItem,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatev1alpha1MenuItem', 'name', name)
+      const localVarPath = `/api/v1alpha1/menuitems/{name}`.replace(`{${'name'}}`, encodeURIComponent(String(name)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(menuItem, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * V1alpha1MenuItemApi - functional programming interface
+ * @export
+ */
+export const V1alpha1MenuItemApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = V1alpha1MenuItemApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create v1alpha1/MenuItem
+     * @param {MenuItem} [menuItem] Fresh menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createv1alpha1MenuItem(
+      menuItem?: MenuItem,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MenuItem>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createv1alpha1MenuItem(menuItem, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletev1alpha1MenuItem(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletev1alpha1MenuItem(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getv1alpha1MenuItem(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MenuItem>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getv1alpha1MenuItem(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List v1alpha1/MenuItem
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listv1alpha1MenuItem(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MenuItemList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listv1alpha1MenuItem(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {MenuItem} [menuItem] Updated menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatev1alpha1MenuItem(
+      name: string,
+      menuItem?: MenuItem,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MenuItem>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatev1alpha1MenuItem(name, menuItem, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * V1alpha1MenuItemApi - factory interface
+ * @export
+ */
+export const V1alpha1MenuItemApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = V1alpha1MenuItemApiFp(configuration)
+  return {
+    /**
+     * Create v1alpha1/MenuItem
+     * @param {MenuItem} [menuItem] Fresh menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createv1alpha1MenuItem(menuItem?: MenuItem, options?: any): AxiosPromise<MenuItem> {
+      return localVarFp.createv1alpha1MenuItem(menuItem, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletev1alpha1MenuItem(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp.deletev1alpha1MenuItem(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Get v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getv1alpha1MenuItem(name: string, options?: any): AxiosPromise<MenuItem> {
+      return localVarFp.getv1alpha1MenuItem(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * List v1alpha1/MenuItem
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listv1alpha1MenuItem(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<MenuItemList> {
+      return localVarFp
+        .listv1alpha1MenuItem(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update v1alpha1/MenuItem
+     * @param {string} name Name of menuitem
+     * @param {MenuItem} [menuItem] Updated menuitem
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatev1alpha1MenuItem(name: string, menuItem?: MenuItem, options?: any): AxiosPromise<MenuItem> {
+      return localVarFp.updatev1alpha1MenuItem(name, menuItem, options).then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * V1alpha1MenuItemApi - object-oriented interface
+ * @export
+ * @class V1alpha1MenuItemApi
+ * @extends {BaseAPI}
+ */
+export class V1alpha1MenuItemApi extends BaseAPI {
+  /**
+   * Create v1alpha1/MenuItem
+   * @param {MenuItem} [menuItem] Fresh menuitem
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuItemApi
+   */
+  public createv1alpha1MenuItem(menuItem?: MenuItem, options?: AxiosRequestConfig) {
+    return V1alpha1MenuItemApiFp(this.configuration)
+      .createv1alpha1MenuItem(menuItem, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete v1alpha1/MenuItem
+   * @param {string} name Name of menuitem
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuItemApi
+   */
+  public deletev1alpha1MenuItem(name: string, options?: AxiosRequestConfig) {
+    return V1alpha1MenuItemApiFp(this.configuration)
+      .deletev1alpha1MenuItem(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get v1alpha1/MenuItem
+   * @param {string} name Name of menuitem
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuItemApi
+   */
+  public getv1alpha1MenuItem(name: string, options?: AxiosRequestConfig) {
+    return V1alpha1MenuItemApiFp(this.configuration)
+      .getv1alpha1MenuItem(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List v1alpha1/MenuItem
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuItemApi
+   */
+  public listv1alpha1MenuItem(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return V1alpha1MenuItemApiFp(this.configuration)
+      .listv1alpha1MenuItem(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update v1alpha1/MenuItem
+   * @param {string} name Name of menuitem
+   * @param {MenuItem} [menuItem] Updated menuitem
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof V1alpha1MenuItemApi
+   */
+  public updatev1alpha1MenuItem(name: string, menuItem?: MenuItem, options?: AxiosRequestConfig) {
+    return V1alpha1MenuItemApiFp(this.configuration)
+      .updatev1alpha1MenuItem(name, menuItem, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
