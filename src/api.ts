@@ -34,6 +34,160 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  *
  * @export
+ * @interface Attachment
+ */
+export interface Attachment {
+  /**
+   *
+   * @type {AttachmentSpec}
+   * @memberof Attachment
+   */
+  spec: AttachmentSpec
+  /**
+   *
+   * @type {AttachmentStatus}
+   * @memberof Attachment
+   */
+  status?: AttachmentStatus
+  /**
+   *
+   * @type {string}
+   * @memberof Attachment
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof Attachment
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof Attachment
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface AttachmentList
+ */
+export interface AttachmentList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof AttachmentList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof AttachmentList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof AttachmentList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<Attachment>}
+   * @memberof AttachmentList
+   */
+  items: Array<Attachment>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof AttachmentList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof AttachmentList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof AttachmentList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof AttachmentList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
+ * @interface AttachmentSpec
+ */
+export interface AttachmentSpec {
+  /**
+   * Display name of attachment
+   * @type {string}
+   * @memberof AttachmentSpec
+   */
+  displayName?: string
+  /**
+   *
+   * @type {Ref}
+   * @memberof AttachmentSpec
+   */
+  groupRef?: Ref
+  /**
+   *
+   * @type {Ref}
+   * @memberof AttachmentSpec
+   */
+  policyRef?: Ref
+  /**
+   *
+   * @type {Ref}
+   * @memberof AttachmentSpec
+   */
+  uploadedBy?: Ref
+  /**
+   * Media type of attachment
+   * @type {string}
+   * @memberof AttachmentSpec
+   */
+  mediaType?: string
+  /**
+   * Size of attachment. Unit is Byte
+   * @type {number}
+   * @memberof AttachmentSpec
+   */
+  size?: number
+  /**
+   * Tags of attachment
+   * @type {Set<string>}
+   * @memberof AttachmentSpec
+   */
+  tags?: Set<string>
+}
+/**
+ *
+ * @export
+ * @interface AttachmentStatus
+ */
+export interface AttachmentStatus {
+  /**
+   * Permalink of attachment
+   * @type {string}
+   * @memberof AttachmentStatus
+   */
+  permalink?: string
+}
+/**
+ *
+ * @export
  * @interface Author
  */
 export interface Author {
@@ -736,6 +890,130 @@ export interface GrantRequest {
 /**
  *
  * @export
+ * @interface Group
+ */
+export interface Group {
+  /**
+   *
+   * @type {GroupSpec}
+   * @memberof Group
+   */
+  spec: GroupSpec
+  /**
+   *
+   * @type {GroupStatus}
+   * @memberof Group
+   */
+  status?: GroupStatus
+  /**
+   *
+   * @type {string}
+   * @memberof Group
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof Group
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof Group
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface GroupList
+ */
+export interface GroupList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof GroupList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof GroupList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof GroupList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<Group>}
+   * @memberof GroupList
+   */
+  items: Array<Group>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof GroupList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof GroupList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof GroupList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof GroupList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
+ * @interface GroupSpec
+ */
+export interface GroupSpec {
+  /**
+   * Display name of group
+   * @type {string}
+   * @memberof GroupSpec
+   */
+  displayName: string
+}
+/**
+ *
+ * @export
+ * @interface GroupStatus
+ */
+export interface GroupStatus {
+  /**
+   * Update timestamp of the group
+   * @type {string}
+   * @memberof GroupStatus
+   */
+  updateTimestamp?: string
+  /**
+   * Total of attachments under the current group
+   * @type {number}
+   * @memberof GroupStatus
+   */
+  totalAttachments?: number
+}
+/**
+ *
+ * @export
  * @interface License
  */
 export interface License {
@@ -1167,6 +1445,12 @@ export interface MenuSpec {
 export interface Metadata {
   /**
    *
+   * @type {Set<string>}
+   * @memberof Metadata
+   */
+  finalizers?: Set<string> | null
+  /**
+   *
    * @type {string}
    * @memberof Metadata
    */
@@ -1573,6 +1857,92 @@ export type PluginStatusPhaseEnum = typeof PluginStatusPhaseEnum[keyof typeof Pl
 /**
  *
  * @export
+ * @interface Policy
+ */
+export interface Policy {
+  /**
+   *
+   * @type {PolicySpec}
+   * @memberof Policy
+   */
+  spec: PolicySpec
+  /**
+   *
+   * @type {string}
+   * @memberof Policy
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof Policy
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof Policy
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface PolicyList
+ */
+export interface PolicyList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PolicyList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PolicyList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof PolicyList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<Policy>}
+   * @memberof PolicyList
+   */
+  items: Array<Policy>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof PolicyList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof PolicyList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PolicyList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PolicyList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
  * @interface PolicyRule
  */
 export interface PolicyRule {
@@ -1606,6 +1976,136 @@ export interface PolicyRule {
    * @memberof PolicyRule
    */
   verbs?: Array<string>
+}
+/**
+ *
+ * @export
+ * @interface PolicySpec
+ */
+export interface PolicySpec {
+  /**
+   * Display name of policy
+   * @type {string}
+   * @memberof PolicySpec
+   */
+  displayName: string
+  /**
+   *
+   * @type {Ref}
+   * @memberof PolicySpec
+   */
+  templateRef?: Ref
+  /**
+   *
+   * @type {Ref}
+   * @memberof PolicySpec
+   */
+  configMapRef?: Ref
+}
+/**
+ *
+ * @export
+ * @interface PolicyTemplate
+ */
+export interface PolicyTemplate {
+  /**
+   *
+   * @type {PolicyTemplateSpec}
+   * @memberof PolicyTemplate
+   */
+  spec?: PolicyTemplateSpec
+  /**
+   *
+   * @type {string}
+   * @memberof PolicyTemplate
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof PolicyTemplate
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof PolicyTemplate
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface PolicyTemplateList
+ */
+export interface PolicyTemplateList {
+  /**
+   * Page number, starts from 1. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PolicyTemplateList
+   */
+  page: number
+  /**
+   * Size of each page. If not set or equal to 0, it means no pagination.
+   * @type {number}
+   * @memberof PolicyTemplateList
+   */
+  size: number
+  /**
+   * Total elements.
+   * @type {number}
+   * @memberof PolicyTemplateList
+   */
+  total: number
+  /**
+   * A chunk of items.
+   * @type {Array<PolicyTemplate>}
+   * @memberof PolicyTemplateList
+   */
+  items: Array<PolicyTemplate>
+  /**
+   * Indicates whether current page is the first page.
+   * @type {boolean}
+   * @memberof PolicyTemplateList
+   */
+  first: boolean
+  /**
+   * Indicates whether current page is the last page.
+   * @type {boolean}
+   * @memberof PolicyTemplateList
+   */
+  last: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PolicyTemplateList
+   */
+  hasNext: boolean
+  /**
+   * Indicates whether current page has previous page.
+   * @type {boolean}
+   * @memberof PolicyTemplateList
+   */
+  hasPrevious: boolean
+}
+/**
+ *
+ * @export
+ * @interface PolicyTemplateSpec
+ */
+export interface PolicyTemplateSpec {
+  /**
+   *
+   * @type {string}
+   * @memberof PolicyTemplateSpec
+   */
+  displayName?: string
+  /**
+   *
+   * @type {Ref}
+   * @memberof PolicyTemplateSpec
+   */
+  settingRef?: Ref
 }
 /**
  *
@@ -1896,6 +2396,37 @@ export interface PostStatus {
    * @memberof PostStatus
    */
   contributors?: Array<string>
+}
+/**
+ * Extension reference object. The name is mandatory
+ * @export
+ * @interface Ref
+ */
+export interface Ref {
+  /**
+   * Extension group
+   * @type {string}
+   * @memberof Ref
+   */
+  group?: string
+  /**
+   * Extension version
+   * @type {string}
+   * @memberof Ref
+   */
+  version?: string
+  /**
+   * Extension kind
+   * @type {string}
+   * @memberof Ref
+   */
+  kind?: string
+  /**
+   * Extension name. This field is mandatory
+   * @type {string}
+   * @memberof Ref
+   */
+  name: string
 }
 /**
  *
@@ -3628,7 +4159,7 @@ export const ApiHaloRunV1alpha1PluginApiFp = function (configuration?: Configura
     async installPlugin(
       file: any,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Plugin>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.installPlugin(file, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -3652,7 +4183,7 @@ export const ApiHaloRunV1alpha1PluginApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    installPlugin(file: any, options?: any): AxiosPromise<void> {
+    installPlugin(file: any, options?: any): AxiosPromise<Plugin> {
       return localVarFp.installPlugin(file, options).then((request) => request(axios, basePath))
     },
   }
@@ -8558,6 +9089,2111 @@ export class PluginHaloRunV1alpha1ReverseProxyApi extends BaseAPI {
   ) {
     return PluginHaloRunV1alpha1ReverseProxyApiFp(this.configuration)
       .updatepluginHaloRunV1alpha1ReverseProxy(name, reverseProxy, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1AttachmentApi - axios parameter creator
+ * @export
+ */
+export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Attachment
+     * @param {Attachment} [attachment] Fresh attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1Attachment: async (
+      attachment?: Attachment,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/attachments`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(attachment, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1Attachment: async (
+      name: string,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletestorageHaloRunV1alpha1Attachment', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/attachments/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1Attachment: async (
+      name: string,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getstorageHaloRunV1alpha1Attachment', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/attachments/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Attachment
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1Attachment: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/attachments`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {Attachment} [attachment] Updated attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1Attachment: async (
+      name: string,
+      attachment?: Attachment,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatestorageHaloRunV1alpha1Attachment', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/attachments/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(attachment, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {any} file
+     * @param {string} policyName Storage policy name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    uploadAttachment: async (file: any, policyName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'file' is not null or undefined
+      assertParamExists('uploadAttachment', 'file', file)
+      // verify required parameter 'policyName' is not null or undefined
+      assertParamExists('uploadAttachment', 'policyName', policyName)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/attachments/upload`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+      const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)()
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (file !== undefined) {
+        localVarFormParams.append('file', file as any)
+      }
+
+      if (policyName !== undefined) {
+        localVarFormParams.append('policyName', policyName as any)
+      }
+
+      localVarHeaderParameter['Content-Type'] = 'multipart/form-data'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = localVarFormParams
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1AttachmentApi - functional programming interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Attachment
+     * @param {Attachment} [attachment] Fresh attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createstorageHaloRunV1alpha1Attachment(
+      attachment?: Attachment,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Attachment>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createstorageHaloRunV1alpha1Attachment(
+        attachment,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletestorageHaloRunV1alpha1Attachment(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletestorageHaloRunV1alpha1Attachment(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getstorageHaloRunV1alpha1Attachment(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Attachment>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getstorageHaloRunV1alpha1Attachment(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Attachment
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async liststorageHaloRunV1alpha1Attachment(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.liststorageHaloRunV1alpha1Attachment(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {Attachment} [attachment] Updated attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatestorageHaloRunV1alpha1Attachment(
+      name: string,
+      attachment?: Attachment,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Attachment>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatestorageHaloRunV1alpha1Attachment(
+        name,
+        attachment,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     *
+     * @param {any} file
+     * @param {string} policyName Storage policy name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async uploadAttachment(
+      file: any,
+      policyName: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Attachment>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.uploadAttachment(file, policyName, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1AttachmentApi - factory interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = StorageHaloRunV1alpha1AttachmentApiFp(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Attachment
+     * @param {Attachment} [attachment] Fresh attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1Attachment(attachment?: Attachment, options?: any): AxiosPromise<Attachment> {
+      return localVarFp
+        .createstorageHaloRunV1alpha1Attachment(attachment, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1Attachment(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .deletestorageHaloRunV1alpha1Attachment(name, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1Attachment(name: string, options?: any): AxiosPromise<Attachment> {
+      return localVarFp.getstorageHaloRunV1alpha1Attachment(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Attachment
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1Attachment(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<AttachmentList> {
+      return localVarFp
+        .liststorageHaloRunV1alpha1Attachment(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Attachment
+     * @param {string} name Name of attachment
+     * @param {Attachment} [attachment] Updated attachment
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1Attachment(
+      name: string,
+      attachment?: Attachment,
+      options?: any,
+    ): AxiosPromise<Attachment> {
+      return localVarFp
+        .updatestorageHaloRunV1alpha1Attachment(name, attachment, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {any} file
+     * @param {string} policyName Storage policy name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    uploadAttachment(file: any, policyName: string, options?: any): AxiosPromise<Attachment> {
+      return localVarFp.uploadAttachment(file, policyName, options).then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1AttachmentApi - object-oriented interface
+ * @export
+ * @class StorageHaloRunV1alpha1AttachmentApi
+ * @extends {BaseAPI}
+ */
+export class StorageHaloRunV1alpha1AttachmentApi extends BaseAPI {
+  /**
+   * Create storage.halo.run/v1alpha1/Attachment
+   * @param {Attachment} [attachment] Fresh attachment
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1AttachmentApi
+   */
+  public createstorageHaloRunV1alpha1Attachment(attachment?: Attachment, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
+      .createstorageHaloRunV1alpha1Attachment(attachment, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete storage.halo.run/v1alpha1/Attachment
+   * @param {string} name Name of attachment
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1AttachmentApi
+   */
+  public deletestorageHaloRunV1alpha1Attachment(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
+      .deletestorageHaloRunV1alpha1Attachment(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get storage.halo.run/v1alpha1/Attachment
+   * @param {string} name Name of attachment
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1AttachmentApi
+   */
+  public getstorageHaloRunV1alpha1Attachment(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
+      .getstorageHaloRunV1alpha1Attachment(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List storage.halo.run/v1alpha1/Attachment
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1AttachmentApi
+   */
+  public liststorageHaloRunV1alpha1Attachment(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
+      .liststorageHaloRunV1alpha1Attachment(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update storage.halo.run/v1alpha1/Attachment
+   * @param {string} name Name of attachment
+   * @param {Attachment} [attachment] Updated attachment
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1AttachmentApi
+   */
+  public updatestorageHaloRunV1alpha1Attachment(name: string, attachment?: Attachment, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
+      .updatestorageHaloRunV1alpha1Attachment(name, attachment, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {any} file
+   * @param {string} policyName Storage policy name
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1AttachmentApi
+   */
+  public uploadAttachment(file: any, policyName: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
+      .uploadAttachment(file, policyName, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1GroupApi - axios parameter creator
+ * @export
+ */
+export const StorageHaloRunV1alpha1GroupApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Group
+     * @param {Group} [group] Fresh group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1Group: async (
+      group?: Group,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/groups`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(group, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1Group: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletestorageHaloRunV1alpha1Group', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/groups/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1Group: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getstorageHaloRunV1alpha1Group', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/groups/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Group
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1Group: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/groups`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {Group} [group] Updated group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1Group: async (
+      name: string,
+      group?: Group,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatestorageHaloRunV1alpha1Group', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/groups/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(group, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1GroupApi - functional programming interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1GroupApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = StorageHaloRunV1alpha1GroupApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Group
+     * @param {Group} [group] Fresh group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createstorageHaloRunV1alpha1Group(
+      group?: Group,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createstorageHaloRunV1alpha1Group(group, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletestorageHaloRunV1alpha1Group(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletestorageHaloRunV1alpha1Group(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getstorageHaloRunV1alpha1Group(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getstorageHaloRunV1alpha1Group(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Group
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async liststorageHaloRunV1alpha1Group(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.liststorageHaloRunV1alpha1Group(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {Group} [group] Updated group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatestorageHaloRunV1alpha1Group(
+      name: string,
+      group?: Group,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatestorageHaloRunV1alpha1Group(name, group, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1GroupApi - factory interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1GroupApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = StorageHaloRunV1alpha1GroupApiFp(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Group
+     * @param {Group} [group] Fresh group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1Group(group?: Group, options?: any): AxiosPromise<Group> {
+      return localVarFp.createstorageHaloRunV1alpha1Group(group, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1Group(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp.deletestorageHaloRunV1alpha1Group(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1Group(name: string, options?: any): AxiosPromise<Group> {
+      return localVarFp.getstorageHaloRunV1alpha1Group(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Group
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1Group(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<GroupList> {
+      return localVarFp
+        .liststorageHaloRunV1alpha1Group(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Group
+     * @param {string} name Name of group
+     * @param {Group} [group] Updated group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1Group(name: string, group?: Group, options?: any): AxiosPromise<Group> {
+      return localVarFp
+        .updatestorageHaloRunV1alpha1Group(name, group, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1GroupApi - object-oriented interface
+ * @export
+ * @class StorageHaloRunV1alpha1GroupApi
+ * @extends {BaseAPI}
+ */
+export class StorageHaloRunV1alpha1GroupApi extends BaseAPI {
+  /**
+   * Create storage.halo.run/v1alpha1/Group
+   * @param {Group} [group] Fresh group
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1GroupApi
+   */
+  public createstorageHaloRunV1alpha1Group(group?: Group, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1GroupApiFp(this.configuration)
+      .createstorageHaloRunV1alpha1Group(group, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete storage.halo.run/v1alpha1/Group
+   * @param {string} name Name of group
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1GroupApi
+   */
+  public deletestorageHaloRunV1alpha1Group(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1GroupApiFp(this.configuration)
+      .deletestorageHaloRunV1alpha1Group(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get storage.halo.run/v1alpha1/Group
+   * @param {string} name Name of group
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1GroupApi
+   */
+  public getstorageHaloRunV1alpha1Group(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1GroupApiFp(this.configuration)
+      .getstorageHaloRunV1alpha1Group(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List storage.halo.run/v1alpha1/Group
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1GroupApi
+   */
+  public liststorageHaloRunV1alpha1Group(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return StorageHaloRunV1alpha1GroupApiFp(this.configuration)
+      .liststorageHaloRunV1alpha1Group(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update storage.halo.run/v1alpha1/Group
+   * @param {string} name Name of group
+   * @param {Group} [group] Updated group
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1GroupApi
+   */
+  public updatestorageHaloRunV1alpha1Group(name: string, group?: Group, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1GroupApiFp(this.configuration)
+      .updatestorageHaloRunV1alpha1Group(name, group, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyApi - axios parameter creator
+ * @export
+ */
+export const StorageHaloRunV1alpha1PolicyApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Policy
+     * @param {Policy} [policy] Fresh policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1Policy: async (
+      policy?: Policy,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policies`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(policy, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1Policy: async (
+      name: string,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletestorageHaloRunV1alpha1Policy', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policies/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1Policy: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getstorageHaloRunV1alpha1Policy', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policies/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Policy
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1Policy: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policies`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {Policy} [policy] Updated policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1Policy: async (
+      name: string,
+      policy?: Policy,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatestorageHaloRunV1alpha1Policy', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policies/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(policy, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyApi - functional programming interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1PolicyApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = StorageHaloRunV1alpha1PolicyApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Policy
+     * @param {Policy} [policy] Fresh policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createstorageHaloRunV1alpha1Policy(
+      policy?: Policy,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Policy>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createstorageHaloRunV1alpha1Policy(policy, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletestorageHaloRunV1alpha1Policy(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletestorageHaloRunV1alpha1Policy(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getstorageHaloRunV1alpha1Policy(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Policy>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getstorageHaloRunV1alpha1Policy(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Policy
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async liststorageHaloRunV1alpha1Policy(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.liststorageHaloRunV1alpha1Policy(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {Policy} [policy] Updated policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatestorageHaloRunV1alpha1Policy(
+      name: string,
+      policy?: Policy,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Policy>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatestorageHaloRunV1alpha1Policy(
+        name,
+        policy,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyApi - factory interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1PolicyApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = StorageHaloRunV1alpha1PolicyApiFp(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/Policy
+     * @param {Policy} [policy] Fresh policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1Policy(policy?: Policy, options?: any): AxiosPromise<Policy> {
+      return localVarFp.createstorageHaloRunV1alpha1Policy(policy, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1Policy(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp.deletestorageHaloRunV1alpha1Policy(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1Policy(name: string, options?: any): AxiosPromise<Policy> {
+      return localVarFp.getstorageHaloRunV1alpha1Policy(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * List storage.halo.run/v1alpha1/Policy
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1Policy(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<PolicyList> {
+      return localVarFp
+        .liststorageHaloRunV1alpha1Policy(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/Policy
+     * @param {string} name Name of policy
+     * @param {Policy} [policy] Updated policy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1Policy(name: string, policy?: Policy, options?: any): AxiosPromise<Policy> {
+      return localVarFp
+        .updatestorageHaloRunV1alpha1Policy(name, policy, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyApi - object-oriented interface
+ * @export
+ * @class StorageHaloRunV1alpha1PolicyApi
+ * @extends {BaseAPI}
+ */
+export class StorageHaloRunV1alpha1PolicyApi extends BaseAPI {
+  /**
+   * Create storage.halo.run/v1alpha1/Policy
+   * @param {Policy} [policy] Fresh policy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyApi
+   */
+  public createstorageHaloRunV1alpha1Policy(policy?: Policy, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1PolicyApiFp(this.configuration)
+      .createstorageHaloRunV1alpha1Policy(policy, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete storage.halo.run/v1alpha1/Policy
+   * @param {string} name Name of policy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyApi
+   */
+  public deletestorageHaloRunV1alpha1Policy(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1PolicyApiFp(this.configuration)
+      .deletestorageHaloRunV1alpha1Policy(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get storage.halo.run/v1alpha1/Policy
+   * @param {string} name Name of policy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyApi
+   */
+  public getstorageHaloRunV1alpha1Policy(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1PolicyApiFp(this.configuration)
+      .getstorageHaloRunV1alpha1Policy(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List storage.halo.run/v1alpha1/Policy
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyApi
+   */
+  public liststorageHaloRunV1alpha1Policy(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return StorageHaloRunV1alpha1PolicyApiFp(this.configuration)
+      .liststorageHaloRunV1alpha1Policy(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update storage.halo.run/v1alpha1/Policy
+   * @param {string} name Name of policy
+   * @param {Policy} [policy] Updated policy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyApi
+   */
+  public updatestorageHaloRunV1alpha1Policy(name: string, policy?: Policy, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1PolicyApiFp(this.configuration)
+      .updatestorageHaloRunV1alpha1Policy(name, policy, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyTemplateApi - axios parameter creator
+ * @export
+ */
+export const StorageHaloRunV1alpha1PolicyTemplateApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {PolicyTemplate} [policyTemplate] Fresh policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1PolicyTemplate: async (
+      policyTemplate?: PolicyTemplate,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policytemplates`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(policyTemplate, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1PolicyTemplate: async (
+      name: string,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletestorageHaloRunV1alpha1PolicyTemplate', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policytemplates/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1PolicyTemplate: async (
+      name: string,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getstorageHaloRunV1alpha1PolicyTemplate', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policytemplates/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1PolicyTemplate: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policytemplates`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {PolicyTemplate} [policyTemplate] Updated policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1PolicyTemplate: async (
+      name: string,
+      policyTemplate?: PolicyTemplate,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatestorageHaloRunV1alpha1PolicyTemplate', 'name', name)
+      const localVarPath = `/apis/storage.halo.run/v1alpha1/policytemplates/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(policyTemplate, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyTemplateApi - functional programming interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1PolicyTemplateApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = StorageHaloRunV1alpha1PolicyTemplateApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {PolicyTemplate} [policyTemplate] Fresh policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createstorageHaloRunV1alpha1PolicyTemplate(
+      policyTemplate?: PolicyTemplate,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyTemplate>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createstorageHaloRunV1alpha1PolicyTemplate(
+        policyTemplate,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletestorageHaloRunV1alpha1PolicyTemplate(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletestorageHaloRunV1alpha1PolicyTemplate(
+        name,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getstorageHaloRunV1alpha1PolicyTemplate(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyTemplate>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getstorageHaloRunV1alpha1PolicyTemplate(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async liststorageHaloRunV1alpha1PolicyTemplate(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyTemplateList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.liststorageHaloRunV1alpha1PolicyTemplate(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {PolicyTemplate} [policyTemplate] Updated policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatestorageHaloRunV1alpha1PolicyTemplate(
+      name: string,
+      policyTemplate?: PolicyTemplate,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyTemplate>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatestorageHaloRunV1alpha1PolicyTemplate(
+        name,
+        policyTemplate,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyTemplateApi - factory interface
+ * @export
+ */
+export const StorageHaloRunV1alpha1PolicyTemplateApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = StorageHaloRunV1alpha1PolicyTemplateApiFp(configuration)
+  return {
+    /**
+     * Create storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {PolicyTemplate} [policyTemplate] Fresh policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createstorageHaloRunV1alpha1PolicyTemplate(
+      policyTemplate?: PolicyTemplate,
+      options?: any,
+    ): AxiosPromise<PolicyTemplate> {
+      return localVarFp
+        .createstorageHaloRunV1alpha1PolicyTemplate(policyTemplate, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletestorageHaloRunV1alpha1PolicyTemplate(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .deletestorageHaloRunV1alpha1PolicyTemplate(name, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Get storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getstorageHaloRunV1alpha1PolicyTemplate(name: string, options?: any): AxiosPromise<PolicyTemplate> {
+      return localVarFp
+        .getstorageHaloRunV1alpha1PolicyTemplate(name, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * List storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    liststorageHaloRunV1alpha1PolicyTemplate(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<PolicyTemplateList> {
+      return localVarFp
+        .liststorageHaloRunV1alpha1PolicyTemplate(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update storage.halo.run/v1alpha1/PolicyTemplate
+     * @param {string} name Name of policytemplate
+     * @param {PolicyTemplate} [policyTemplate] Updated policytemplate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatestorageHaloRunV1alpha1PolicyTemplate(
+      name: string,
+      policyTemplate?: PolicyTemplate,
+      options?: any,
+    ): AxiosPromise<PolicyTemplate> {
+      return localVarFp
+        .updatestorageHaloRunV1alpha1PolicyTemplate(name, policyTemplate, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * StorageHaloRunV1alpha1PolicyTemplateApi - object-oriented interface
+ * @export
+ * @class StorageHaloRunV1alpha1PolicyTemplateApi
+ * @extends {BaseAPI}
+ */
+export class StorageHaloRunV1alpha1PolicyTemplateApi extends BaseAPI {
+  /**
+   * Create storage.halo.run/v1alpha1/PolicyTemplate
+   * @param {PolicyTemplate} [policyTemplate] Fresh policytemplate
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyTemplateApi
+   */
+  public createstorageHaloRunV1alpha1PolicyTemplate(policyTemplate?: PolicyTemplate, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1PolicyTemplateApiFp(this.configuration)
+      .createstorageHaloRunV1alpha1PolicyTemplate(policyTemplate, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete storage.halo.run/v1alpha1/PolicyTemplate
+   * @param {string} name Name of policytemplate
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyTemplateApi
+   */
+  public deletestorageHaloRunV1alpha1PolicyTemplate(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1PolicyTemplateApiFp(this.configuration)
+      .deletestorageHaloRunV1alpha1PolicyTemplate(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get storage.halo.run/v1alpha1/PolicyTemplate
+   * @param {string} name Name of policytemplate
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyTemplateApi
+   */
+  public getstorageHaloRunV1alpha1PolicyTemplate(name: string, options?: AxiosRequestConfig) {
+    return StorageHaloRunV1alpha1PolicyTemplateApiFp(this.configuration)
+      .getstorageHaloRunV1alpha1PolicyTemplate(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List storage.halo.run/v1alpha1/PolicyTemplate
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyTemplateApi
+   */
+  public liststorageHaloRunV1alpha1PolicyTemplate(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return StorageHaloRunV1alpha1PolicyTemplateApiFp(this.configuration)
+      .liststorageHaloRunV1alpha1PolicyTemplate(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update storage.halo.run/v1alpha1/PolicyTemplate
+   * @param {string} name Name of policytemplate
+   * @param {PolicyTemplate} [policyTemplate] Updated policytemplate
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1PolicyTemplateApi
+   */
+  public updatestorageHaloRunV1alpha1PolicyTemplate(
+    name: string,
+    policyTemplate?: PolicyTemplate,
+    options?: AxiosRequestConfig,
+  ) {
+    return StorageHaloRunV1alpha1PolicyTemplateApiFp(this.configuration)
+      .updatestorageHaloRunV1alpha1PolicyTemplate(name, policyTemplate, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
