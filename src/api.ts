@@ -1031,6 +1031,130 @@ export interface License {
   url?: string
 }
 /**
+ *
+ * @export
+ * @interface Link
+ */
+export interface Link {
+  /**
+   *
+   * @type {LinkSpec}
+   * @memberof Link
+   */
+  spec?: LinkSpec
+  /**
+   *
+   * @type {string}
+   * @memberof Link
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof Link
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof Link
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface LinkGroup
+ */
+export interface LinkGroup {
+  /**
+   *
+   * @type {LinkGroupSpec}
+   * @memberof LinkGroup
+   */
+  spec?: LinkGroupSpec
+  /**
+   *
+   * @type {string}
+   * @memberof LinkGroup
+   */
+  apiVersion: string
+  /**
+   *
+   * @type {string}
+   * @memberof LinkGroup
+   */
+  kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof LinkGroup
+   */
+  metadata: Metadata
+}
+/**
+ *
+ * @export
+ * @interface LinkGroupSpec
+ */
+export interface LinkGroupSpec {
+  /**
+   *
+   * @type {string}
+   * @memberof LinkGroupSpec
+   */
+  displayName: string
+  /**
+   *
+   * @type {number}
+   * @memberof LinkGroupSpec
+   */
+  priority?: number
+  /**
+   * Names of links below this group.
+   * @type {Set<string>}
+   * @memberof LinkGroupSpec
+   */
+  links?: Set<string>
+}
+/**
+ *
+ * @export
+ * @interface LinkSpec
+ */
+export interface LinkSpec {
+  /**
+   *
+   * @type {string}
+   * @memberof LinkSpec
+   */
+  url: string
+  /**
+   *
+   * @type {string}
+   * @memberof LinkSpec
+   */
+  displayName: string
+  /**
+   *
+   * @type {string}
+   * @memberof LinkSpec
+   */
+  logo?: string
+  /**
+   *
+   * @type {string}
+   * @memberof LinkSpec
+   */
+  description?: string
+  /**
+   *
+   * @type {number}
+   * @memberof LinkSpec
+   */
+  priority?: number
+}
+/**
  * A chunk of items.
  * @export
  * @interface ListedPost
@@ -8093,6 +8217,986 @@ export class ContentHaloRunV1alpha1TagApi extends BaseAPI {
 }
 
 /**
+ * CoreHaloRunV1alpha1LinkApi - axios parameter creator
+ * @export
+ */
+export const CoreHaloRunV1alpha1LinkApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create core.halo.run/v1alpha1/Link
+     * @param {Link} [link] Fresh link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createcoreHaloRunV1alpha1Link: async (link?: Link, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/apis/core.halo.run/v1alpha1/links`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(link, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletecoreHaloRunV1alpha1Link: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletecoreHaloRunV1alpha1Link', 'name', name)
+      const localVarPath = `/apis/core.halo.run/v1alpha1/links/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getcoreHaloRunV1alpha1Link: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getcoreHaloRunV1alpha1Link', 'name', name)
+      const localVarPath = `/apis/core.halo.run/v1alpha1/links/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List core.halo.run/v1alpha1/Link
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listcoreHaloRunV1alpha1Link: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/core.halo.run/v1alpha1/links`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {Link} [link] Updated link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatecoreHaloRunV1alpha1Link: async (
+      name: string,
+      link?: Link,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatecoreHaloRunV1alpha1Link', 'name', name)
+      const localVarPath = `/apis/core.halo.run/v1alpha1/links/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(link, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * CoreHaloRunV1alpha1LinkApi - functional programming interface
+ * @export
+ */
+export const CoreHaloRunV1alpha1LinkApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = CoreHaloRunV1alpha1LinkApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create core.halo.run/v1alpha1/Link
+     * @param {Link} [link] Fresh link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createcoreHaloRunV1alpha1Link(
+      link?: Link,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Link>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createcoreHaloRunV1alpha1Link(link, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletecoreHaloRunV1alpha1Link(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletecoreHaloRunV1alpha1Link(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getcoreHaloRunV1alpha1Link(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Link>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getcoreHaloRunV1alpha1Link(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List core.halo.run/v1alpha1/Link
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listcoreHaloRunV1alpha1Link(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1Link(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {Link} [link] Updated link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatecoreHaloRunV1alpha1Link(
+      name: string,
+      link?: Link,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Link>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatecoreHaloRunV1alpha1Link(name, link, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * CoreHaloRunV1alpha1LinkApi - factory interface
+ * @export
+ */
+export const CoreHaloRunV1alpha1LinkApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = CoreHaloRunV1alpha1LinkApiFp(configuration)
+  return {
+    /**
+     * Create core.halo.run/v1alpha1/Link
+     * @param {Link} [link] Fresh link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createcoreHaloRunV1alpha1Link(link?: Link, options?: any): AxiosPromise<Link> {
+      return localVarFp.createcoreHaloRunV1alpha1Link(link, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletecoreHaloRunV1alpha1Link(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp.deletecoreHaloRunV1alpha1Link(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Get core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getcoreHaloRunV1alpha1Link(name: string, options?: any): AxiosPromise<Link> {
+      return localVarFp.getcoreHaloRunV1alpha1Link(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * List core.halo.run/v1alpha1/Link
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listcoreHaloRunV1alpha1Link(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<string> {
+      return localVarFp
+        .listcoreHaloRunV1alpha1Link(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update core.halo.run/v1alpha1/Link
+     * @param {string} name Name of link
+     * @param {Link} [link] Updated link
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatecoreHaloRunV1alpha1Link(name: string, link?: Link, options?: any): AxiosPromise<Link> {
+      return localVarFp.updatecoreHaloRunV1alpha1Link(name, link, options).then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * CoreHaloRunV1alpha1LinkApi - object-oriented interface
+ * @export
+ * @class CoreHaloRunV1alpha1LinkApi
+ * @extends {BaseAPI}
+ */
+export class CoreHaloRunV1alpha1LinkApi extends BaseAPI {
+  /**
+   * Create core.halo.run/v1alpha1/Link
+   * @param {Link} [link] Fresh link
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkApi
+   */
+  public createcoreHaloRunV1alpha1Link(link?: Link, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
+      .createcoreHaloRunV1alpha1Link(link, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete core.halo.run/v1alpha1/Link
+   * @param {string} name Name of link
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkApi
+   */
+  public deletecoreHaloRunV1alpha1Link(name: string, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
+      .deletecoreHaloRunV1alpha1Link(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get core.halo.run/v1alpha1/Link
+   * @param {string} name Name of link
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkApi
+   */
+  public getcoreHaloRunV1alpha1Link(name: string, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
+      .getcoreHaloRunV1alpha1Link(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List core.halo.run/v1alpha1/Link
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkApi
+   */
+  public listcoreHaloRunV1alpha1Link(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
+      .listcoreHaloRunV1alpha1Link(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update core.halo.run/v1alpha1/Link
+   * @param {string} name Name of link
+   * @param {Link} [link] Updated link
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkApi
+   */
+  public updatecoreHaloRunV1alpha1Link(name: string, link?: Link, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkApiFp(this.configuration)
+      .updatecoreHaloRunV1alpha1Link(name, link, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * CoreHaloRunV1alpha1LinkGroupApi - axios parameter creator
+ * @export
+ */
+export const CoreHaloRunV1alpha1LinkGroupApiAxiosParamCreator = function (configuration?: Configuration) {
+  return {
+    /**
+     * Create core.halo.run/v1alpha1/LinkGroup
+     * @param {LinkGroup} [linkGroup] Fresh linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createcoreHaloRunV1alpha1LinkGroup: async (
+      linkGroup?: LinkGroup,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(linkGroup, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Delete core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletecoreHaloRunV1alpha1LinkGroup: async (
+      name: string,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('deletecoreHaloRunV1alpha1LinkGroup', 'name', name)
+      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getcoreHaloRunV1alpha1LinkGroup: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('getcoreHaloRunV1alpha1LinkGroup', 'name', name)
+      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List core.halo.run/v1alpha1/LinkGroup
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listcoreHaloRunV1alpha1LinkGroup: async (
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Update core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {LinkGroup} [linkGroup] Updated linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatecoreHaloRunV1alpha1LinkGroup: async (
+      name: string,
+      linkGroup?: LinkGroup,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatecoreHaloRunV1alpha1LinkGroup', 'name', name)
+      const localVarPath = `/apis/core.halo.run/v1alpha1/linkgroups/{name}`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(linkGroup, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * CoreHaloRunV1alpha1LinkGroupApi - functional programming interface
+ * @export
+ */
+export const CoreHaloRunV1alpha1LinkGroupApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = CoreHaloRunV1alpha1LinkGroupApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Create core.halo.run/v1alpha1/LinkGroup
+     * @param {LinkGroup} [linkGroup] Fresh linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createcoreHaloRunV1alpha1LinkGroup(
+      linkGroup?: LinkGroup,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LinkGroup>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createcoreHaloRunV1alpha1LinkGroup(linkGroup, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Delete core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletecoreHaloRunV1alpha1LinkGroup(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deletecoreHaloRunV1alpha1LinkGroup(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Get core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getcoreHaloRunV1alpha1LinkGroup(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LinkGroup>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getcoreHaloRunV1alpha1LinkGroup(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * List core.halo.run/v1alpha1/LinkGroup
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listcoreHaloRunV1alpha1LinkGroup(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listcoreHaloRunV1alpha1LinkGroup(
+        page,
+        size,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Update core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {LinkGroup} [linkGroup] Updated linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatecoreHaloRunV1alpha1LinkGroup(
+      name: string,
+      linkGroup?: LinkGroup,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LinkGroup>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatecoreHaloRunV1alpha1LinkGroup(
+        name,
+        linkGroup,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+  }
+}
+
+/**
+ * CoreHaloRunV1alpha1LinkGroupApi - factory interface
+ * @export
+ */
+export const CoreHaloRunV1alpha1LinkGroupApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = CoreHaloRunV1alpha1LinkGroupApiFp(configuration)
+  return {
+    /**
+     * Create core.halo.run/v1alpha1/LinkGroup
+     * @param {LinkGroup} [linkGroup] Fresh linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createcoreHaloRunV1alpha1LinkGroup(linkGroup?: LinkGroup, options?: any): AxiosPromise<LinkGroup> {
+      return localVarFp
+        .createcoreHaloRunV1alpha1LinkGroup(linkGroup, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Delete core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletecoreHaloRunV1alpha1LinkGroup(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp.deletecoreHaloRunV1alpha1LinkGroup(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Get core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getcoreHaloRunV1alpha1LinkGroup(name: string, options?: any): AxiosPromise<LinkGroup> {
+      return localVarFp.getcoreHaloRunV1alpha1LinkGroup(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * List core.halo.run/v1alpha1/LinkGroup
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listcoreHaloRunV1alpha1LinkGroup(
+      page?: number,
+      size?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<string> {
+      return localVarFp
+        .listcoreHaloRunV1alpha1LinkGroup(page, size, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update core.halo.run/v1alpha1/LinkGroup
+     * @param {string} name Name of linkgroup
+     * @param {LinkGroup} [linkGroup] Updated linkgroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatecoreHaloRunV1alpha1LinkGroup(name: string, linkGroup?: LinkGroup, options?: any): AxiosPromise<LinkGroup> {
+      return localVarFp
+        .updatecoreHaloRunV1alpha1LinkGroup(name, linkGroup, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * CoreHaloRunV1alpha1LinkGroupApi - object-oriented interface
+ * @export
+ * @class CoreHaloRunV1alpha1LinkGroupApi
+ * @extends {BaseAPI}
+ */
+export class CoreHaloRunV1alpha1LinkGroupApi extends BaseAPI {
+  /**
+   * Create core.halo.run/v1alpha1/LinkGroup
+   * @param {LinkGroup} [linkGroup] Fresh linkgroup
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkGroupApi
+   */
+  public createcoreHaloRunV1alpha1LinkGroup(linkGroup?: LinkGroup, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
+      .createcoreHaloRunV1alpha1LinkGroup(linkGroup, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Delete core.halo.run/v1alpha1/LinkGroup
+   * @param {string} name Name of linkgroup
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkGroupApi
+   */
+  public deletecoreHaloRunV1alpha1LinkGroup(name: string, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
+      .deletecoreHaloRunV1alpha1LinkGroup(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get core.halo.run/v1alpha1/LinkGroup
+   * @param {string} name Name of linkgroup
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkGroupApi
+   */
+  public getcoreHaloRunV1alpha1LinkGroup(name: string, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
+      .getcoreHaloRunV1alpha1LinkGroup(name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List core.halo.run/v1alpha1/LinkGroup
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkGroupApi
+   */
+  public listcoreHaloRunV1alpha1LinkGroup(
+    page?: number,
+    size?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
+      .listcoreHaloRunV1alpha1LinkGroup(page, size, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update core.halo.run/v1alpha1/LinkGroup
+   * @param {string} name Name of linkgroup
+   * @param {LinkGroup} [linkGroup] Updated linkgroup
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreHaloRunV1alpha1LinkGroupApi
+   */
+  public updatecoreHaloRunV1alpha1LinkGroup(name: string, linkGroup?: LinkGroup, options?: AxiosRequestConfig) {
+    return CoreHaloRunV1alpha1LinkGroupApiFp(this.configuration)
+      .updatecoreHaloRunV1alpha1LinkGroup(name, linkGroup, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
  * PluginHaloRunV1alpha1PluginApi - axios parameter creator
  * @export
  */
@@ -9291,6 +10395,91 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
       }
     },
     /**
+     *
+     * @param {string} [policy] Name of policy
+     * @param {string} [displayName] Display name of attachment
+     * @param {string} [group] Name of group
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    searchAttachments: async (
+      policy?: string,
+      displayName?: string,
+      group?: string,
+      uploadedBy?: string,
+      size?: number,
+      page?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/apis/api.halo.run/v1alpha1/attachments`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (policy !== undefined) {
+        localVarQueryParameter['policy'] = policy
+      }
+
+      if (displayName !== undefined) {
+        localVarQueryParameter['displayName'] = displayName
+      }
+
+      if (group !== undefined) {
+        localVarQueryParameter['group'] = group
+      }
+
+      if (uploadedBy !== undefined) {
+        localVarQueryParameter['uploadedBy'] = uploadedBy
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Update storage.halo.run/v1alpha1/Attachment
      * @param {string} name Name of attachment
      * @param {Attachment} [attachment] Updated attachment
@@ -9343,10 +10532,16 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
      *
      * @param {any} file
      * @param {string} policyName Storage policy name
+     * @param {string} [groupName] The name of the group to which the attachment belongs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    uploadAttachment: async (file: any, policyName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+    uploadAttachment: async (
+      file: any,
+      policyName: string,
+      groupName?: string,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
       // verify required parameter 'file' is not null or undefined
       assertParamExists('uploadAttachment', 'file', file)
       // verify required parameter 'policyName' is not null or undefined
@@ -9378,6 +10573,10 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
 
       if (policyName !== undefined) {
         localVarFormParams.append('policyName', policyName as any)
+      }
+
+      if (groupName !== undefined) {
+        localVarFormParams.append('groupName', groupName as any)
       }
 
       localVarHeaderParameter['Content-Type'] = 'multipart/form-data'
@@ -9470,6 +10669,43 @@ export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: C
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
+     *
+     * @param {string} [policy] Name of policy
+     * @param {string} [displayName] Display name of attachment
+     * @param {string} [group] Name of group
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async searchAttachments(
+      policy?: string,
+      displayName?: string,
+      group?: string,
+      uploadedBy?: string,
+      size?: number,
+      page?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.searchAttachments(
+        policy,
+        displayName,
+        group,
+        uploadedBy,
+        size,
+        page,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
      * Update storage.halo.run/v1alpha1/Attachment
      * @param {string} name Name of attachment
      * @param {Attachment} [attachment] Updated attachment
@@ -9492,15 +10728,17 @@ export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: C
      *
      * @param {any} file
      * @param {string} policyName Storage policy name
+     * @param {string} [groupName] The name of the group to which the attachment belongs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async uploadAttachment(
       file: any,
       policyName: string,
+      groupName?: string,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Attachment>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.uploadAttachment(file, policyName, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.uploadAttachment(file, policyName, groupName, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
   }
@@ -9569,6 +10807,34 @@ export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     *
+     * @param {string} [policy] Name of policy
+     * @param {string} [displayName] Display name of attachment
+     * @param {string} [group] Name of group
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    searchAttachments(
+      policy?: string,
+      displayName?: string,
+      group?: string,
+      uploadedBy?: string,
+      size?: number,
+      page?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<AttachmentList> {
+      return localVarFp
+        .searchAttachments(policy, displayName, group, uploadedBy, size, page, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Update storage.halo.run/v1alpha1/Attachment
      * @param {string} name Name of attachment
      * @param {Attachment} [attachment] Updated attachment
@@ -9588,11 +10854,14 @@ export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
      *
      * @param {any} file
      * @param {string} policyName Storage policy name
+     * @param {string} [groupName] The name of the group to which the attachment belongs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    uploadAttachment(file: any, policyName: string, options?: any): AxiosPromise<Attachment> {
-      return localVarFp.uploadAttachment(file, policyName, options).then((request) => request(axios, basePath))
+    uploadAttachment(file: any, policyName: string, groupName?: string, options?: any): AxiosPromise<Attachment> {
+      return localVarFp
+        .uploadAttachment(file, policyName, groupName, options)
+        .then((request) => request(axios, basePath))
     },
   }
 }
@@ -9666,6 +10935,36 @@ export class StorageHaloRunV1alpha1AttachmentApi extends BaseAPI {
   }
 
   /**
+   *
+   * @param {string} [policy] Name of policy
+   * @param {string} [displayName] Display name of attachment
+   * @param {string} [group] Name of group
+   * @param {string} [uploadedBy] Name of user who uploaded the attachment
+   * @param {number} [size] Size of one page. Zero indicates no limit.
+   * @param {number} [page] The page number. Zero indicates no page.
+   * @param {Array<string>} [labelSelector] Label selector for filtering.
+   * @param {Array<string>} [fieldSelector] Field selector for filtering.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StorageHaloRunV1alpha1AttachmentApi
+   */
+  public searchAttachments(
+    policy?: string,
+    displayName?: string,
+    group?: string,
+    uploadedBy?: string,
+    size?: number,
+    page?: number,
+    labelSelector?: Array<string>,
+    fieldSelector?: Array<string>,
+    options?: AxiosRequestConfig,
+  ) {
+    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
+      .searchAttachments(policy, displayName, group, uploadedBy, size, page, labelSelector, fieldSelector, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * Update storage.halo.run/v1alpha1/Attachment
    * @param {string} name Name of attachment
    * @param {Attachment} [attachment] Updated attachment
@@ -9683,13 +10982,14 @@ export class StorageHaloRunV1alpha1AttachmentApi extends BaseAPI {
    *
    * @param {any} file
    * @param {string} policyName Storage policy name
+   * @param {string} [groupName] The name of the group to which the attachment belongs
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof StorageHaloRunV1alpha1AttachmentApi
    */
-  public uploadAttachment(file: any, policyName: string, options?: AxiosRequestConfig) {
+  public uploadAttachment(file: any, policyName: string, groupName?: string, options?: AxiosRequestConfig) {
     return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
-      .uploadAttachment(file, policyName, options)
+      .uploadAttachment(file, policyName, groupName, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
