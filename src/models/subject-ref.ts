@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface SubjectRef
+ */
+export interface SubjectRef {
+  /**
+   *
+   * @type {string}
+   * @memberof SubjectRef
+   */
+  kind: string
+  /**
+   *
+   * @type {string}
+   * @memberof SubjectRef
+   */
+  name: string
+}

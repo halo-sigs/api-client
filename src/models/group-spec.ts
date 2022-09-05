@@ -12,6 +12,16 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface GroupSpec
+ */
+export interface GroupSpec {
+  /**
+   * Display name of group
+   * @type {string}
+   * @memberof GroupSpec
+   */
+  displayName: string
+}

@@ -12,6 +12,25 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+import { Content } from './content'
+import { Post } from './post'
+
+/**
+ *
+ * @export
+ * @interface PostRequest
+ */
+export interface PostRequest {
+  /**
+   *
+   * @type {Post}
+   * @memberof PostRequest
+   */
+  post: Post
+  /**
+   *
+   * @type {Content}
+   * @memberof PostRequest
+   */
+  content: Content
+}

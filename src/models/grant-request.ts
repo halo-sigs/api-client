@@ -12,6 +12,16 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface GrantRequest
+ */
+export interface GrantRequest {
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof GrantRequest
+   */
+  roles?: Array<string>
+}

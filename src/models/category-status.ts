@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface CategoryStatus
+ */
+export interface CategoryStatus {
+  /**
+   *
+   * @type {string}
+   * @memberof CategoryStatus
+   */
+  permalink?: string
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof CategoryStatus
+   */
+  posts?: Array<string>
+}

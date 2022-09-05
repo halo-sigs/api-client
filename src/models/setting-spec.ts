@@ -12,6 +12,28 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface SettingSpec
+ */
+export interface SettingSpec {
+  /**
+   *
+   * @type {string}
+   * @memberof SettingSpec
+   */
+  group: string
+  /**
+   *
+   * @type {string}
+   * @memberof SettingSpec
+   */
+  label?: string
+  /**
+   *
+   * @type {Array<object>}
+   * @memberof SettingSpec
+   */
+  formSchema?: Array<object>
+}

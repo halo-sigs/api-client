@@ -12,6 +12,28 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface RoleRef
+ */
+export interface RoleRef {
+  /**
+   *
+   * @type {string}
+   * @memberof RoleRef
+   */
+  kind?: string
+  /**
+   *
+   * @type {string}
+   * @memberof RoleRef
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof RoleRef
+   */
+  apiGroup?: string
+}

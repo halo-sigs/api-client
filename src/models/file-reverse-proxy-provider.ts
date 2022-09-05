@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface FileReverseProxyProvider
+ */
+export interface FileReverseProxyProvider {
+  /**
+   *
+   * @type {string}
+   * @memberof FileReverseProxyProvider
+   */
+  directory?: string
+  /**
+   *
+   * @type {string}
+   * @memberof FileReverseProxyProvider
+   */
+  filename?: string
+}

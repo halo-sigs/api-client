@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface TagStatus
+ */
+export interface TagStatus {
+  /**
+   *
+   * @type {string}
+   * @memberof TagStatus
+   */
+  permalink?: string
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof TagStatus
+   */
+  posts?: Array<string>
+}

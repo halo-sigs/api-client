@@ -12,6 +12,24 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+import { Role } from './role'
+
+/**
+ *
+ * @export
+ * @interface UserPermission
+ */
+export interface UserPermission {
+  /**
+   *
+   * @type {Array<Role>}
+   * @memberof UserPermission
+   */
+  roles: Array<Role>
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof UserPermission
+   */
+  uiPermissions: Array<string>
+}

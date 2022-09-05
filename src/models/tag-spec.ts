@@ -12,6 +12,34 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface TagSpec
+ */
+export interface TagSpec {
+  /**
+   *
+   * @type {string}
+   * @memberof TagSpec
+   */
+  displayName: string
+  /**
+   *
+   * @type {string}
+   * @memberof TagSpec
+   */
+  slug: string
+  /**
+   *
+   * @type {string}
+   * @memberof TagSpec
+   */
+  color?: string
+  /**
+   *
+   * @type {string}
+   * @memberof TagSpec
+   */
+  cover?: string
+}

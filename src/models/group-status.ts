@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface GroupStatus
+ */
+export interface GroupStatus {
+  /**
+   * Update timestamp of the group
+   * @type {string}
+   * @memberof GroupStatus
+   */
+  updateTimestamp?: string
+  /**
+   * Total of attachments under the current group
+   * @type {number}
+   * @memberof GroupStatus
+   */
+  totalAttachments?: number
+}

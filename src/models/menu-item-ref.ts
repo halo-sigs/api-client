@@ -12,6 +12,16 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ * Page reference.
+ * @export
+ * @interface MenuItemRef
+ */
+export interface MenuItemRef {
+  /**
+   * Reference name.
+   * @type {string}
+   * @memberof MenuItemRef
+   */
+  name: string
+}

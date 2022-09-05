@@ -12,6 +12,28 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface Content
+ */
+export interface Content {
+  /**
+   *
+   * @type {string}
+   * @memberof Content
+   */
+  raw?: string
+  /**
+   *
+   * @type {string}
+   * @memberof Content
+   */
+  content?: string
+  /**
+   *
+   * @type {string}
+   * @memberof Content
+   */
+  rawType?: string
+}

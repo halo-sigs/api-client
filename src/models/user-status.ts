@@ -12,6 +12,24 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+import { LoginHistory } from './login-history'
+
+/**
+ *
+ * @export
+ * @interface UserStatus
+ */
+export interface UserStatus {
+  /**
+   *
+   * @type {string}
+   * @memberof UserStatus
+   */
+  lastLoginAt?: string
+  /**
+   *
+   * @type {Array<LoginHistory>}
+   * @memberof UserStatus
+   */
+  loginHistories?: Array<LoginHistory>
+}

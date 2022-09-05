@@ -12,6 +12,25 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+import { Content } from './content'
+import { SinglePage } from './single-page'
+
+/**
+ *
+ * @export
+ * @interface SinglePageRequest
+ */
+export interface SinglePageRequest {
+  /**
+   *
+   * @type {SinglePage}
+   * @memberof SinglePageRequest
+   */
+  page: SinglePage
+  /**
+   *
+   * @type {Content}
+   * @memberof SinglePageRequest
+   */
+  content: Content
+}

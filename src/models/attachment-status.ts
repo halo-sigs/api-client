@@ -12,6 +12,16 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface AttachmentStatus
+ */
+export interface AttachmentStatus {
+  /**
+   * Permalink of attachment
+   * @type {string}
+   * @memberof AttachmentStatus
+   */
+  permalink?: string
+}

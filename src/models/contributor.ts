@@ -12,6 +12,28 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface Contributor
+ */
+export interface Contributor {
+  /**
+   *
+   * @type {string}
+   * @memberof Contributor
+   */
+  displayName?: string
+  /**
+   *
+   * @type {string}
+   * @memberof Contributor
+   */
+  avatar?: string
+  /**
+   *
+   * @type {string}
+   * @memberof Contributor
+   */
+  name?: string
+}

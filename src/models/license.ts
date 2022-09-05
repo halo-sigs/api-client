@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ *
+ * @export
+ * @interface License
+ */
+export interface License {
+  /**
+   *
+   * @type {string}
+   * @memberof License
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof License
+   */
+  url?: string
+}

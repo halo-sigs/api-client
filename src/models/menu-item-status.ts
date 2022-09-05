@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ * The status of menu item.
+ * @export
+ * @interface MenuItemStatus
+ */
+export interface MenuItemStatus {
+  /**
+   * Calculated Display name of menu item.
+   * @type {string}
+   * @memberof MenuItemStatus
+   */
+  displayName?: string
+  /**
+   * Calculated href of manu item.
+   * @type {string}
+   * @memberof MenuItemStatus
+   */
+  href?: string
+}

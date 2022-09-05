@@ -12,6 +12,30 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+import { Ref } from './ref'
+
+/**
+ *
+ * @export
+ * @interface PolicySpec
+ */
+export interface PolicySpec {
+  /**
+   * Display name of policy
+   * @type {string}
+   * @memberof PolicySpec
+   */
+  displayName: string
+  /**
+   *
+   * @type {Ref}
+   * @memberof PolicySpec
+   */
+  templateRef?: Ref
+  /**
+   *
+   * @type {Ref}
+   * @memberof PolicySpec
+   */
+  configMapRef?: Ref
+}

@@ -12,6 +12,24 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+import { FileReverseProxyProvider } from './file-reverse-proxy-provider'
+
+/**
+ *
+ * @export
+ * @interface ReverseProxyRule
+ */
+export interface ReverseProxyRule {
+  /**
+   *
+   * @type {string}
+   * @memberof ReverseProxyRule
+   */
+  path?: string
+  /**
+   *
+   * @type {FileReverseProxyProvider}
+   * @memberof ReverseProxyRule
+   */
+  file?: FileReverseProxyProvider
+}

@@ -12,6 +12,22 @@
  * Do not edit the class manually.
  */
 
-export * from './api'
-export * from './configuration'
-export * from './models'
+/**
+ * The spec of menu.
+ * @export
+ * @interface MenuSpec
+ */
+export interface MenuSpec {
+  /**
+   * The display name of the menu.
+   * @type {string}
+   * @memberof MenuSpec
+   */
+  displayName: string
+  /**
+   * Names of menu children below this menu.
+   * @type {Array<string>}
+   * @memberof MenuSpec
+   */
+  menuItems?: Array<string>
+}
