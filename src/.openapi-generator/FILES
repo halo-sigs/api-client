@@ -10,7 +10,6 @@ api/content-halo-run-v1alpha1-category-api.ts
 api/content-halo-run-v1alpha1-comment-api.ts
 api/content-halo-run-v1alpha1-post-api.ts
 api/content-halo-run-v1alpha1-reply-api.ts
-api/content-halo-run-v1alpha1-single-page-api.ts
 api/content-halo-run-v1alpha1-snapshot-api.ts
 api/content-halo-run-v1alpha1-tag-api.ts
 api/plugin-halo-run-v1alpha1-plugin-api.ts
@@ -66,11 +65,8 @@ models/index.ts
 models/license.ts
 models/listed-post-list.ts
 models/listed-post.ts
-models/listed-single-page-list.ts
-models/listed-single-page.ts
 models/login-history.ts
 models/menu-item-list.ts
-models/menu-item-ref.ts
 models/menu-item-spec.ts
 models/menu-item-status.ts
 models/menu-item.ts
@@ -112,11 +108,6 @@ models/role.ts
 models/setting-list.ts
 models/setting-spec.ts
 models/setting.ts
-models/single-page-list.ts
-models/single-page-request.ts
-models/single-page-spec.ts
-models/single-page-status.ts
-models/single-page.ts
 models/snap-shot-spec.ts
 models/snapshot-list.ts
 models/snapshot.ts

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { MenuItemRef } from './menu-item-ref'
+import { Ref } from './ref'
 
 /**
  * The spec of menu item.
@@ -46,26 +46,26 @@ export interface MenuItemSpec {
   children?: Array<string>
   /**
    *
-   * @type {MenuItemRef}
+   * @type {Ref}
    * @memberof MenuItemSpec
    */
-  categoryRef?: MenuItemRef
+  categoryRef?: Ref
   /**
    *
-   * @type {MenuItemRef}
+   * @type {Ref}
    * @memberof MenuItemSpec
    */
-  tagRef?: MenuItemRef
+  tagRef?: Ref
   /**
    *
-   * @type {MenuItemRef}
+   * @type {Ref}
    * @memberof MenuItemSpec
    */
-  postRef?: MenuItemRef
+  postRef?: Ref
   /**
    *
-   * @type {MenuItemRef}
+   * @type {Ref}
    * @memberof MenuItemSpec
    */
-  pageRef?: MenuItemRef
+  pageRef?: Ref
 }
