@@ -30,6 +30,8 @@ import {
 } from '../common'
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
+// @ts-ignore
+import { Plugin } from '../models'
 /**
  * ApiHaloRunV1alpha1PluginApi - axios parameter creator
  * @export
@@ -101,7 +103,7 @@ export const ApiHaloRunV1alpha1PluginApiFp = function (configuration?: Configura
     async installPlugin(
       file: any,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Plugin>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.installPlugin(file, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -125,7 +127,7 @@ export const ApiHaloRunV1alpha1PluginApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    installPlugin(file: any, options?: any): AxiosPromise<void> {
+    installPlugin(file: any, options?: any): AxiosPromise<Plugin> {
       return localVarFp.installPlugin(file, options).then((request) => request(axios, basePath))
     },
   }
