@@ -67,5 +67,5 @@ export interface MenuItemSpec {
    * @type {Ref}
    * @memberof MenuItemSpec
    */
-  pageRef?: Ref
+  singlePageRef?: Ref
 }
