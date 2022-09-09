@@ -31,27 +31,30 @@ import {
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
 // @ts-ignore
-import { ListedPostList } from '../models'
+import { ListedSinglePageList } from '../models'
 // @ts-ignore
-import { Post } from '../models'
+import { SinglePage } from '../models'
 // @ts-ignore
-import { PostRequest } from '../models'
+import { SinglePageRequest } from '../models'
 /**
- * ApiHaloRunV1alpha1PostApi - axios parameter creator
+ * ApiHaloRunV1alpha1SinglePageApi - axios parameter creator
  * @export
  */
-export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuration?: Configuration) {
+export const ApiHaloRunV1alpha1SinglePageApiAxiosParamCreator = function (configuration?: Configuration) {
   return {
     /**
-     * Draft a post.
-     * @param {PostRequest} postRequest
+     * Draft a single page.
+     * @param {SinglePageRequest} singlePageRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    draftPost: async (postRequest: PostRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      // verify required parameter 'postRequest' is not null or undefined
-      assertParamExists('draftPost', 'postRequest', postRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts`
+    draftSinglePage: async (
+      singlePageRequest: SinglePageRequest,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'singlePageRequest' is not null or undefined
+      assertParamExists('draftSinglePage', 'singlePageRequest', singlePageRequest)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/singlepages`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -76,7 +79,7 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
       localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(postRequest, localVarRequestOptions, configuration)
+      localVarRequestOptions.data = serializeDataIfNeeded(singlePageRequest, localVarRequestOptions, configuration)
 
       return {
         url: toPathString(localVarUrlObj),
@@ -84,10 +87,8 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       }
     },
     /**
-     * List posts.
+     * List single pages.
      * @param {Array<string>} [contributors]
-     * @param {Array<string>} [categories]
-     * @param {Array<string>} [tags]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -95,17 +96,15 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listPosts: async (
+    listSinglePages: async (
       contributors?: Array<string>,
-      categories?: Array<string>,
-      tags?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
       page?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts`
+      const localVarPath = `/apis/api.halo.run/v1alpha1/singlepages`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -127,14 +126,6 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
 
       if (contributors) {
         localVarQueryParameter['contributors'] = Array.from(contributors)
-      }
-
-      if (categories) {
-        localVarQueryParameter['categories'] = Array.from(categories)
-      }
-
-      if (tags) {
-        localVarQueryParameter['tags'] = Array.from(tags)
       }
 
       if (size !== undefined) {
@@ -163,15 +154,15 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       }
     },
     /**
-     * Publish a post.
+     * Publish a single page.
      * @param {string} name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    publishPost: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+    publishSinglePage: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
-      assertParamExists('publishPost', 'name', name)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts/{name}/publish`.replace(
+      assertParamExists('publishSinglePage', 'name', name)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/singlepages/{name}/publish`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -204,22 +195,22 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       }
     },
     /**
-     * Update a post.
+     * Update a single page.
      * @param {string} name
-     * @param {PostRequest} postRequest
+     * @param {SinglePageRequest} singlePageRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateDraftPost: async (
+    updateDraftSinglePage: async (
       name: string,
-      postRequest: PostRequest,
+      singlePageRequest: SinglePageRequest,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
-      assertParamExists('updateDraftPost', 'name', name)
-      // verify required parameter 'postRequest' is not null or undefined
-      assertParamExists('updateDraftPost', 'postRequest', postRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts/{name}`.replace(
+      assertParamExists('updateDraftSinglePage', 'name', name)
+      // verify required parameter 'singlePageRequest' is not null or undefined
+      assertParamExists('updateDraftSinglePage', 'singlePageRequest', singlePageRequest)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/singlepages/{name}`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -247,7 +238,7 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
       localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(postRequest, localVarRequestOptions, configuration)
+      localVarRequestOptions.data = serializeDataIfNeeded(singlePageRequest, localVarRequestOptions, configuration)
 
       return {
         url: toPathString(localVarUrlObj),
@@ -258,30 +249,28 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
 }
 
 /**
- * ApiHaloRunV1alpha1PostApi - functional programming interface
+ * ApiHaloRunV1alpha1SinglePageApi - functional programming interface
  * @export
  */
-export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = ApiHaloRunV1alpha1PostApiAxiosParamCreator(configuration)
+export const ApiHaloRunV1alpha1SinglePageApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ApiHaloRunV1alpha1SinglePageApiAxiosParamCreator(configuration)
   return {
     /**
-     * Draft a post.
-     * @param {PostRequest} postRequest
+     * Draft a single page.
+     * @param {SinglePageRequest} singlePageRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async draftPost(
-      postRequest: PostRequest,
+    async draftSinglePage(
+      singlePageRequest: SinglePageRequest,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Post>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.draftPost(postRequest, options)
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SinglePage>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.draftSinglePage(singlePageRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
-     * List posts.
+     * List single pages.
      * @param {Array<string>} [contributors]
-     * @param {Array<string>} [categories]
-     * @param {Array<string>} [tags]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -289,20 +278,16 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async listPosts(
+    async listSinglePages(
       contributors?: Array<string>,
-      categories?: Array<string>,
-      tags?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
       page?: number,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedSinglePageList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listSinglePages(
         contributors,
-        categories,
-        tags,
         size,
         labelSelector,
         fieldSelector,
@@ -312,61 +297,59 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
-     * Publish a post.
+     * Publish a single page.
      * @param {string} name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async publishPost(
+    async publishSinglePage(
       name: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Post>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.publishPost(name, options)
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SinglePage>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.publishSinglePage(name, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
-     * Update a post.
+     * Update a single page.
      * @param {string} name
-     * @param {PostRequest} postRequest
+     * @param {SinglePageRequest} singlePageRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async updateDraftPost(
+    async updateDraftSinglePage(
       name: string,
-      postRequest: PostRequest,
+      singlePageRequest: SinglePageRequest,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Post>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.updateDraftPost(name, postRequest, options)
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SinglePage>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateDraftSinglePage(name, singlePageRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
   }
 }
 
 /**
- * ApiHaloRunV1alpha1PostApi - factory interface
+ * ApiHaloRunV1alpha1SinglePageApi - factory interface
  * @export
  */
-export const ApiHaloRunV1alpha1PostApiFactory = function (
+export const ApiHaloRunV1alpha1SinglePageApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
   axios?: AxiosInstance,
 ) {
-  const localVarFp = ApiHaloRunV1alpha1PostApiFp(configuration)
+  const localVarFp = ApiHaloRunV1alpha1SinglePageApiFp(configuration)
   return {
     /**
-     * Draft a post.
-     * @param {PostRequest} postRequest
+     * Draft a single page.
+     * @param {SinglePageRequest} singlePageRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    draftPost(postRequest: PostRequest, options?: any): AxiosPromise<Post> {
-      return localVarFp.draftPost(postRequest, options).then((request) => request(axios, basePath))
+    draftSinglePage(singlePageRequest: SinglePageRequest, options?: any): AxiosPromise<SinglePage> {
+      return localVarFp.draftSinglePage(singlePageRequest, options).then((request) => request(axios, basePath))
     },
     /**
-     * List posts.
+     * List single pages.
      * @param {Array<string>} [contributors]
-     * @param {Array<string>} [categories]
-     * @param {Array<string>} [tags]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -374,180 +357,170 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listPosts(
+    listSinglePages(
       contributors?: Array<string>,
-      categories?: Array<string>,
-      tags?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
       page?: number,
       options?: any,
-    ): AxiosPromise<ListedPostList> {
+    ): AxiosPromise<ListedSinglePageList> {
       return localVarFp
-        .listPosts(contributors, categories, tags, size, labelSelector, fieldSelector, page, options)
+        .listSinglePages(contributors, size, labelSelector, fieldSelector, page, options)
         .then((request) => request(axios, basePath))
     },
     /**
-     * Publish a post.
+     * Publish a single page.
      * @param {string} name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    publishPost(name: string, options?: any): AxiosPromise<Post> {
-      return localVarFp.publishPost(name, options).then((request) => request(axios, basePath))
+    publishSinglePage(name: string, options?: any): AxiosPromise<SinglePage> {
+      return localVarFp.publishSinglePage(name, options).then((request) => request(axios, basePath))
     },
     /**
-     * Update a post.
+     * Update a single page.
      * @param {string} name
-     * @param {PostRequest} postRequest
+     * @param {SinglePageRequest} singlePageRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateDraftPost(name: string, postRequest: PostRequest, options?: any): AxiosPromise<Post> {
-      return localVarFp.updateDraftPost(name, postRequest, options).then((request) => request(axios, basePath))
+    updateDraftSinglePage(name: string, singlePageRequest: SinglePageRequest, options?: any): AxiosPromise<SinglePage> {
+      return localVarFp
+        .updateDraftSinglePage(name, singlePageRequest, options)
+        .then((request) => request(axios, basePath))
     },
   }
 }
 
 /**
- * Request parameters for draftPost operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for draftSinglePage operation in ApiHaloRunV1alpha1SinglePageApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiDraftPostRequest
+ * @interface ApiHaloRunV1alpha1SinglePageApiDraftSinglePageRequest
  */
-export interface ApiHaloRunV1alpha1PostApiDraftPostRequest {
+export interface ApiHaloRunV1alpha1SinglePageApiDraftSinglePageRequest {
   /**
    *
-   * @type {PostRequest}
-   * @memberof ApiHaloRunV1alpha1PostApiDraftPost
+   * @type {SinglePageRequest}
+   * @memberof ApiHaloRunV1alpha1SinglePageApiDraftSinglePage
    */
-  readonly postRequest: PostRequest
+  readonly singlePageRequest: SinglePageRequest
 }
 
 /**
- * Request parameters for listPosts operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for listSinglePages operation in ApiHaloRunV1alpha1SinglePageApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiListPostsRequest
+ * @interface ApiHaloRunV1alpha1SinglePageApiListSinglePagesRequest
  */
-export interface ApiHaloRunV1alpha1PostApiListPostsRequest {
+export interface ApiHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
   /**
    *
    * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly contributors?: Array<string>
 
   /**
-   *
-   * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
-   */
-  readonly categories?: Array<string>
-
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
-   */
-  readonly tags?: Array<string>
-
-  /**
    * Size of one page. Zero indicates no limit.
    * @type {number}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly size?: number
 
   /**
    * Label selector for filtering.
    * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly labelSelector?: Array<string>
 
   /**
    * Field selector for filtering.
    * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly fieldSelector?: Array<string>
 
   /**
    * The page number. Zero indicates no page.
    * @type {number}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly page?: number
 }
 
 /**
- * Request parameters for publishPost operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for publishSinglePage operation in ApiHaloRunV1alpha1SinglePageApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiPublishPostRequest
+ * @interface ApiHaloRunV1alpha1SinglePageApiPublishSinglePageRequest
  */
-export interface ApiHaloRunV1alpha1PostApiPublishPostRequest {
+export interface ApiHaloRunV1alpha1SinglePageApiPublishSinglePageRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1PostApiPublishPost
+   * @memberof ApiHaloRunV1alpha1SinglePageApiPublishSinglePage
    */
   readonly name: string
 }
 
 /**
- * Request parameters for updateDraftPost operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for updateDraftSinglePage operation in ApiHaloRunV1alpha1SinglePageApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest
+ * @interface ApiHaloRunV1alpha1SinglePageApiUpdateDraftSinglePageRequest
  */
-export interface ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest {
+export interface ApiHaloRunV1alpha1SinglePageApiUpdateDraftSinglePageRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1PostApiUpdateDraftPost
+   * @memberof ApiHaloRunV1alpha1SinglePageApiUpdateDraftSinglePage
    */
   readonly name: string
 
   /**
    *
-   * @type {PostRequest}
-   * @memberof ApiHaloRunV1alpha1PostApiUpdateDraftPost
+   * @type {SinglePageRequest}
+   * @memberof ApiHaloRunV1alpha1SinglePageApiUpdateDraftSinglePage
    */
-  readonly postRequest: PostRequest
+  readonly singlePageRequest: SinglePageRequest
 }
 
 /**
- * ApiHaloRunV1alpha1PostApi - object-oriented interface
+ * ApiHaloRunV1alpha1SinglePageApi - object-oriented interface
  * @export
- * @class ApiHaloRunV1alpha1PostApi
+ * @class ApiHaloRunV1alpha1SinglePageApi
  * @extends {BaseAPI}
  */
-export class ApiHaloRunV1alpha1PostApi extends BaseAPI {
+export class ApiHaloRunV1alpha1SinglePageApi extends BaseAPI {
   /**
-   * Draft a post.
-   * @param {ApiHaloRunV1alpha1PostApiDraftPostRequest} requestParameters Request parameters.
+   * Draft a single page.
+   * @param {ApiHaloRunV1alpha1SinglePageApiDraftSinglePageRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiHaloRunV1alpha1SinglePageApi
    */
-  public draftPost(requestParameters: ApiHaloRunV1alpha1PostApiDraftPostRequest, options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
-      .draftPost(requestParameters.postRequest, options)
+  public draftSinglePage(
+    requestParameters: ApiHaloRunV1alpha1SinglePageApiDraftSinglePageRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiHaloRunV1alpha1SinglePageApiFp(this.configuration)
+      .draftSinglePage(requestParameters.singlePageRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
-   * List posts.
-   * @param {ApiHaloRunV1alpha1PostApiListPostsRequest} requestParameters Request parameters.
+   * List single pages.
+   * @param {ApiHaloRunV1alpha1SinglePageApiListSinglePagesRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiHaloRunV1alpha1SinglePageApi
    */
-  public listPosts(requestParameters: ApiHaloRunV1alpha1PostApiListPostsRequest = {}, options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
-      .listPosts(
+  public listSinglePages(
+    requestParameters: ApiHaloRunV1alpha1SinglePageApiListSinglePagesRequest = {},
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiHaloRunV1alpha1SinglePageApiFp(this.configuration)
+      .listSinglePages(
         requestParameters.contributors,
-        requestParameters.categories,
-        requestParameters.tags,
         requestParameters.size,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
@@ -558,31 +531,34 @@ export class ApiHaloRunV1alpha1PostApi extends BaseAPI {
   }
 
   /**
-   * Publish a post.
-   * @param {ApiHaloRunV1alpha1PostApiPublishPostRequest} requestParameters Request parameters.
+   * Publish a single page.
+   * @param {ApiHaloRunV1alpha1SinglePageApiPublishSinglePageRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiHaloRunV1alpha1SinglePageApi
    */
-  public publishPost(requestParameters: ApiHaloRunV1alpha1PostApiPublishPostRequest, options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
-      .publishPost(requestParameters.name, options)
+  public publishSinglePage(
+    requestParameters: ApiHaloRunV1alpha1SinglePageApiPublishSinglePageRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiHaloRunV1alpha1SinglePageApiFp(this.configuration)
+      .publishSinglePage(requestParameters.name, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
-   * Update a post.
-   * @param {ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest} requestParameters Request parameters.
+   * Update a single page.
+   * @param {ApiHaloRunV1alpha1SinglePageApiUpdateDraftSinglePageRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiHaloRunV1alpha1SinglePageApi
    */
-  public updateDraftPost(
-    requestParameters: ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest,
+  public updateDraftSinglePage(
+    requestParameters: ApiHaloRunV1alpha1SinglePageApiUpdateDraftSinglePageRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
-      .updateDraftPost(requestParameters.name, requestParameters.postRequest, options)
+    return ApiHaloRunV1alpha1SinglePageApiFp(this.configuration)
+      .updateDraftSinglePage(requestParameters.name, requestParameters.singlePageRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
