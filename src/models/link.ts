@@ -12,44 +12,37 @@
  * Do not edit the class manually.
  */
 
-import { CommentSpec } from './comment-spec'
-import { CommentStatus } from './comment-status'
+import { LinkSpec } from './link-spec'
 import { Metadata } from './metadata'
 
 /**
  *
  * @export
- * @interface Comment
+ * @interface Link
  */
-export interface Comment {
+export interface Link {
   /**
    *
-   * @type {CommentSpec}
-   * @memberof Comment
+   * @type {LinkSpec}
+   * @memberof Link
    */
-  spec: CommentSpec
-  /**
-   *
-   * @type {CommentStatus}
-   * @memberof Comment
-   */
-  status?: CommentStatus
+  spec?: LinkSpec
   /**
    *
    * @type {string}
-   * @memberof Comment
+   * @memberof Link
    */
   apiVersion: string
   /**
    *
    * @type {string}
-   * @memberof Comment
+   * @memberof Link
    */
   kind: string
   /**
    *
    * @type {Metadata}
-   * @memberof Comment
+   * @memberof Link
    */
   metadata: Metadata
 }

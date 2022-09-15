@@ -85,24 +85,24 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
     },
     /**
      * List posts.
-     * @param {Array<string>} [contributors]
-     * @param {Array<string>} [categories]
      * @param {Array<string>} [tags]
+     * @param {Array<string>} [categories]
+     * @param {Array<string>} [contributors]
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPosts: async (
-      contributors?: Array<string>,
-      categories?: Array<string>,
       tags?: Array<string>,
+      categories?: Array<string>,
+      contributors?: Array<string>,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/api.halo.run/v1alpha1/posts`
@@ -125,20 +125,24 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-      if (contributors) {
-        localVarQueryParameter['contributors'] = Array.from(contributors)
+      if (tags) {
+        localVarQueryParameter['tags'] = Array.from(tags)
       }
 
       if (categories) {
         localVarQueryParameter['categories'] = Array.from(categories)
       }
 
-      if (tags) {
-        localVarQueryParameter['tags'] = Array.from(tags)
+      if (contributors) {
+        localVarQueryParameter['contributors'] = Array.from(contributors)
       }
 
       if (size !== undefined) {
         localVarQueryParameter['size'] = size
+      }
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
       }
 
       if (labelSelector) {
@@ -147,10 +151,6 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
-      }
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -279,34 +279,34 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
     },
     /**
      * List posts.
-     * @param {Array<string>} [contributors]
-     * @param {Array<string>} [categories]
      * @param {Array<string>} [tags]
+     * @param {Array<string>} [categories]
+     * @param {Array<string>} [contributors]
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listPosts(
-      contributors?: Array<string>,
-      categories?: Array<string>,
       tags?: Array<string>,
+      categories?: Array<string>,
+      contributors?: Array<string>,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
-        contributors,
-        categories,
         tags,
+        categories,
+        contributors,
         size,
+        page,
         labelSelector,
         fieldSelector,
-        page,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -364,28 +364,28 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
     },
     /**
      * List posts.
-     * @param {Array<string>} [contributors]
-     * @param {Array<string>} [categories]
      * @param {Array<string>} [tags]
+     * @param {Array<string>} [categories]
+     * @param {Array<string>} [contributors]
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPosts(
-      contributors?: Array<string>,
-      categories?: Array<string>,
       tags?: Array<string>,
+      categories?: Array<string>,
+      contributors?: Array<string>,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: any,
     ): AxiosPromise<ListedPostList> {
       return localVarFp
-        .listPosts(contributors, categories, tags, size, labelSelector, fieldSelector, page, options)
+        .listPosts(tags, categories, contributors, size, page, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -435,7 +435,7 @@ export interface ApiHaloRunV1alpha1PostApiListPostsRequest {
    * @type {Array<string>}
    * @memberof ApiHaloRunV1alpha1PostApiListPosts
    */
-  readonly contributors?: Array<string>
+  readonly tags?: Array<string>
 
   /**
    *
@@ -449,7 +449,7 @@ export interface ApiHaloRunV1alpha1PostApiListPostsRequest {
    * @type {Array<string>}
    * @memberof ApiHaloRunV1alpha1PostApiListPosts
    */
-  readonly tags?: Array<string>
+  readonly contributors?: Array<string>
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -457,6 +457,13 @@ export interface ApiHaloRunV1alpha1PostApiListPostsRequest {
    * @memberof ApiHaloRunV1alpha1PostApiListPosts
    */
   readonly size?: number
+
+  /**
+   * The page number. Zero indicates no page.
+   * @type {number}
+   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   */
+  readonly page?: number
 
   /**
    * Label selector for filtering.
@@ -471,13 +478,6 @@ export interface ApiHaloRunV1alpha1PostApiListPostsRequest {
    * @memberof ApiHaloRunV1alpha1PostApiListPosts
    */
   readonly fieldSelector?: Array<string>
-
-  /**
-   * The page number. Zero indicates no page.
-   * @type {number}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
-   */
-  readonly page?: number
 }
 
 /**
@@ -545,13 +545,13 @@ export class ApiHaloRunV1alpha1PostApi extends BaseAPI {
   public listPosts(requestParameters: ApiHaloRunV1alpha1PostApiListPostsRequest = {}, options?: AxiosRequestConfig) {
     return ApiHaloRunV1alpha1PostApiFp(this.configuration)
       .listPosts(
-        requestParameters.contributors,
-        requestParameters.categories,
         requestParameters.tags,
+        requestParameters.categories,
+        requestParameters.contributors,
         requestParameters.size,
+        requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
-        requestParameters.page,
         options,
       )
       .then((request) => request(this.axios, this.basePath))

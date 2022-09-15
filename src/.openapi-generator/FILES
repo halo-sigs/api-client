@@ -1,6 +1,7 @@
 .gitignore
 .npmignore
 api.ts
+api/api-halo-run-v1alpha1-comment-api.ts
 api/api-halo-run-v1alpha1-content-api.ts
 api/api-halo-run-v1alpha1-plugin-api.ts
 api/api-halo-run-v1alpha1-post-api.ts
@@ -47,7 +48,7 @@ models/change-password-request.ts
 models/comment-list.ts
 models/comment-owner.ts
 models/comment-spec.ts
-models/comment-subject-ref.ts
+models/comment-status.ts
 models/comment.ts
 models/condition.ts
 models/config-map-list.ts
@@ -57,6 +58,7 @@ models/content-wrapper.ts
 models/content.ts
 models/contributor.ts
 models/excerpt.ts
+models/extension.ts
 models/file-reverse-proxy-provider.ts
 models/grant-request.ts
 models/group-list.ts
@@ -65,6 +67,8 @@ models/group-status.ts
 models/group.ts
 models/index.ts
 models/license.ts
+models/listed-comment-list.ts
+models/listed-comment.ts
 models/listed-post-list.ts
 models/listed-post.ts
 models/listed-single-page-list.ts
@@ -78,6 +82,7 @@ models/menu-list.ts
 models/menu-spec.ts
 models/menu.ts
 models/metadata.ts
+models/owner-info.ts
 models/personal-access-token-list.ts
 models/personal-access-token-spec.ts
 models/personal-access-token.ts

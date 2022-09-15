@@ -13,7 +13,7 @@
  */
 
 import { CommentOwner } from './comment-owner'
-import { CommentSubjectRef } from './comment-subject-ref'
+import { Ref } from './ref'
 
 /**
  *
@@ -83,8 +83,14 @@ export interface CommentSpec {
   hidden: boolean
   /**
    *
-   * @type {CommentSubjectRef}
+   * @type {Ref}
    * @memberof CommentSpec
    */
-  subjectRef: CommentSubjectRef
+  subjectRef: Ref
+  /**
+   *
+   * @type {string}
+   * @memberof CommentSpec
+   */
+  lastReadTime?: string
 }

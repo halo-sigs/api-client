@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+export * from './api/api-halo-run-v1alpha1-comment-api'
 export * from './api/api-halo-run-v1alpha1-content-api'
 export * from './api/api-halo-run-v1alpha1-plugin-api'
 export * from './api/api-halo-run-v1alpha1-post-api'
