@@ -12,30 +12,34 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface Extension
+ * @interface CommentEmailOwner
  */
-export interface Extension {
+export interface CommentEmailOwner {
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof CommentEmailOwner
    */
-  kind: string
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Extension
-   */
-  metadata: Metadata
+  email?: string
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof CommentEmailOwner
    */
-  apiVersion: string
+  avatar?: string
+  /**
+   *
+   * @type {string}
+   * @memberof CommentEmailOwner
+   */
+  displayName?: string
+  /**
+   *
+   * @type {string}
+   * @memberof CommentEmailOwner
+   */
+  website?: string
 }

@@ -45,8 +45,10 @@ models/category-spec.ts
 models/category-status.ts
 models/category.ts
 models/change-password-request.ts
+models/comment-email-owner.ts
 models/comment-list.ts
 models/comment-owner.ts
+models/comment-request.ts
 models/comment-spec.ts
 models/comment-status.ts
 models/comment.ts
@@ -104,6 +106,7 @@ models/post-status.ts
 models/post.ts
 models/ref.ts
 models/reply-list.ts
+models/reply-request.ts
 models/reply-spec.ts
 models/reply.ts
 models/reverse-proxy-list.ts

@@ -12,30 +12,42 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
+import { CommentEmailOwner } from './comment-email-owner'
 
 /**
  *
  * @export
- * @interface Extension
+ * @interface ReplyRequest
  */
-export interface Extension {
+export interface ReplyRequest {
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof ReplyRequest
    */
-  kind: string
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Extension
-   */
-  metadata: Metadata
+  raw: string
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof ReplyRequest
    */
-  apiVersion: string
+  content: string
+  /**
+   *
+   * @type {boolean}
+   * @memberof ReplyRequest
+   */
+  allowNotification?: boolean
+  /**
+   *
+   * @type {CommentEmailOwner}
+   * @memberof ReplyRequest
+   */
+  owner?: CommentEmailOwner
+  /**
+   *
+   * @type {string}
+   * @memberof ReplyRequest
+   */
+  quoteReply?: string
 }
