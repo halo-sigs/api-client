@@ -5,6 +5,7 @@ api/api-halo-run-v1alpha1-comment-api.ts
 api/api-halo-run-v1alpha1-content-api.ts
 api/api-halo-run-v1alpha1-plugin-api.ts
 api/api-halo-run-v1alpha1-post-api.ts
+api/api-halo-run-v1alpha1-reply-api.ts
 api/api-halo-run-v1alpha1-single-page-api.ts
 api/api-halo-run-v1alpha1-theme-api.ts
 api/api-halo-run-v1alpha1-user-api.ts
@@ -73,6 +74,8 @@ models/listed-comment-list.ts
 models/listed-comment.ts
 models/listed-post-list.ts
 models/listed-post.ts
+models/listed-reply-list.ts
+models/listed-reply.ts
 models/listed-single-page-list.ts
 models/listed-single-page.ts
 models/login-history.ts

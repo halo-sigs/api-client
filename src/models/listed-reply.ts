@@ -12,32 +12,25 @@
  * Do not edit the class manually.
  */
 
-import { Comment } from './comment'
-import { Extension } from './extension'
 import { OwnerInfo } from './owner-info'
+import { Reply } from './reply'
 
 /**
  * A chunk of items.
  * @export
- * @interface ListedComment
+ * @interface ListedReply
  */
-export interface ListedComment {
+export interface ListedReply {
   /**
    *
-   * @type {Comment}
-   * @memberof ListedComment
+   * @type {Reply}
+   * @memberof ListedReply
    */
-  comment: Comment
+  reply: Reply
   /**
    *
    * @type {OwnerInfo}
-   * @memberof ListedComment
+   * @memberof ListedReply
    */
   owner: OwnerInfo
-  /**
-   *
-   * @type {Extension}
-   * @memberof ListedComment
-   */
-  subject?: Extension
 }

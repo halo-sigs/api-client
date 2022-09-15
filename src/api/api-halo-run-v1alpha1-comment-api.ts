@@ -144,13 +144,13 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
      * @param {string} [keyword] Comments filtered by keyword.
      * @param {boolean} [hidden] The comment is hidden from the theme side.
      * @param {boolean} [top] Comment top display.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {boolean} [approved] Comments approved.
      * @param {boolean} [allowNotification] Send notifications when there are new replies.
      * @param {string} [ownerKind] Commenter kind.
      * @param {string} [ownerName] Commenter name.
      * @param {string} [subjectKind] Comment subject kind.
      * @param {string} [subjectName] Comment subject name.
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -163,13 +163,13 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
       keyword?: string,
       hidden?: boolean,
       top?: boolean,
+      sortOrder?: boolean,
       approved?: boolean,
       allowNotification?: boolean,
       ownerKind?: string,
       ownerName?: string,
       subjectKind?: string,
       subjectName?: string,
-      sortOrder?: boolean,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -212,6 +212,10 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
         localVarQueryParameter['top'] = top
       }
 
+      if (sortOrder !== undefined) {
+        localVarQueryParameter['sortOrder'] = sortOrder
+      }
+
       if (approved !== undefined) {
         localVarQueryParameter['approved'] = approved
       }
@@ -234,10 +238,6 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
 
       if (subjectName !== undefined) {
         localVarQueryParameter['subjectName'] = subjectName
-      }
-
-      if (sortOrder !== undefined) {
-        localVarQueryParameter['sortOrder'] = sortOrder
       }
 
       if (size !== undefined) {
@@ -309,13 +309,13 @@ export const ApiHaloRunV1alpha1CommentApiFp = function (configuration?: Configur
      * @param {string} [keyword] Comments filtered by keyword.
      * @param {boolean} [hidden] The comment is hidden from the theme side.
      * @param {boolean} [top] Comment top display.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {boolean} [approved] Comments approved.
      * @param {boolean} [allowNotification] Send notifications when there are new replies.
      * @param {string} [ownerKind] Commenter kind.
      * @param {string} [ownerName] Commenter name.
      * @param {string} [subjectKind] Comment subject kind.
      * @param {string} [subjectName] Comment subject name.
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -328,13 +328,13 @@ export const ApiHaloRunV1alpha1CommentApiFp = function (configuration?: Configur
       keyword?: string,
       hidden?: boolean,
       top?: boolean,
+      sortOrder?: boolean,
       approved?: boolean,
       allowNotification?: boolean,
       ownerKind?: string,
       ownerName?: string,
       subjectKind?: string,
       subjectName?: string,
-      sortOrder?: boolean,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -346,13 +346,13 @@ export const ApiHaloRunV1alpha1CommentApiFp = function (configuration?: Configur
         keyword,
         hidden,
         top,
+        sortOrder,
         approved,
         allowNotification,
         ownerKind,
         ownerName,
         subjectKind,
         subjectName,
-        sortOrder,
         size,
         page,
         labelSelector,
@@ -400,13 +400,13 @@ export const ApiHaloRunV1alpha1CommentApiFactory = function (
      * @param {string} [keyword] Comments filtered by keyword.
      * @param {boolean} [hidden] The comment is hidden from the theme side.
      * @param {boolean} [top] Comment top display.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {boolean} [approved] Comments approved.
      * @param {boolean} [allowNotification] Send notifications when there are new replies.
      * @param {string} [ownerKind] Commenter kind.
      * @param {string} [ownerName] Commenter name.
      * @param {string} [subjectKind] Comment subject kind.
      * @param {string} [subjectName] Comment subject name.
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -419,13 +419,13 @@ export const ApiHaloRunV1alpha1CommentApiFactory = function (
       keyword?: string,
       hidden?: boolean,
       top?: boolean,
+      sortOrder?: boolean,
       approved?: boolean,
       allowNotification?: boolean,
       ownerKind?: string,
       ownerName?: string,
       subjectKind?: string,
       subjectName?: string,
-      sortOrder?: boolean,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -438,13 +438,13 @@ export const ApiHaloRunV1alpha1CommentApiFactory = function (
           keyword,
           hidden,
           top,
+          sortOrder,
           approved,
           allowNotification,
           ownerKind,
           ownerName,
           subjectKind,
           subjectName,
-          sortOrder,
           size,
           page,
           labelSelector,
@@ -526,6 +526,13 @@ export interface ApiHaloRunV1alpha1CommentApiListCommentsRequest {
   readonly top?: boolean
 
   /**
+   * ascending order If it is true; otherwise, it is in descending order.
+   * @type {boolean}
+   * @memberof ApiHaloRunV1alpha1CommentApiListComments
+   */
+  readonly sortOrder?: boolean
+
+  /**
    * Comments approved.
    * @type {boolean}
    * @memberof ApiHaloRunV1alpha1CommentApiListComments
@@ -566,13 +573,6 @@ export interface ApiHaloRunV1alpha1CommentApiListCommentsRequest {
    * @memberof ApiHaloRunV1alpha1CommentApiListComments
    */
   readonly subjectName?: string
-
-  /**
-   * ascending order If it is true; otherwise, it is in descending order.
-   * @type {boolean}
-   * @memberof ApiHaloRunV1alpha1CommentApiListComments
-   */
-  readonly sortOrder?: boolean
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -656,13 +656,13 @@ export class ApiHaloRunV1alpha1CommentApi extends BaseAPI {
         requestParameters.keyword,
         requestParameters.hidden,
         requestParameters.top,
+        requestParameters.sortOrder,
         requestParameters.approved,
         requestParameters.allowNotification,
         requestParameters.ownerKind,
         requestParameters.ownerName,
         requestParameters.subjectKind,
         requestParameters.subjectName,
-        requestParameters.sortOrder,
         requestParameters.size,
         requestParameters.page,
         requestParameters.labelSelector,

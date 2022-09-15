@@ -86,8 +86,8 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
     /**
      * List posts.
      * @param {Array<string>} [tags]
-     * @param {Array<string>} [categories]
      * @param {Array<string>} [contributors]
+     * @param {Array<string>} [categories]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -97,8 +97,8 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
      */
     listPosts: async (
       tags?: Array<string>,
-      categories?: Array<string>,
       contributors?: Array<string>,
+      categories?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -129,12 +129,12 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
         localVarQueryParameter['tags'] = Array.from(tags)
       }
 
-      if (categories) {
-        localVarQueryParameter['categories'] = Array.from(categories)
-      }
-
       if (contributors) {
         localVarQueryParameter['contributors'] = Array.from(contributors)
+      }
+
+      if (categories) {
+        localVarQueryParameter['categories'] = Array.from(categories)
       }
 
       if (size !== undefined) {
@@ -280,8 +280,8 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
     /**
      * List posts.
      * @param {Array<string>} [tags]
-     * @param {Array<string>} [categories]
      * @param {Array<string>} [contributors]
+     * @param {Array<string>} [categories]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -291,8 +291,8 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
      */
     async listPosts(
       tags?: Array<string>,
-      categories?: Array<string>,
       contributors?: Array<string>,
+      categories?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -301,8 +301,8 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
         tags,
-        categories,
         contributors,
+        categories,
         size,
         page,
         labelSelector,
@@ -365,8 +365,8 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
     /**
      * List posts.
      * @param {Array<string>} [tags]
-     * @param {Array<string>} [categories]
      * @param {Array<string>} [contributors]
+     * @param {Array<string>} [categories]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -376,8 +376,8 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
      */
     listPosts(
       tags?: Array<string>,
-      categories?: Array<string>,
       contributors?: Array<string>,
+      categories?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -385,7 +385,7 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
       options?: any,
     ): AxiosPromise<ListedPostList> {
       return localVarFp
-        .listPosts(tags, categories, contributors, size, page, labelSelector, fieldSelector, options)
+        .listPosts(tags, contributors, categories, size, page, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -442,14 +442,14 @@ export interface ApiHaloRunV1alpha1PostApiListPostsRequest {
    * @type {Array<string>}
    * @memberof ApiHaloRunV1alpha1PostApiListPosts
    */
-  readonly categories?: Array<string>
+  readonly contributors?: Array<string>
 
   /**
    *
    * @type {Array<string>}
    * @memberof ApiHaloRunV1alpha1PostApiListPosts
    */
-  readonly contributors?: Array<string>
+  readonly categories?: Array<string>
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -546,8 +546,8 @@ export class ApiHaloRunV1alpha1PostApi extends BaseAPI {
     return ApiHaloRunV1alpha1PostApiFp(this.configuration)
       .listPosts(
         requestParameters.tags,
-        requestParameters.categories,
         requestParameters.contributors,
+        requestParameters.categories,
         requestParameters.size,
         requestParameters.page,
         requestParameters.labelSelector,
