@@ -12,14 +12,14 @@
  * Do not edit the class manually.
  */
 
-export * from './api/api-halo-run-v1alpha1-comment-api'
-export * from './api/api-halo-run-v1alpha1-content-api'
-export * from './api/api-halo-run-v1alpha1-plugin-api'
-export * from './api/api-halo-run-v1alpha1-post-api'
-export * from './api/api-halo-run-v1alpha1-reply-api'
-export * from './api/api-halo-run-v1alpha1-single-page-api'
-export * from './api/api-halo-run-v1alpha1-theme-api'
-export * from './api/api-halo-run-v1alpha1-user-api'
+export * from './api/api-console-halo-run-v1alpha1-comment-api'
+export * from './api/api-console-halo-run-v1alpha1-content-api'
+export * from './api/api-console-halo-run-v1alpha1-plugin-api'
+export * from './api/api-console-halo-run-v1alpha1-post-api'
+export * from './api/api-console-halo-run-v1alpha1-reply-api'
+export * from './api/api-console-halo-run-v1alpha1-single-page-api'
+export * from './api/api-console-halo-run-v1alpha1-theme-api'
+export * from './api/api-console-halo-run-v1alpha1-user-api'
 export * from './api/content-halo-run-v1alpha1-category-api'
 export * from './api/content-halo-run-v1alpha1-comment-api'
 export * from './api/content-halo-run-v1alpha1-post-api'

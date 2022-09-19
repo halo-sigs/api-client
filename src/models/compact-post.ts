@@ -12,37 +12,36 @@
  * Do not edit the class manually.
  */
 
-import { LinkGroupSpec } from './link-group-spec'
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface LinkGroup
+ * @interface CompactPost
  */
-export interface LinkGroup {
-  /**
-   *
-   * @type {LinkGroupSpec}
-   * @memberof LinkGroup
-   */
-  spec?: LinkGroupSpec
+export interface CompactPost {
   /**
    *
    * @type {string}
-   * @memberof LinkGroup
+   * @memberof CompactPost
    */
-  apiVersion: string
+  name?: string
   /**
    *
    * @type {string}
-   * @memberof LinkGroup
+   * @memberof CompactPost
    */
-  kind: string
+  visible?: CompactPostVisibleEnum
   /**
    *
-   * @type {Metadata}
-   * @memberof LinkGroup
+   * @type {boolean}
+   * @memberof CompactPost
    */
-  metadata: Metadata
+  published?: boolean
 }
+
+export const CompactPostVisibleEnum = {
+  Public: 'PUBLIC',
+  Internal: 'INTERNAL',
+  Private: 'PRIVATE',
+} as const
+
+export type CompactPostVisibleEnum = typeof CompactPostVisibleEnum[keyof typeof CompactPostVisibleEnum]

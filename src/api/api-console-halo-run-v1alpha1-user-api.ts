@@ -39,10 +39,10 @@ import { User } from '../models'
 // @ts-ignore
 import { UserPermission } from '../models'
 /**
- * ApiHaloRunV1alpha1UserApi - axios parameter creator
+ * ApiConsoleHaloRunV1alpha1UserApi - axios parameter creator
  * @export
  */
-export const ApiHaloRunV1alpha1UserApiAxiosParamCreator = function (configuration?: Configuration) {
+export const ApiConsoleHaloRunV1alpha1UserApiAxiosParamCreator = function (configuration?: Configuration) {
   return {
     /**
      * Change password of user.
@@ -60,7 +60,7 @@ export const ApiHaloRunV1alpha1UserApiAxiosParamCreator = function (configuratio
       assertParamExists('changePassword', 'name', name)
       // verify required parameter 'changePasswordRequest' is not null or undefined
       assertParamExists('changePassword', 'changePasswordRequest', changePasswordRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/users/{name}/password`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/users/{name}/password`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -101,7 +101,7 @@ export const ApiHaloRunV1alpha1UserApiAxiosParamCreator = function (configuratio
      * @throws {RequiredError}
      */
     getCurrentUserDetail: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      const localVarPath = `/apis/api.halo.run/v1alpha1/users/-`
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/users/-`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -139,7 +139,7 @@ export const ApiHaloRunV1alpha1UserApiAxiosParamCreator = function (configuratio
     getPermissions: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
       assertParamExists('getPermissions', 'name', name)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/users/{name}/permissions`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/users/{name}/permissions`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -187,7 +187,7 @@ export const ApiHaloRunV1alpha1UserApiAxiosParamCreator = function (configuratio
       assertParamExists('grantPermission', 'name', name)
       // verify required parameter 'grantRequest' is not null or undefined
       assertParamExists('grantPermission', 'grantRequest', grantRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/users/{name}/permissions`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/users/{name}/permissions`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -226,11 +226,11 @@ export const ApiHaloRunV1alpha1UserApiAxiosParamCreator = function (configuratio
 }
 
 /**
- * ApiHaloRunV1alpha1UserApi - functional programming interface
+ * ApiConsoleHaloRunV1alpha1UserApi - functional programming interface
  * @export
  */
-export const ApiHaloRunV1alpha1UserApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = ApiHaloRunV1alpha1UserApiAxiosParamCreator(configuration)
+export const ApiConsoleHaloRunV1alpha1UserApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ApiConsoleHaloRunV1alpha1UserApiAxiosParamCreator(configuration)
   return {
     /**
      * Change password of user.
@@ -290,15 +290,15 @@ export const ApiHaloRunV1alpha1UserApiFp = function (configuration?: Configurati
 }
 
 /**
- * ApiHaloRunV1alpha1UserApi - factory interface
+ * ApiConsoleHaloRunV1alpha1UserApi - factory interface
  * @export
  */
-export const ApiHaloRunV1alpha1UserApiFactory = function (
+export const ApiConsoleHaloRunV1alpha1UserApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
   axios?: AxiosInstance,
 ) {
-  const localVarFp = ApiHaloRunV1alpha1UserApiFp(configuration)
+  const localVarFp = ApiConsoleHaloRunV1alpha1UserApiFp(configuration)
   return {
     /**
      * Change password of user.
@@ -341,80 +341,80 @@ export const ApiHaloRunV1alpha1UserApiFactory = function (
 }
 
 /**
- * Request parameters for changePassword operation in ApiHaloRunV1alpha1UserApi.
+ * Request parameters for changePassword operation in ApiConsoleHaloRunV1alpha1UserApi.
  * @export
- * @interface ApiHaloRunV1alpha1UserApiChangePasswordRequest
+ * @interface ApiConsoleHaloRunV1alpha1UserApiChangePasswordRequest
  */
-export interface ApiHaloRunV1alpha1UserApiChangePasswordRequest {
+export interface ApiConsoleHaloRunV1alpha1UserApiChangePasswordRequest {
   /**
    * Name of user. If the name is equal to \&#39;-\&#39;, it will change the password of current user.
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1UserApiChangePassword
+   * @memberof ApiConsoleHaloRunV1alpha1UserApiChangePassword
    */
   readonly name: string
 
   /**
    *
    * @type {ChangePasswordRequest}
-   * @memberof ApiHaloRunV1alpha1UserApiChangePassword
+   * @memberof ApiConsoleHaloRunV1alpha1UserApiChangePassword
    */
   readonly changePasswordRequest: ChangePasswordRequest
 }
 
 /**
- * Request parameters for getPermissions operation in ApiHaloRunV1alpha1UserApi.
+ * Request parameters for getPermissions operation in ApiConsoleHaloRunV1alpha1UserApi.
  * @export
- * @interface ApiHaloRunV1alpha1UserApiGetPermissionsRequest
+ * @interface ApiConsoleHaloRunV1alpha1UserApiGetPermissionsRequest
  */
-export interface ApiHaloRunV1alpha1UserApiGetPermissionsRequest {
+export interface ApiConsoleHaloRunV1alpha1UserApiGetPermissionsRequest {
   /**
    * User name
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1UserApiGetPermissions
+   * @memberof ApiConsoleHaloRunV1alpha1UserApiGetPermissions
    */
   readonly name: string
 }
 
 /**
- * Request parameters for grantPermission operation in ApiHaloRunV1alpha1UserApi.
+ * Request parameters for grantPermission operation in ApiConsoleHaloRunV1alpha1UserApi.
  * @export
- * @interface ApiHaloRunV1alpha1UserApiGrantPermissionRequest
+ * @interface ApiConsoleHaloRunV1alpha1UserApiGrantPermissionRequest
  */
-export interface ApiHaloRunV1alpha1UserApiGrantPermissionRequest {
+export interface ApiConsoleHaloRunV1alpha1UserApiGrantPermissionRequest {
   /**
    * User name
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1UserApiGrantPermission
+   * @memberof ApiConsoleHaloRunV1alpha1UserApiGrantPermission
    */
   readonly name: string
 
   /**
    *
    * @type {GrantRequest}
-   * @memberof ApiHaloRunV1alpha1UserApiGrantPermission
+   * @memberof ApiConsoleHaloRunV1alpha1UserApiGrantPermission
    */
   readonly grantRequest: GrantRequest
 }
 
 /**
- * ApiHaloRunV1alpha1UserApi - object-oriented interface
+ * ApiConsoleHaloRunV1alpha1UserApi - object-oriented interface
  * @export
- * @class ApiHaloRunV1alpha1UserApi
+ * @class ApiConsoleHaloRunV1alpha1UserApi
  * @extends {BaseAPI}
  */
-export class ApiHaloRunV1alpha1UserApi extends BaseAPI {
+export class ApiConsoleHaloRunV1alpha1UserApi extends BaseAPI {
   /**
    * Change password of user.
-   * @param {ApiHaloRunV1alpha1UserApiChangePasswordRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1UserApiChangePasswordRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1UserApi
+   * @memberof ApiConsoleHaloRunV1alpha1UserApi
    */
   public changePassword(
-    requestParameters: ApiHaloRunV1alpha1UserApiChangePasswordRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1UserApiChangePasswordRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1UserApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1UserApiFp(this.configuration)
       .changePassword(requestParameters.name, requestParameters.changePasswordRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
@@ -423,42 +423,42 @@ export class ApiHaloRunV1alpha1UserApi extends BaseAPI {
    * Get current user detail
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1UserApi
+   * @memberof ApiConsoleHaloRunV1alpha1UserApi
    */
   public getCurrentUserDetail(options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1UserApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1UserApiFp(this.configuration)
       .getCurrentUserDetail(options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * Get permissions of user
-   * @param {ApiHaloRunV1alpha1UserApiGetPermissionsRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1UserApiGetPermissionsRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1UserApi
+   * @memberof ApiConsoleHaloRunV1alpha1UserApi
    */
   public getPermissions(
-    requestParameters: ApiHaloRunV1alpha1UserApiGetPermissionsRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1UserApiGetPermissionsRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1UserApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1UserApiFp(this.configuration)
       .getPermissions(requestParameters.name, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * Grant permissions to user
-   * @param {ApiHaloRunV1alpha1UserApiGrantPermissionRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1UserApiGrantPermissionRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1UserApi
+   * @memberof ApiConsoleHaloRunV1alpha1UserApi
    */
   public grantPermission(
-    requestParameters: ApiHaloRunV1alpha1UserApiGrantPermissionRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1UserApiGrantPermissionRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1UserApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1UserApiFp(this.configuration)
       .grantPermission(requestParameters.name, requestParameters.grantRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }

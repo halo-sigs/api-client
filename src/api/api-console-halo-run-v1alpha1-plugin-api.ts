@@ -31,23 +31,23 @@ import {
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
 // @ts-ignore
-import { Theme } from '../models'
+import { Plugin } from '../models'
 /**
- * ApiHaloRunV1alpha1ThemeApi - axios parameter creator
+ * ApiConsoleHaloRunV1alpha1PluginApi - axios parameter creator
  * @export
  */
-export const ApiHaloRunV1alpha1ThemeApiAxiosParamCreator = function (configuration?: Configuration) {
+export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (configuration?: Configuration) {
   return {
     /**
-     * Install a theme by uploading a zip file.
+     * Install a plugin by uploading a Jar file.
      * @param {any} file
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    installTheme: async (file: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+    installPlugin: async (file: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'file' is not null or undefined
-      assertParamExists('installTheme', 'file', file)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/themes/install`
+      assertParamExists('installPlugin', 'file', file)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/plugins/install`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -88,82 +88,85 @@ export const ApiHaloRunV1alpha1ThemeApiAxiosParamCreator = function (configurati
 }
 
 /**
- * ApiHaloRunV1alpha1ThemeApi - functional programming interface
+ * ApiConsoleHaloRunV1alpha1PluginApi - functional programming interface
  * @export
  */
-export const ApiHaloRunV1alpha1ThemeApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = ApiHaloRunV1alpha1ThemeApiAxiosParamCreator(configuration)
+export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator(configuration)
   return {
     /**
-     * Install a theme by uploading a zip file.
+     * Install a plugin by uploading a Jar file.
      * @param {any} file
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async installTheme(
+    async installPlugin(
       file: any,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Theme>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.installTheme(file, options)
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Plugin>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.installPlugin(file, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
   }
 }
 
 /**
- * ApiHaloRunV1alpha1ThemeApi - factory interface
+ * ApiConsoleHaloRunV1alpha1PluginApi - factory interface
  * @export
  */
-export const ApiHaloRunV1alpha1ThemeApiFactory = function (
+export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
   axios?: AxiosInstance,
 ) {
-  const localVarFp = ApiHaloRunV1alpha1ThemeApiFp(configuration)
+  const localVarFp = ApiConsoleHaloRunV1alpha1PluginApiFp(configuration)
   return {
     /**
-     * Install a theme by uploading a zip file.
+     * Install a plugin by uploading a Jar file.
      * @param {any} file
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    installTheme(file: any, options?: any): AxiosPromise<Theme> {
-      return localVarFp.installTheme(file, options).then((request) => request(axios, basePath))
+    installPlugin(file: any, options?: any): AxiosPromise<Plugin> {
+      return localVarFp.installPlugin(file, options).then((request) => request(axios, basePath))
     },
   }
 }
 
 /**
- * Request parameters for installTheme operation in ApiHaloRunV1alpha1ThemeApi.
+ * Request parameters for installPlugin operation in ApiConsoleHaloRunV1alpha1PluginApi.
  * @export
- * @interface ApiHaloRunV1alpha1ThemeApiInstallThemeRequest
+ * @interface ApiConsoleHaloRunV1alpha1PluginApiInstallPluginRequest
  */
-export interface ApiHaloRunV1alpha1ThemeApiInstallThemeRequest {
+export interface ApiConsoleHaloRunV1alpha1PluginApiInstallPluginRequest {
   /**
    *
    * @type {any}
-   * @memberof ApiHaloRunV1alpha1ThemeApiInstallTheme
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiInstallPlugin
    */
   readonly file: any
 }
 
 /**
- * ApiHaloRunV1alpha1ThemeApi - object-oriented interface
+ * ApiConsoleHaloRunV1alpha1PluginApi - object-oriented interface
  * @export
- * @class ApiHaloRunV1alpha1ThemeApi
+ * @class ApiConsoleHaloRunV1alpha1PluginApi
  * @extends {BaseAPI}
  */
-export class ApiHaloRunV1alpha1ThemeApi extends BaseAPI {
+export class ApiConsoleHaloRunV1alpha1PluginApi extends BaseAPI {
   /**
-   * Install a theme by uploading a zip file.
-   * @param {ApiHaloRunV1alpha1ThemeApiInstallThemeRequest} requestParameters Request parameters.
+   * Install a plugin by uploading a Jar file.
+   * @param {ApiConsoleHaloRunV1alpha1PluginApiInstallPluginRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1ThemeApi
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApi
    */
-  public installTheme(requestParameters: ApiHaloRunV1alpha1ThemeApiInstallThemeRequest, options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1ThemeApiFp(this.configuration)
-      .installTheme(requestParameters.file, options)
+  public installPlugin(
+    requestParameters: ApiConsoleHaloRunV1alpha1PluginApiInstallPluginRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PluginApiFp(this.configuration)
+      .installPlugin(requestParameters.file, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

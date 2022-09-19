@@ -37,10 +37,10 @@ import { Post } from '../models'
 // @ts-ignore
 import { PostRequest } from '../models'
 /**
- * ApiHaloRunV1alpha1PostApi - axios parameter creator
+ * ApiConsoleHaloRunV1alpha1PostApi - axios parameter creator
  * @export
  */
-export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuration?: Configuration) {
+export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (configuration?: Configuration) {
   return {
     /**
      * Draft a post.
@@ -51,7 +51,7 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
     draftPost: async (postRequest: PostRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'postRequest' is not null or undefined
       assertParamExists('draftPost', 'postRequest', postRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts`
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -85,27 +85,27 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
     },
     /**
      * List posts.
-     * @param {Array<string>} [tags]
      * @param {Array<string>} [contributors]
      * @param {Array<string>} [categories]
+     * @param {Array<string>} [tags]
      * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPosts: async (
-      tags?: Array<string>,
       contributors?: Array<string>,
       categories?: Array<string>,
+      tags?: Array<string>,
       size?: number,
-      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      page?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts`
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -125,10 +125,6 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-      if (tags) {
-        localVarQueryParameter['tags'] = Array.from(tags)
-      }
-
       if (contributors) {
         localVarQueryParameter['contributors'] = Array.from(contributors)
       }
@@ -137,12 +133,12 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
         localVarQueryParameter['categories'] = Array.from(categories)
       }
 
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
+      if (tags) {
+        localVarQueryParameter['tags'] = Array.from(tags)
       }
 
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
       }
 
       if (labelSelector) {
@@ -151,6 +147,10 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -171,7 +171,7 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
     publishPost: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
       assertParamExists('publishPost', 'name', name)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts/{name}/publish`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts/{name}/publish`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -219,7 +219,7 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       assertParamExists('updateDraftPost', 'name', name)
       // verify required parameter 'postRequest' is not null or undefined
       assertParamExists('updateDraftPost', 'postRequest', postRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/posts/{name}`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts/{name}`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -258,11 +258,11 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
 }
 
 /**
- * ApiHaloRunV1alpha1PostApi - functional programming interface
+ * ApiConsoleHaloRunV1alpha1PostApi - functional programming interface
  * @export
  */
-export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = ApiHaloRunV1alpha1PostApiAxiosParamCreator(configuration)
+export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator(configuration)
   return {
     /**
      * Draft a post.
@@ -279,34 +279,34 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
     },
     /**
      * List posts.
-     * @param {Array<string>} [tags]
      * @param {Array<string>} [contributors]
      * @param {Array<string>} [categories]
+     * @param {Array<string>} [tags]
      * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listPosts(
-      tags?: Array<string>,
       contributors?: Array<string>,
       categories?: Array<string>,
+      tags?: Array<string>,
       size?: number,
-      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      page?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
-        tags,
         contributors,
         categories,
+        tags,
         size,
-        page,
         labelSelector,
         fieldSelector,
+        page,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -343,15 +343,15 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
 }
 
 /**
- * ApiHaloRunV1alpha1PostApi - factory interface
+ * ApiConsoleHaloRunV1alpha1PostApi - factory interface
  * @export
  */
-export const ApiHaloRunV1alpha1PostApiFactory = function (
+export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
   axios?: AxiosInstance,
 ) {
-  const localVarFp = ApiHaloRunV1alpha1PostApiFp(configuration)
+  const localVarFp = ApiConsoleHaloRunV1alpha1PostApiFp(configuration)
   return {
     /**
      * Draft a post.
@@ -364,28 +364,28 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
     },
     /**
      * List posts.
-     * @param {Array<string>} [tags]
      * @param {Array<string>} [contributors]
      * @param {Array<string>} [categories]
+     * @param {Array<string>} [tags]
      * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPosts(
-      tags?: Array<string>,
       contributors?: Array<string>,
       categories?: Array<string>,
+      tags?: Array<string>,
       size?: number,
-      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      page?: number,
       options?: any,
     ): AxiosPromise<ListedPostList> {
       return localVarFp
-        .listPosts(tags, contributors, categories, size, page, labelSelector, fieldSelector, options)
+        .listPosts(contributors, categories, tags, size, labelSelector, fieldSelector, page, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -411,147 +411,150 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
 }
 
 /**
- * Request parameters for draftPost operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for draftPost operation in ApiConsoleHaloRunV1alpha1PostApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiDraftPostRequest
+ * @interface ApiConsoleHaloRunV1alpha1PostApiDraftPostRequest
  */
-export interface ApiHaloRunV1alpha1PostApiDraftPostRequest {
+export interface ApiConsoleHaloRunV1alpha1PostApiDraftPostRequest {
   /**
    *
    * @type {PostRequest}
-   * @memberof ApiHaloRunV1alpha1PostApiDraftPost
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiDraftPost
    */
   readonly postRequest: PostRequest
 }
 
 /**
- * Request parameters for listPosts operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for listPosts operation in ApiConsoleHaloRunV1alpha1PostApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiListPostsRequest
+ * @interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest
  */
-export interface ApiHaloRunV1alpha1PostApiListPostsRequest {
+export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   /**
    *
    * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
-   */
-  readonly tags?: Array<string>
-
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly contributors?: Array<string>
 
   /**
    *
    * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly categories?: Array<string>
 
   /**
+   *
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly tags?: Array<string>
+
+  /**
    * Size of one page. Zero indicates no limit.
    * @type {number}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly size?: number
 
   /**
-   * The page number. Zero indicates no page.
-   * @type {number}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
-   */
-  readonly page?: number
-
-  /**
    * Label selector for filtering.
    * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly labelSelector?: Array<string>
 
   /**
    * Field selector for filtering.
    * @type {Array<string>}
-   * @memberof ApiHaloRunV1alpha1PostApiListPosts
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly fieldSelector?: Array<string>
+
+  /**
+   * The page number. Zero indicates no page.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly page?: number
 }
 
 /**
- * Request parameters for publishPost operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for publishPost operation in ApiConsoleHaloRunV1alpha1PostApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiPublishPostRequest
+ * @interface ApiConsoleHaloRunV1alpha1PostApiPublishPostRequest
  */
-export interface ApiHaloRunV1alpha1PostApiPublishPostRequest {
+export interface ApiConsoleHaloRunV1alpha1PostApiPublishPostRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1PostApiPublishPost
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiPublishPost
    */
   readonly name: string
 }
 
 /**
- * Request parameters for updateDraftPost operation in ApiHaloRunV1alpha1PostApi.
+ * Request parameters for updateDraftPost operation in ApiConsoleHaloRunV1alpha1PostApi.
  * @export
- * @interface ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest
+ * @interface ApiConsoleHaloRunV1alpha1PostApiUpdateDraftPostRequest
  */
-export interface ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest {
+export interface ApiConsoleHaloRunV1alpha1PostApiUpdateDraftPostRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1PostApiUpdateDraftPost
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiUpdateDraftPost
    */
   readonly name: string
 
   /**
    *
    * @type {PostRequest}
-   * @memberof ApiHaloRunV1alpha1PostApiUpdateDraftPost
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiUpdateDraftPost
    */
   readonly postRequest: PostRequest
 }
 
 /**
- * ApiHaloRunV1alpha1PostApi - object-oriented interface
+ * ApiConsoleHaloRunV1alpha1PostApi - object-oriented interface
  * @export
- * @class ApiHaloRunV1alpha1PostApi
+ * @class ApiConsoleHaloRunV1alpha1PostApi
  * @extends {BaseAPI}
  */
-export class ApiHaloRunV1alpha1PostApi extends BaseAPI {
+export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
   /**
    * Draft a post.
-   * @param {ApiHaloRunV1alpha1PostApiDraftPostRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1PostApiDraftPostRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiConsoleHaloRunV1alpha1PostApi
    */
-  public draftPost(requestParameters: ApiHaloRunV1alpha1PostApiDraftPostRequest, options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
+  public draftPost(requestParameters: ApiConsoleHaloRunV1alpha1PostApiDraftPostRequest, options?: AxiosRequestConfig) {
+    return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .draftPost(requestParameters.postRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * List posts.
-   * @param {ApiHaloRunV1alpha1PostApiListPostsRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1PostApiListPostsRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiConsoleHaloRunV1alpha1PostApi
    */
-  public listPosts(requestParameters: ApiHaloRunV1alpha1PostApiListPostsRequest = {}, options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
+  public listPosts(
+    requestParameters: ApiConsoleHaloRunV1alpha1PostApiListPostsRequest = {},
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .listPosts(
-        requestParameters.tags,
         requestParameters.contributors,
         requestParameters.categories,
+        requestParameters.tags,
         requestParameters.size,
-        requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
+        requestParameters.page,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
@@ -559,29 +562,32 @@ export class ApiHaloRunV1alpha1PostApi extends BaseAPI {
 
   /**
    * Publish a post.
-   * @param {ApiHaloRunV1alpha1PostApiPublishPostRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1PostApiPublishPostRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiConsoleHaloRunV1alpha1PostApi
    */
-  public publishPost(requestParameters: ApiHaloRunV1alpha1PostApiPublishPostRequest, options?: AxiosRequestConfig) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
+  public publishPost(
+    requestParameters: ApiConsoleHaloRunV1alpha1PostApiPublishPostRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .publishPost(requestParameters.name, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * Update a post.
-   * @param {ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1PostApiUpdateDraftPostRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1PostApi
+   * @memberof ApiConsoleHaloRunV1alpha1PostApi
    */
   public updateDraftPost(
-    requestParameters: ApiHaloRunV1alpha1PostApiUpdateDraftPostRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1PostApiUpdateDraftPostRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1PostApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .updateDraftPost(requestParameters.name, requestParameters.postRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }

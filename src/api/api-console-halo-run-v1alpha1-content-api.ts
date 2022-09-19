@@ -37,10 +37,10 @@ import { ContentWrapper } from '../models'
 // @ts-ignore
 import { SubjectRef } from '../models'
 /**
- * ApiHaloRunV1alpha1ContentApi - axios parameter creator
+ * ApiConsoleHaloRunV1alpha1ContentApi - axios parameter creator
  * @export
  */
-export const ApiHaloRunV1alpha1ContentApiAxiosParamCreator = function (configuration?: Configuration) {
+export const ApiConsoleHaloRunV1alpha1ContentApiAxiosParamCreator = function (configuration?: Configuration) {
   return {
     /**
      * Draft a snapshot content.
@@ -54,7 +54,7 @@ export const ApiHaloRunV1alpha1ContentApiAxiosParamCreator = function (configura
     ): Promise<RequestArgs> => {
       // verify required parameter 'contentRequest' is not null or undefined
       assertParamExists('draftSnapshotContent', 'contentRequest', contentRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/contents`
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/contents`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -95,7 +95,7 @@ export const ApiHaloRunV1alpha1ContentApiAxiosParamCreator = function (configura
     obtainSnapshotContent: async (snapshotName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'snapshotName' is not null or undefined
       assertParamExists('obtainSnapshotContent', 'snapshotName', snapshotName)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/contents/{snapshotName}`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/contents/{snapshotName}`.replace(
         `{${'snapshotName'}}`,
         encodeURIComponent(String(snapshotName)),
       )
@@ -143,7 +143,7 @@ export const ApiHaloRunV1alpha1ContentApiAxiosParamCreator = function (configura
       assertParamExists('publishSnapshotContent', 'snapshotName', snapshotName)
       // verify required parameter 'subjectRef' is not null or undefined
       assertParamExists('publishSnapshotContent', 'subjectRef', subjectRef)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/contents/{snapshotName}/publish`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/contents/{snapshotName}/publish`.replace(
         `{${'snapshotName'}}`,
         encodeURIComponent(String(snapshotName)),
       )
@@ -194,7 +194,7 @@ export const ApiHaloRunV1alpha1ContentApiAxiosParamCreator = function (configura
       assertParamExists('updateSnapshotContent', 'snapshotName', snapshotName)
       // verify required parameter 'contentRequest' is not null or undefined
       assertParamExists('updateSnapshotContent', 'contentRequest', contentRequest)
-      const localVarPath = `/apis/api.halo.run/v1alpha1/contents/{snapshotName}`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/contents/{snapshotName}`.replace(
         `{${'snapshotName'}}`,
         encodeURIComponent(String(snapshotName)),
       )
@@ -233,11 +233,11 @@ export const ApiHaloRunV1alpha1ContentApiAxiosParamCreator = function (configura
 }
 
 /**
- * ApiHaloRunV1alpha1ContentApi - functional programming interface
+ * ApiConsoleHaloRunV1alpha1ContentApi - functional programming interface
  * @export
  */
-export const ApiHaloRunV1alpha1ContentApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = ApiHaloRunV1alpha1ContentApiAxiosParamCreator(configuration)
+export const ApiConsoleHaloRunV1alpha1ContentApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ApiConsoleHaloRunV1alpha1ContentApiAxiosParamCreator(configuration)
   return {
     /**
      * Draft a snapshot content.
@@ -307,15 +307,15 @@ export const ApiHaloRunV1alpha1ContentApiFp = function (configuration?: Configur
 }
 
 /**
- * ApiHaloRunV1alpha1ContentApi - factory interface
+ * ApiConsoleHaloRunV1alpha1ContentApi - factory interface
  * @export
  */
-export const ApiHaloRunV1alpha1ContentApiFactory = function (
+export const ApiConsoleHaloRunV1alpha1ContentApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
   axios?: AxiosInstance,
 ) {
-  const localVarFp = ApiHaloRunV1alpha1ContentApiFp(configuration)
+  const localVarFp = ApiConsoleHaloRunV1alpha1ContentApiFp(configuration)
   return {
     /**
      * Draft a snapshot content.
@@ -367,142 +367,142 @@ export const ApiHaloRunV1alpha1ContentApiFactory = function (
 }
 
 /**
- * Request parameters for draftSnapshotContent operation in ApiHaloRunV1alpha1ContentApi.
+ * Request parameters for draftSnapshotContent operation in ApiConsoleHaloRunV1alpha1ContentApi.
  * @export
- * @interface ApiHaloRunV1alpha1ContentApiDraftSnapshotContentRequest
+ * @interface ApiConsoleHaloRunV1alpha1ContentApiDraftSnapshotContentRequest
  */
-export interface ApiHaloRunV1alpha1ContentApiDraftSnapshotContentRequest {
+export interface ApiConsoleHaloRunV1alpha1ContentApiDraftSnapshotContentRequest {
   /**
    *
    * @type {ContentRequest}
-   * @memberof ApiHaloRunV1alpha1ContentApiDraftSnapshotContent
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApiDraftSnapshotContent
    */
   readonly contentRequest: ContentRequest
 }
 
 /**
- * Request parameters for obtainSnapshotContent operation in ApiHaloRunV1alpha1ContentApi.
+ * Request parameters for obtainSnapshotContent operation in ApiConsoleHaloRunV1alpha1ContentApi.
  * @export
- * @interface ApiHaloRunV1alpha1ContentApiObtainSnapshotContentRequest
+ * @interface ApiConsoleHaloRunV1alpha1ContentApiObtainSnapshotContentRequest
  */
-export interface ApiHaloRunV1alpha1ContentApiObtainSnapshotContentRequest {
+export interface ApiConsoleHaloRunV1alpha1ContentApiObtainSnapshotContentRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1ContentApiObtainSnapshotContent
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApiObtainSnapshotContent
    */
   readonly snapshotName: string
 }
 
 /**
- * Request parameters for publishSnapshotContent operation in ApiHaloRunV1alpha1ContentApi.
+ * Request parameters for publishSnapshotContent operation in ApiConsoleHaloRunV1alpha1ContentApi.
  * @export
- * @interface ApiHaloRunV1alpha1ContentApiPublishSnapshotContentRequest
+ * @interface ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest
  */
-export interface ApiHaloRunV1alpha1ContentApiPublishSnapshotContentRequest {
+export interface ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1ContentApiPublishSnapshotContent
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContent
    */
   readonly snapshotName: string
 
   /**
    *
    * @type {SubjectRef}
-   * @memberof ApiHaloRunV1alpha1ContentApiPublishSnapshotContent
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContent
    */
   readonly subjectRef: SubjectRef
 }
 
 /**
- * Request parameters for updateSnapshotContent operation in ApiHaloRunV1alpha1ContentApi.
+ * Request parameters for updateSnapshotContent operation in ApiConsoleHaloRunV1alpha1ContentApi.
  * @export
- * @interface ApiHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest
+ * @interface ApiConsoleHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest
  */
-export interface ApiHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest {
+export interface ApiConsoleHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiHaloRunV1alpha1ContentApiUpdateSnapshotContent
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApiUpdateSnapshotContent
    */
   readonly snapshotName: string
 
   /**
    *
    * @type {ContentRequest}
-   * @memberof ApiHaloRunV1alpha1ContentApiUpdateSnapshotContent
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApiUpdateSnapshotContent
    */
   readonly contentRequest: ContentRequest
 }
 
 /**
- * ApiHaloRunV1alpha1ContentApi - object-oriented interface
+ * ApiConsoleHaloRunV1alpha1ContentApi - object-oriented interface
  * @export
- * @class ApiHaloRunV1alpha1ContentApi
+ * @class ApiConsoleHaloRunV1alpha1ContentApi
  * @extends {BaseAPI}
  */
-export class ApiHaloRunV1alpha1ContentApi extends BaseAPI {
+export class ApiConsoleHaloRunV1alpha1ContentApi extends BaseAPI {
   /**
    * Draft a snapshot content.
-   * @param {ApiHaloRunV1alpha1ContentApiDraftSnapshotContentRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1ContentApiDraftSnapshotContentRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1ContentApi
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApi
    */
   public draftSnapshotContent(
-    requestParameters: ApiHaloRunV1alpha1ContentApiDraftSnapshotContentRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1ContentApiDraftSnapshotContentRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1ContentApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1ContentApiFp(this.configuration)
       .draftSnapshotContent(requestParameters.contentRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * Obtain a snapshot content.
-   * @param {ApiHaloRunV1alpha1ContentApiObtainSnapshotContentRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1ContentApiObtainSnapshotContentRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1ContentApi
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApi
    */
   public obtainSnapshotContent(
-    requestParameters: ApiHaloRunV1alpha1ContentApiObtainSnapshotContentRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1ContentApiObtainSnapshotContentRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1ContentApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1ContentApiFp(this.configuration)
       .obtainSnapshotContent(requestParameters.snapshotName, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * Publish a snapshot content.
-   * @param {ApiHaloRunV1alpha1ContentApiPublishSnapshotContentRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1ContentApi
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApi
    */
   public publishSnapshotContent(
-    requestParameters: ApiHaloRunV1alpha1ContentApiPublishSnapshotContentRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1ContentApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1ContentApiFp(this.configuration)
       .publishSnapshotContent(requestParameters.snapshotName, requestParameters.subjectRef, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * Update a snapshot content.
-   * @param {ApiHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest} requestParameters Request parameters.
+   * @param {ApiConsoleHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ApiHaloRunV1alpha1ContentApi
+   * @memberof ApiConsoleHaloRunV1alpha1ContentApi
    */
   public updateSnapshotContent(
-    requestParameters: ApiHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest,
+    requestParameters: ApiConsoleHaloRunV1alpha1ContentApiUpdateSnapshotContentRequest,
     options?: AxiosRequestConfig,
   ) {
-    return ApiHaloRunV1alpha1ContentApiFp(this.configuration)
+    return ApiConsoleHaloRunV1alpha1ContentApiFp(this.configuration)
       .updateSnapshotContent(requestParameters.snapshotName, requestParameters.contentRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
