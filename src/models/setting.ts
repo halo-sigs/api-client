@@ -23,10 +23,10 @@ import { SettingSpec } from './setting-spec'
 export interface Setting {
   /**
    *
-   * @type {Array<SettingSpec>}
+   * @type {SettingSpec}
    * @memberof Setting
    */
-  spec: Array<SettingSpec>
+  spec: SettingSpec
   /**
    *
    * @type {string}

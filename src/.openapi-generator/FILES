@@ -121,6 +121,7 @@ models/role-binding.ts
 models/role-list.ts
 models/role-ref.ts
 models/role.ts
+models/setting-form.ts
 models/setting-list.ts
 models/setting-spec.ts
 models/setting.ts

@@ -52,12 +52,6 @@ export interface PostStatus {
   inProgress?: boolean
   /**
    *
-   * @type {number}
-   * @memberof PostStatus
-   */
-  commentsCount?: number
-  /**
-   *
    * @type {Array<string>}
    * @memberof PostStatus
    */

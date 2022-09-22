@@ -12,6 +12,8 @@
  * Do not edit the class manually.
  */
 
+import { SettingForm } from './setting-form'
+
 /**
  *
  * @export
@@ -20,20 +22,8 @@
 export interface SettingSpec {
   /**
    *
-   * @type {string}
+   * @type {Array<SettingForm>}
    * @memberof SettingSpec
    */
-  group: string
-  /**
-   *
-   * @type {string}
-   * @memberof SettingSpec
-   */
-  label?: string
-  /**
-   *
-   * @type {Array<object>}
-   * @memberof SettingSpec
-   */
-  formSchema?: Array<object>
+  forms: Array<SettingForm>
 }

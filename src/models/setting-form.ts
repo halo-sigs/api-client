@@ -12,30 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface Extension
+ * @interface SettingForm
  */
-export interface Extension {
+export interface SettingForm {
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof SettingForm
    */
-  kind: string
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Extension
-   */
-  metadata: Metadata
+  group: string
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof SettingForm
    */
-  apiVersion: string
+  label?: string
+  /**
+   *
+   * @type {Array<object>}
+   * @memberof SettingForm
+   */
+  formSchema: Array<object>
 }
