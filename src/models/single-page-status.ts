@@ -52,6 +52,12 @@ export interface SinglePageStatus {
   inProgress?: boolean
   /**
    *
+   * @type {number}
+   * @memberof SinglePageStatus
+   */
+  commentsCount?: number
+  /**
+   *
    * @type {Array<string>}
    * @memberof SinglePageStatus
    */
