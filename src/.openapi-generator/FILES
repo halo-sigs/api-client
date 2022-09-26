@@ -9,6 +9,7 @@ api/api-console-halo-run-v1alpha1-reply-api.ts
 api/api-console-halo-run-v1alpha1-single-page-api.ts
 api/api-console-halo-run-v1alpha1-theme-api.ts
 api/api-console-halo-run-v1alpha1-user-api.ts
+api/api-halo-run-v1alpha1-comment-api.ts
 api/content-halo-run-v1alpha1-category-api.ts
 api/content-halo-run-v1alpha1-comment-api.ts
 api/content-halo-run-v1alpha1-post-api.ts
@@ -52,6 +53,8 @@ models/comment-owner.ts
 models/comment-request.ts
 models/comment-spec.ts
 models/comment-status.ts
+models/comment-vo-list.ts
+models/comment-vo.ts
 models/comment.ts
 models/compact-post.ts
 models/condition.ts
@@ -112,6 +115,8 @@ models/ref.ts
 models/reply-list.ts
 models/reply-request.ts
 models/reply-spec.ts
+models/reply-vo-list.ts
+models/reply-vo.ts
 models/reply.ts
 models/reverse-proxy-list.ts
 models/reverse-proxy-rule.ts

@@ -13,29 +13,31 @@
  */
 
 import { Metadata } from './metadata'
+import { OwnerInfo } from './owner-info'
+import { ReplySpec } from './reply-spec'
 
 /**
- *
+ * A chunk of items.
  * @export
- * @interface Extension
+ * @interface ReplyVo
  */
-export interface Extension {
-  /**
-   *
-   * @type {string}
-   * @memberof Extension
-   */
-  apiVersion: string
+export interface ReplyVo {
   /**
    *
    * @type {Metadata}
-   * @memberof Extension
+   * @memberof ReplyVo
    */
   metadata: Metadata
   /**
    *
-   * @type {string}
-   * @memberof Extension
+   * @type {ReplySpec}
+   * @memberof ReplyVo
    */
-  kind: string
+  spec: ReplySpec
+  /**
+   *
+   * @type {OwnerInfo}
+   * @memberof ReplyVo
+   */
+  owner: OwnerInfo
 }
