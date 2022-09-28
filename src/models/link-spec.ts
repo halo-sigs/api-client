@@ -12,30 +12,40 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface Extension
+ * @interface LinkSpec
  */
-export interface Extension {
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Extension
-   */
-  metadata: Metadata
+export interface LinkSpec {
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof LinkSpec
    */
-  apiVersion: string
+  url: string
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof LinkSpec
    */
-  kind: string
+  displayName: string
+  /**
+   *
+   * @type {string}
+   * @memberof LinkSpec
+   */
+  logo?: string
+  /**
+   *
+   * @type {string}
+   * @memberof LinkSpec
+   */
+  description?: string
+  /**
+   *
+   * @type {number}
+   * @memberof LinkSpec
+   */
+  priority?: number
 }

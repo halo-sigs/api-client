@@ -235,8 +235,8 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
      *
      * @param {string} [policy] Name of policy
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [group] Name of group
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -247,8 +247,8 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
     searchAttachments: async (
       policy?: string,
       displayName?: string,
-      uploadedBy?: string,
       group?: string,
+      uploadedBy?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -283,12 +283,12 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
         localVarQueryParameter['displayName'] = displayName
       }
 
-      if (uploadedBy !== undefined) {
-        localVarQueryParameter['uploadedBy'] = uploadedBy
-      }
-
       if (group !== undefined) {
         localVarQueryParameter['group'] = group
+      }
+
+      if (uploadedBy !== undefined) {
+        localVarQueryParameter['uploadedBy'] = uploadedBy
       }
 
       if (size !== undefined) {
@@ -509,8 +509,8 @@ export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: C
      *
      * @param {string} [policy] Name of policy
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [group] Name of group
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -521,8 +521,8 @@ export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: C
     async searchAttachments(
       policy?: string,
       displayName?: string,
-      uploadedBy?: string,
       group?: string,
+      uploadedBy?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -532,8 +532,8 @@ export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: C
       const localVarAxiosArgs = await localVarAxiosParamCreator.searchAttachments(
         policy,
         displayName,
-        uploadedBy,
         group,
+        uploadedBy,
         size,
         labelSelector,
         fieldSelector,
@@ -647,8 +647,8 @@ export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
      *
      * @param {string} [policy] Name of policy
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [group] Name of group
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -659,8 +659,8 @@ export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
     searchAttachments(
       policy?: string,
       displayName?: string,
-      uploadedBy?: string,
       group?: string,
+      uploadedBy?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -668,7 +668,7 @@ export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
       options?: any,
     ): AxiosPromise<AttachmentList> {
       return localVarFp
-        .searchAttachments(policy, displayName, uploadedBy, group, size, labelSelector, fieldSelector, page, options)
+        .searchAttachments(policy, displayName, group, uploadedBy, size, labelSelector, fieldSelector, page, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -801,18 +801,18 @@ export interface StorageHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest {
   readonly displayName?: string
 
   /**
-   * Name of user who uploaded the attachment
-   * @type {string}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly uploadedBy?: string
-
-  /**
    * Name of group
    * @type {string}
    * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
    */
   readonly group?: string
+
+  /**
+   * Name of user who uploaded the attachment
+   * @type {string}
+   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
+   */
+  readonly uploadedBy?: string
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -984,8 +984,8 @@ export class StorageHaloRunV1alpha1AttachmentApi extends BaseAPI {
       .searchAttachments(
         requestParameters.policy,
         requestParameters.displayName,
-        requestParameters.uploadedBy,
         requestParameters.group,
+        requestParameters.uploadedBy,
         requestParameters.size,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,

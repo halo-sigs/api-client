@@ -12,30 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface Extension
+ * @interface LinkGroupSpec
  */
-export interface Extension {
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Extension
-   */
-  metadata: Metadata
+export interface LinkGroupSpec {
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof LinkGroupSpec
    */
-  apiVersion: string
+  displayName: string
   /**
    *
-   * @type {string}
-   * @memberof Extension
+   * @type {number}
+   * @memberof LinkGroupSpec
    */
-  kind: string
+  priority?: number
+  /**
+   * Names of links below this group.
+   * @type {Array<string>}
+   * @memberof LinkGroupSpec
+   */
+  links?: Array<string>
 }

@@ -17,6 +17,8 @@ api/content-halo-run-v1alpha1-reply-api.ts
 api/content-halo-run-v1alpha1-single-page-api.ts
 api/content-halo-run-v1alpha1-snapshot-api.ts
 api/content-halo-run-v1alpha1-tag-api.ts
+api/core-halo-run-v1alpha1-link-api.ts
+api/core-halo-run-v1alpha1-link-group-api.ts
 api/plugin-halo-run-v1alpha1-plugin-api.ts
 api/plugin-halo-run-v1alpha1-reverse-proxy-api.ts
 api/storage-halo-run-v1alpha1-attachment-api.ts
@@ -74,6 +76,10 @@ models/group-status.ts
 models/group.ts
 models/index.ts
 models/license.ts
+models/link-group-spec.ts
+models/link-group.ts
+models/link-spec.ts
+models/link.ts
 models/listed-comment-list.ts
 models/listed-comment.ts
 models/listed-post-list.ts

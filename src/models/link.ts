@@ -12,30 +12,37 @@
  * Do not edit the class manually.
  */
 
+import { LinkSpec } from './link-spec'
 import { Metadata } from './metadata'
 
 /**
  *
  * @export
- * @interface Extension
+ * @interface Link
  */
-export interface Extension {
+export interface Link {
   /**
    *
-   * @type {Metadata}
-   * @memberof Extension
+   * @type {LinkSpec}
+   * @memberof Link
    */
-  metadata: Metadata
+  spec?: LinkSpec
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof Link
    */
   apiVersion: string
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof Link
    */
   kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof Link
+   */
+  metadata: Metadata
 }

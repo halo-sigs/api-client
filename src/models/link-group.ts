@@ -12,30 +12,37 @@
  * Do not edit the class manually.
  */
 
+import { LinkGroupSpec } from './link-group-spec'
 import { Metadata } from './metadata'
 
 /**
  *
  * @export
- * @interface Extension
+ * @interface LinkGroup
  */
-export interface Extension {
+export interface LinkGroup {
   /**
    *
-   * @type {Metadata}
-   * @memberof Extension
+   * @type {LinkGroupSpec}
+   * @memberof LinkGroup
    */
-  metadata: Metadata
+  spec?: LinkGroupSpec
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof LinkGroup
    */
   apiVersion: string
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof LinkGroup
    */
   kind: string
+  /**
+   *
+   * @type {Metadata}
+   * @memberof LinkGroup
+   */
+  metadata: Metadata
 }
