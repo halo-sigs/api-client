@@ -58,7 +58,6 @@ models/comment-status.ts
 models/comment-vo-list.ts
 models/comment-vo.ts
 models/comment.ts
-models/compact-post.ts
 models/condition.ts
 models/config-map-list.ts
 models/config-map.ts
@@ -152,7 +151,6 @@ models/tag-status.ts
 models/tag.ts
 models/theme-list.ts
 models/theme-spec.ts
-models/theme-status.ts
 models/theme.ts
 models/user-list.ts
 models/user-permission.ts

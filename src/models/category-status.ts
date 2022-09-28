@@ -12,8 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { CompactPost } from './compact-post'
-
 /**
  *
  * @export
@@ -28,8 +26,14 @@ export interface CategoryStatus {
   permalink?: string
   /**
    *
-   * @type {Array<CompactPost>}
+   * @type {number}
    * @memberof CategoryStatus
    */
-  posts?: Array<CompactPost>
+  postCount?: number
+  /**
+   *
+   * @type {number}
+   * @memberof CategoryStatus
+   */
+  visiblePostCount?: number
 }
