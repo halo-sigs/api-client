@@ -31,8 +31,6 @@ import {
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
 // @ts-ignore
-import { Setting } from '../models'
-// @ts-ignore
 import { Theme } from '../models'
 /**
  * ApiConsoleHaloRunV1alpha1ThemeApi - axios parameter creator
@@ -159,7 +157,7 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
     async reloadThemeSetting(
       name: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Setting>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Theme>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.reloadThemeSetting(name, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -192,7 +190,7 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    reloadThemeSetting(name: string, options?: any): AxiosPromise<Setting> {
+    reloadThemeSetting(name: string, options?: any): AxiosPromise<Theme> {
       return localVarFp.reloadThemeSetting(name, options).then((request) => request(axios, basePath))
     },
   }

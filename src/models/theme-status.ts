@@ -12,30 +12,16 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface Extension
+ * @interface ThemeStatus
  */
-export interface Extension {
-  /**
-   *
-   * @type {Metadata}
-   * @memberof Extension
-   */
-  metadata: Metadata
+export interface ThemeStatus {
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof ThemeStatus
    */
-  apiVersion: string
-  /**
-   *
-   * @type {string}
-   * @memberof Extension
-   */
-  kind: string
+  location?: string
 }

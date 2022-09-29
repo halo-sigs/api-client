@@ -151,6 +151,7 @@ models/tag-status.ts
 models/tag.ts
 models/theme-list.ts
 models/theme-spec.ts
+models/theme-status.ts
 models/theme.ts
 models/user-list.ts
 models/user-permission.ts

@@ -14,6 +14,7 @@
 
 import { Metadata } from './metadata'
 import { ThemeSpec } from './theme-spec'
+import { ThemeStatus } from './theme-status'
 
 /**
  *
@@ -27,6 +28,12 @@ export interface Theme {
    * @memberof Theme
    */
   spec: ThemeSpec
+  /**
+   *
+   * @type {ThemeStatus}
+   * @memberof Theme
+   */
+  status?: ThemeStatus
   /**
    *
    * @type {string}
