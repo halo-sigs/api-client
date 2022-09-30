@@ -12,32 +12,46 @@
  * Do not edit the class manually.
  */
 
-import { Contributor } from './contributor'
-import { SinglePage } from './single-page'
-import { Stats } from './stats'
-
 /**
- * A chunk of items.
+ *
  * @export
- * @interface ListedSinglePage
+ * @interface Stats
  */
-export interface ListedSinglePage {
+export interface Stats {
   /**
    *
-   * @type {SinglePage}
-   * @memberof ListedSinglePage
+   * @type {number}
+   * @memberof Stats
    */
-  page: SinglePage
+  visits?: number
   /**
    *
-   * @type {Array<Contributor>}
-   * @memberof ListedSinglePage
+   * @type {number}
+   * @memberof Stats
    */
-  contributors: Array<Contributor>
+  comments?: number
   /**
    *
-   * @type {Stats}
-   * @memberof ListedSinglePage
+   * @type {number}
+   * @memberof Stats
    */
-  stats: Stats
+  approvedComments?: number
+  /**
+   *
+   * @type {number}
+   * @memberof Stats
+   */
+  upvotes?: number
+  /**
+   *
+   * @type {number}
+   * @memberof Stats
+   */
+  users?: number
+  /**
+   *
+   * @type {number}
+   * @memberof Stats
+   */
+  posts?: number
 }

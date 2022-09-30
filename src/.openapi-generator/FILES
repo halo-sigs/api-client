@@ -7,9 +7,11 @@ api/api-console-halo-run-v1alpha1-plugin-api.ts
 api/api-console-halo-run-v1alpha1-post-api.ts
 api/api-console-halo-run-v1alpha1-reply-api.ts
 api/api-console-halo-run-v1alpha1-single-page-api.ts
+api/api-console-halo-run-v1alpha1-stats-api.ts
 api/api-console-halo-run-v1alpha1-theme-api.ts
 api/api-console-halo-run-v1alpha1-user-api.ts
 api/api-halo-run-v1alpha1-comment-api.ts
+api/api-halo-run-v1alpha1-tracker-api.ts
 api/content-halo-run-v1alpha1-category-api.ts
 api/content-halo-run-v1alpha1-comment-api.ts
 api/content-halo-run-v1alpha1-post-api.ts
@@ -19,6 +21,7 @@ api/content-halo-run-v1alpha1-snapshot-api.ts
 api/content-halo-run-v1alpha1-tag-api.ts
 api/core-halo-run-v1alpha1-link-api.ts
 api/core-halo-run-v1alpha1-link-group-api.ts
+api/metrics-halo-run-v1alpha1-counter-api.ts
 api/plugin-halo-run-v1alpha1-plugin-api.ts
 api/plugin-halo-run-v1alpha1-reverse-proxy-api.ts
 api/storage-halo-run-v1alpha1-attachment-api.ts
@@ -65,6 +68,9 @@ models/content-request.ts
 models/content-wrapper.ts
 models/content.ts
 models/contributor.ts
+models/counter-list.ts
+models/counter-request.ts
+models/counter.ts
 models/excerpt.ts
 models/extension.ts
 models/file-reverse-proxy-provider.ts
@@ -143,6 +149,7 @@ models/single-page.ts
 models/snap-shot-spec.ts
 models/snapshot-list.ts
 models/snapshot.ts
+models/stats.ts
 models/subject-ref.ts
 models/subject.ts
 models/tag-list.ts

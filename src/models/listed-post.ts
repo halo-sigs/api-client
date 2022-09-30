@@ -15,6 +15,7 @@
 import { Category } from './category'
 import { Contributor } from './contributor'
 import { Post } from './post'
+import { Stats } from './stats'
 import { Tag } from './tag'
 
 /**
@@ -47,4 +48,10 @@ export interface ListedPost {
    * @memberof ListedPost
    */
   contributors: Array<Contributor>
+  /**
+   *
+   * @type {Stats}
+   * @memberof ListedPost
+   */
+  stats: Stats
 }
