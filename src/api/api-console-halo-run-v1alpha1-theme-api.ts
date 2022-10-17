@@ -32,6 +32,8 @@ import {
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
 // @ts-ignore
 import { Theme } from '../models'
+// @ts-ignore
+import { ThemeList } from '../models'
 /**
  * ApiConsoleHaloRunV1alpha1ThemeApi - axios parameter creator
  * @export
@@ -78,6 +80,75 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
       localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
       localVarRequestOptions.data = localVarFormParams
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List themes.
+     * @param {boolean} uninstalled
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listThemes: async (
+      uninstalled: boolean,
+      size?: number,
+      page?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'uninstalled' is not null or undefined
+      assertParamExists('listThemes', 'uninstalled', uninstalled)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/themes`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (uninstalled !== undefined) {
+        localVarQueryParameter['uninstalled'] = uninstalled
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
+      }
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
+      }
+
+      if (fieldSelector) {
+        localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
 
       return {
         url: toPathString(localVarUrlObj),
@@ -149,6 +220,34 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
+     * List themes.
+     * @param {boolean} uninstalled
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listThemes(
+      uninstalled: boolean,
+      size?: number,
+      page?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThemeList>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listThemes(
+        uninstalled,
+        size,
+        page,
+        labelSelector,
+        fieldSelector,
+        options,
+      )
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
      * Reload theme setting.
      * @param {string} name
      * @param {*} [options] Override http request option.
@@ -185,6 +284,28 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
       return localVarFp.installTheme(file, options).then((request) => request(axios, basePath))
     },
     /**
+     * List themes.
+     * @param {boolean} uninstalled
+     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
+     * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listThemes(
+      uninstalled: boolean,
+      size?: number,
+      page?: number,
+      labelSelector?: Array<string>,
+      fieldSelector?: Array<string>,
+      options?: any,
+    ): AxiosPromise<ThemeList> {
+      return localVarFp
+        .listThemes(uninstalled, size, page, labelSelector, fieldSelector, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Reload theme setting.
      * @param {string} name
      * @param {*} [options] Override http request option.
@@ -208,6 +329,48 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiInstallThemeRequest {
    * @memberof ApiConsoleHaloRunV1alpha1ThemeApiInstallTheme
    */
   readonly file: any
+}
+
+/**
+ * Request parameters for listThemes operation in ApiConsoleHaloRunV1alpha1ThemeApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest {
+  /**
+   *
+   * @type {boolean}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
+   */
+  readonly uninstalled: boolean
+
+  /**
+   * Size of one page. Zero indicates no limit.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
+   */
+  readonly size?: number
+
+  /**
+   * The page number. Zero indicates no page.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
+   */
+  readonly page?: number
+
+  /**
+   * Label selector for filtering.
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
+   */
+  readonly labelSelector?: Array<string>
+
+  /**
+   * Field selector for filtering.
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
+   */
+  readonly fieldSelector?: Array<string>
 }
 
 /**
@@ -244,6 +407,29 @@ export class ApiConsoleHaloRunV1alpha1ThemeApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
       .installTheme(requestParameters.file, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List themes.
+   * @param {ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApi
+   */
+  public listThemes(
+    requestParameters: ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
+      .listThemes(
+        requestParameters.uninstalled,
+        requestParameters.size,
+        requestParameters.page,
+        requestParameters.labelSelector,
+        requestParameters.fieldSelector,
+        options,
+      )
       .then((request) => request(this.axios, this.basePath))
   }
 

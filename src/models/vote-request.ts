@@ -12,37 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { LinkGroupSpec } from './link-group-spec'
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface LinkGroup
+ * @interface VoteRequest
  */
-export interface LinkGroup {
-  /**
-   *
-   * @type {LinkGroupSpec}
-   * @memberof LinkGroup
-   */
-  spec?: LinkGroupSpec
+export interface VoteRequest {
   /**
    *
    * @type {string}
-   * @memberof LinkGroup
+   * @memberof VoteRequest
    */
-  apiVersion: string
+  group?: string
   /**
    *
    * @type {string}
-   * @memberof LinkGroup
+   * @memberof VoteRequest
    */
-  kind: string
+  plural?: string
   /**
    *
-   * @type {Metadata}
-   * @memberof LinkGroup
+   * @type {string}
+   * @memberof VoteRequest
    */
-  metadata: Metadata
+  name?: string
 }

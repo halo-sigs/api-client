@@ -1,6 +1,7 @@
 .gitignore
 .npmignore
 api.ts
+api/api-console-halo-run-v1alpha1-attachment-api.ts
 api/api-console-halo-run-v1alpha1-comment-api.ts
 api/api-console-halo-run-v1alpha1-content-api.ts
 api/api-console-halo-run-v1alpha1-plugin-api.ts
@@ -19,8 +20,6 @@ api/content-halo-run-v1alpha1-reply-api.ts
 api/content-halo-run-v1alpha1-single-page-api.ts
 api/content-halo-run-v1alpha1-snapshot-api.ts
 api/content-halo-run-v1alpha1-tag-api.ts
-api/core-halo-run-v1alpha1-link-api.ts
-api/core-halo-run-v1alpha1-link-group-api.ts
 api/metrics-halo-run-v1alpha1-counter-api.ts
 api/plugin-halo-run-v1alpha1-plugin-api.ts
 api/plugin-halo-run-v1alpha1-reverse-proxy-api.ts
@@ -81,10 +80,6 @@ models/group-status.ts
 models/group.ts
 models/index.ts
 models/license.ts
-models/link-group-spec.ts
-models/link-group.ts
-models/link-spec.ts
-models/link.ts
 models/listed-comment-list.ts
 models/listed-comment.ts
 models/listed-post-list.ts
@@ -165,3 +160,4 @@ models/user-permission.ts
 models/user-spec.ts
 models/user-status.ts
 models/user.ts
+models/vote-request.ts

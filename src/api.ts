@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+export * from './api/api-console-halo-run-v1alpha1-attachment-api'
 export * from './api/api-console-halo-run-v1alpha1-comment-api'
 export * from './api/api-console-halo-run-v1alpha1-content-api'
 export * from './api/api-console-halo-run-v1alpha1-plugin-api'
@@ -30,8 +31,6 @@ export * from './api/content-halo-run-v1alpha1-reply-api'
 export * from './api/content-halo-run-v1alpha1-single-page-api'
 export * from './api/content-halo-run-v1alpha1-snapshot-api'
 export * from './api/content-halo-run-v1alpha1-tag-api'
-export * from './api/core-halo-run-v1alpha1-link-api'
-export * from './api/core-halo-run-v1alpha1-link-group-api'
 export * from './api/metrics-halo-run-v1alpha1-counter-api'
 export * from './api/plugin-halo-run-v1alpha1-plugin-api'
 export * from './api/plugin-halo-run-v1alpha1-reverse-proxy-api'

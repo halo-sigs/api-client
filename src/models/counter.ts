@@ -37,6 +37,12 @@ export interface Counter {
    * @type {number}
    * @memberof Counter
    */
+  downvote?: number
+  /**
+   *
+   * @type {number}
+   * @memberof Counter
+   */
   totalComment?: number
   /**
    *

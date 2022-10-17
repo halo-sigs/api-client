@@ -232,91 +232,6 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
       }
     },
     /**
-     *
-     * @param {string} [policy] Name of policy
-     * @param {string} [displayName] Display name of attachment
-     * @param {string} [group] Name of group
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
-     * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {Array<string>} [labelSelector] Label selector for filtering.
-     * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    searchAttachments: async (
-      policy?: string,
-      displayName?: string,
-      group?: string,
-      uploadedBy?: string,
-      size?: number,
-      labelSelector?: Array<string>,
-      fieldSelector?: Array<string>,
-      page?: number,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/apis/api.console.halo.run/v1alpha1/attachments`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication BasicAuth required
-      // http basic authentication required
-      setBasicAuthToObject(localVarRequestOptions, configuration)
-
-      // authentication BearerAuth required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-      if (policy !== undefined) {
-        localVarQueryParameter['policy'] = policy
-      }
-
-      if (displayName !== undefined) {
-        localVarQueryParameter['displayName'] = displayName
-      }
-
-      if (group !== undefined) {
-        localVarQueryParameter['group'] = group
-      }
-
-      if (uploadedBy !== undefined) {
-        localVarQueryParameter['uploadedBy'] = uploadedBy
-      }
-
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
-      }
-
-      if (labelSelector) {
-        localVarQueryParameter['labelSelector'] = labelSelector
-      }
-
-      if (fieldSelector) {
-        localVarQueryParameter['fieldSelector'] = fieldSelector
-      }
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
-      }
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * Update storage.halo.run/v1alpha1/Attachment
      * @param {string} name Name of attachment
      * @param {Attachment} [attachment] Updated attachment
@@ -359,69 +274,6 @@ export const StorageHaloRunV1alpha1AttachmentApiAxiosParamCreator = function (co
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
       localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
       localVarRequestOptions.data = serializeDataIfNeeded(attachment, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     *
-     * @param {any} file
-     * @param {string} policyName Storage policy name
-     * @param {string} [groupName] The name of the group to which the attachment belongs
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    uploadAttachment: async (
-      file: any,
-      policyName: string,
-      groupName?: string,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'file' is not null or undefined
-      assertParamExists('uploadAttachment', 'file', file)
-      // verify required parameter 'policyName' is not null or undefined
-      assertParamExists('uploadAttachment', 'policyName', policyName)
-      const localVarPath = `/apis/api.console.halo.run/v1alpha1/attachments/upload`
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-      const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)()
-
-      // authentication BasicAuth required
-      // http basic authentication required
-      setBasicAuthToObject(localVarRequestOptions, configuration)
-
-      // authentication BearerAuth required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-      if (file !== undefined) {
-        localVarFormParams.append('file', file as any)
-      }
-
-      if (policyName !== undefined) {
-        localVarFormParams.append('policyName', policyName as any)
-      }
-
-      if (groupName !== undefined) {
-        localVarFormParams.append('groupName', groupName as any)
-      }
-
-      localVarHeaderParameter['Content-Type'] = 'multipart/form-data'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = localVarFormParams
 
       return {
         url: toPathString(localVarUrlObj),
@@ -506,43 +358,6 @@ export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: C
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
-     *
-     * @param {string} [policy] Name of policy
-     * @param {string} [displayName] Display name of attachment
-     * @param {string} [group] Name of group
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
-     * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {Array<string>} [labelSelector] Label selector for filtering.
-     * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async searchAttachments(
-      policy?: string,
-      displayName?: string,
-      group?: string,
-      uploadedBy?: string,
-      size?: number,
-      labelSelector?: Array<string>,
-      fieldSelector?: Array<string>,
-      page?: number,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.searchAttachments(
-        policy,
-        displayName,
-        group,
-        uploadedBy,
-        size,
-        labelSelector,
-        fieldSelector,
-        page,
-        options,
-      )
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
      * Update storage.halo.run/v1alpha1/Attachment
      * @param {string} name Name of attachment
      * @param {Attachment} [attachment] Updated attachment
@@ -559,23 +374,6 @@ export const StorageHaloRunV1alpha1AttachmentApiFp = function (configuration?: C
         attachment,
         options,
       )
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     *
-     * @param {any} file
-     * @param {string} policyName Storage policy name
-     * @param {string} [groupName] The name of the group to which the attachment belongs
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async uploadAttachment(
-      file: any,
-      policyName: string,
-      groupName?: string,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Attachment>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.uploadAttachment(file, policyName, groupName, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
   }
@@ -644,34 +442,6 @@ export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
-     *
-     * @param {string} [policy] Name of policy
-     * @param {string} [displayName] Display name of attachment
-     * @param {string} [group] Name of group
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
-     * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {Array<string>} [labelSelector] Label selector for filtering.
-     * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    searchAttachments(
-      policy?: string,
-      displayName?: string,
-      group?: string,
-      uploadedBy?: string,
-      size?: number,
-      labelSelector?: Array<string>,
-      fieldSelector?: Array<string>,
-      page?: number,
-      options?: any,
-    ): AxiosPromise<AttachmentList> {
-      return localVarFp
-        .searchAttachments(policy, displayName, group, uploadedBy, size, labelSelector, fieldSelector, page, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
      * Update storage.halo.run/v1alpha1/Attachment
      * @param {string} name Name of attachment
      * @param {Attachment} [attachment] Updated attachment
@@ -685,19 +455,6 @@ export const StorageHaloRunV1alpha1AttachmentApiFactory = function (
     ): AxiosPromise<Attachment> {
       return localVarFp
         .updatestorageHaloRunV1alpha1Attachment(name, attachment, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     *
-     * @param {any} file
-     * @param {string} policyName Storage policy name
-     * @param {string} [groupName] The name of the group to which the attachment belongs
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    uploadAttachment(file: any, policyName: string, groupName?: string, options?: any): AxiosPromise<Attachment> {
-      return localVarFp
-        .uploadAttachment(file, policyName, groupName, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -781,69 +538,6 @@ export interface StorageHaloRunV1alpha1AttachmentApiListstorageHaloRunV1alpha1At
 }
 
 /**
- * Request parameters for searchAttachments operation in StorageHaloRunV1alpha1AttachmentApi.
- * @export
- * @interface StorageHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest
- */
-export interface StorageHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest {
-  /**
-   * Name of policy
-   * @type {string}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly policy?: string
-
-  /**
-   * Display name of attachment
-   * @type {string}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly displayName?: string
-
-  /**
-   * Name of group
-   * @type {string}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly group?: string
-
-  /**
-   * Name of user who uploaded the attachment
-   * @type {string}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly uploadedBy?: string
-
-  /**
-   * Size of one page. Zero indicates no limit.
-   * @type {number}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly size?: number
-
-  /**
-   * Label selector for filtering.
-   * @type {Array<string>}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly labelSelector?: Array<string>
-
-  /**
-   * Field selector for filtering.
-   * @type {Array<string>}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly fieldSelector?: Array<string>
-
-  /**
-   * The page number. Zero indicates no page.
-   * @type {number}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly page?: number
-}
-
-/**
  * Request parameters for updatestorageHaloRunV1alpha1Attachment operation in StorageHaloRunV1alpha1AttachmentApi.
  * @export
  * @interface StorageHaloRunV1alpha1AttachmentApiUpdatestorageHaloRunV1alpha1AttachmentRequest
@@ -862,34 +556,6 @@ export interface StorageHaloRunV1alpha1AttachmentApiUpdatestorageHaloRunV1alpha1
    * @memberof StorageHaloRunV1alpha1AttachmentApiUpdatestorageHaloRunV1alpha1Attachment
    */
   readonly attachment?: Attachment
-}
-
-/**
- * Request parameters for uploadAttachment operation in StorageHaloRunV1alpha1AttachmentApi.
- * @export
- * @interface StorageHaloRunV1alpha1AttachmentApiUploadAttachmentRequest
- */
-export interface StorageHaloRunV1alpha1AttachmentApiUploadAttachmentRequest {
-  /**
-   *
-   * @type {any}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiUploadAttachment
-   */
-  readonly file: any
-
-  /**
-   * Storage policy name
-   * @type {string}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiUploadAttachment
-   */
-  readonly policyName: string
-
-  /**
-   * The name of the group to which the attachment belongs
-   * @type {string}
-   * @memberof StorageHaloRunV1alpha1AttachmentApiUploadAttachment
-   */
-  readonly groupName?: string
 }
 
 /**
@@ -970,32 +636,6 @@ export class StorageHaloRunV1alpha1AttachmentApi extends BaseAPI {
   }
 
   /**
-   *
-   * @param {StorageHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest} requestParameters Request parameters.
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof StorageHaloRunV1alpha1AttachmentApi
-   */
-  public searchAttachments(
-    requestParameters: StorageHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest = {},
-    options?: AxiosRequestConfig,
-  ) {
-    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
-      .searchAttachments(
-        requestParameters.policy,
-        requestParameters.displayName,
-        requestParameters.group,
-        requestParameters.uploadedBy,
-        requestParameters.size,
-        requestParameters.labelSelector,
-        requestParameters.fieldSelector,
-        requestParameters.page,
-        options,
-      )
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
    * Update storage.halo.run/v1alpha1/Attachment
    * @param {StorageHaloRunV1alpha1AttachmentApiUpdatestorageHaloRunV1alpha1AttachmentRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
@@ -1008,22 +648,6 @@ export class StorageHaloRunV1alpha1AttachmentApi extends BaseAPI {
   ) {
     return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
       .updatestorageHaloRunV1alpha1Attachment(requestParameters.name, requestParameters.attachment, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   *
-   * @param {StorageHaloRunV1alpha1AttachmentApiUploadAttachmentRequest} requestParameters Request parameters.
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof StorageHaloRunV1alpha1AttachmentApi
-   */
-  public uploadAttachment(
-    requestParameters: StorageHaloRunV1alpha1AttachmentApiUploadAttachmentRequest,
-    options?: AxiosRequestConfig,
-  ) {
-    return StorageHaloRunV1alpha1AttachmentApiFp(this.configuration)
-      .uploadAttachment(requestParameters.file, requestParameters.policyName, requestParameters.groupName, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

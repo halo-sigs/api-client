@@ -32,6 +32,8 @@ import {
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
 // @ts-ignore
 import { CounterRequest } from '../models'
+// @ts-ignore
+import { VoteRequest } from '../models'
 /**
  * ApiHaloRunV1alpha1TrackerApi - axios parameter creator
  * @export
@@ -79,6 +81,88 @@ export const ApiHaloRunV1alpha1TrackerApiAxiosParamCreator = function (configura
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Downvote an extension resource.
+     * @param {VoteRequest} voteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    downvote: async (voteRequest: VoteRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'voteRequest' is not null or undefined
+      assertParamExists('downvote', 'voteRequest', voteRequest)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/trackers/downvote`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(voteRequest, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Upvote an extension resource.
+     * @param {VoteRequest} voteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    upvote: async (voteRequest: VoteRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'voteRequest' is not null or undefined
+      assertParamExists('upvote', 'voteRequest', voteRequest)
+      const localVarPath = `/apis/api.halo.run/v1alpha1/trackers/upvote`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(voteRequest, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -100,6 +184,32 @@ export const ApiHaloRunV1alpha1TrackerApiFp = function (configuration?: Configur
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.count(counterRequest, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Downvote an extension resource.
+     * @param {VoteRequest} voteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async downvote(
+      voteRequest: VoteRequest,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.downvote(voteRequest, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Upvote an extension resource.
+     * @param {VoteRequest} voteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async upvote(
+      voteRequest: VoteRequest,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.upvote(voteRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
   }
@@ -125,6 +235,24 @@ export const ApiHaloRunV1alpha1TrackerApiFactory = function (
     count(counterRequest: CounterRequest, options?: any): AxiosPromise<number> {
       return localVarFp.count(counterRequest, options).then((request) => request(axios, basePath))
     },
+    /**
+     * Downvote an extension resource.
+     * @param {VoteRequest} voteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    downvote(voteRequest: VoteRequest, options?: any): AxiosPromise<number> {
+      return localVarFp.downvote(voteRequest, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Upvote an extension resource.
+     * @param {VoteRequest} voteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    upvote(voteRequest: VoteRequest, options?: any): AxiosPromise<number> {
+      return localVarFp.upvote(voteRequest, options).then((request) => request(axios, basePath))
+    },
   }
 }
 
@@ -140,6 +268,34 @@ export interface ApiHaloRunV1alpha1TrackerApiCountRequest {
    * @memberof ApiHaloRunV1alpha1TrackerApiCount
    */
   readonly counterRequest: CounterRequest
+}
+
+/**
+ * Request parameters for downvote operation in ApiHaloRunV1alpha1TrackerApi.
+ * @export
+ * @interface ApiHaloRunV1alpha1TrackerApiDownvoteRequest
+ */
+export interface ApiHaloRunV1alpha1TrackerApiDownvoteRequest {
+  /**
+   *
+   * @type {VoteRequest}
+   * @memberof ApiHaloRunV1alpha1TrackerApiDownvote
+   */
+  readonly voteRequest: VoteRequest
+}
+
+/**
+ * Request parameters for upvote operation in ApiHaloRunV1alpha1TrackerApi.
+ * @export
+ * @interface ApiHaloRunV1alpha1TrackerApiUpvoteRequest
+ */
+export interface ApiHaloRunV1alpha1TrackerApiUpvoteRequest {
+  /**
+   *
+   * @type {VoteRequest}
+   * @memberof ApiHaloRunV1alpha1TrackerApiUpvote
+   */
+  readonly voteRequest: VoteRequest
 }
 
 /**
@@ -159,6 +315,32 @@ export class ApiHaloRunV1alpha1TrackerApi extends BaseAPI {
   public count(requestParameters: ApiHaloRunV1alpha1TrackerApiCountRequest, options?: AxiosRequestConfig) {
     return ApiHaloRunV1alpha1TrackerApiFp(this.configuration)
       .count(requestParameters.counterRequest, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Downvote an extension resource.
+   * @param {ApiHaloRunV1alpha1TrackerApiDownvoteRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiHaloRunV1alpha1TrackerApi
+   */
+  public downvote(requestParameters: ApiHaloRunV1alpha1TrackerApiDownvoteRequest, options?: AxiosRequestConfig) {
+    return ApiHaloRunV1alpha1TrackerApiFp(this.configuration)
+      .downvote(requestParameters.voteRequest, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Upvote an extension resource.
+   * @param {ApiHaloRunV1alpha1TrackerApiUpvoteRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiHaloRunV1alpha1TrackerApi
+   */
+  public upvote(requestParameters: ApiHaloRunV1alpha1TrackerApiUpvoteRequest, options?: AxiosRequestConfig) {
+    return ApiHaloRunV1alpha1TrackerApiFp(this.configuration)
+      .upvote(requestParameters.voteRequest, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

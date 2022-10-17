@@ -86,33 +86,33 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
+     * @param {string} [keyword] Posts filtered by keyword.
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {Array<string>} [tag]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {Array<string>} [contributor]
-     * @param {string} [keyword] Posts filtered by keyword.
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
-     * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPosts: async (
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
+      keyword?: string,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      tag?: Array<string>,
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED',
       category?: Array<string>,
       contributor?: Array<string>,
-      keyword?: string,
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
-      tag?: Array<string>,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts`
@@ -139,6 +139,18 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['sort'] = sort
       }
 
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword
+      }
+
+      if (visible !== undefined) {
+        localVarQueryParameter['visible'] = visible
+      }
+
+      if (tag) {
+        localVarQueryParameter['tag'] = Array.from(tag)
+      }
+
       if (sortOrder !== undefined) {
         localVarQueryParameter['sortOrder'] = sortOrder
       }
@@ -155,20 +167,12 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
-      if (keyword !== undefined) {
-        localVarQueryParameter['keyword'] = keyword
-      }
-
-      if (visible !== undefined) {
-        localVarQueryParameter['visible'] = visible
-      }
-
-      if (tag) {
-        localVarQueryParameter['tag'] = Array.from(tag)
-      }
-
       if (size !== undefined) {
         localVarQueryParameter['size'] = size
+      }
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
       }
 
       if (labelSelector) {
@@ -177,10 +181,6 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
-      }
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -310,48 +310,48 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
+     * @param {string} [keyword] Posts filtered by keyword.
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {Array<string>} [tag]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {Array<string>} [contributor]
-     * @param {string} [keyword] Posts filtered by keyword.
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
-     * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
+      keyword?: string,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      tag?: Array<string>,
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED',
       category?: Array<string>,
       contributor?: Array<string>,
-      keyword?: string,
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
-      tag?: Array<string>,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
         sort,
+        keyword,
+        visible,
+        tag,
         sortOrder,
         publishPhase,
         category,
         contributor,
-        keyword,
-        visible,
-        tag,
         size,
+        page,
         labelSelector,
         fieldSelector,
-        page,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -410,49 +410,49 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
+     * @param {string} [keyword] Posts filtered by keyword.
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {Array<string>} [tag]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {Array<string>} [contributor]
-     * @param {string} [keyword] Posts filtered by keyword.
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
-     * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
+      keyword?: string,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      tag?: Array<string>,
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED',
       category?: Array<string>,
       contributor?: Array<string>,
-      keyword?: string,
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
-      tag?: Array<string>,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: any,
     ): AxiosPromise<ListedPostList> {
       return localVarFp
         .listPosts(
           sort,
+          keyword,
+          visible,
+          tag,
           sortOrder,
           publishPhase,
           category,
           contributor,
-          keyword,
-          visible,
-          tag,
           size,
+          page,
           labelSelector,
           fieldSelector,
-          page,
           options,
         )
         .then((request) => request(axios, basePath))
@@ -507,6 +507,27 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   readonly sort?: 'PUBLISH_TIME' | 'CREATE_TIME'
 
   /**
+   * Posts filtered by keyword.
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly keyword?: string
+
+  /**
+   *
+   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
+
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly tag?: Array<string>
+
+  /**
    * ascending order If it is true; otherwise, it is in descending order.
    * @type {boolean}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
@@ -535,32 +556,18 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   readonly contributor?: Array<string>
 
   /**
-   * Posts filtered by keyword.
-   * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly keyword?: string
-
-  /**
-   *
-   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
-
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly tag?: Array<string>
-
-  /**
    * Size of one page. Zero indicates no limit.
    * @type {number}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly size?: number
+
+  /**
+   * The page number. Zero indicates no page.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly page?: number
 
   /**
    * Label selector for filtering.
@@ -575,13 +582,6 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly fieldSelector?: Array<string>
-
-  /**
-   * The page number. Zero indicates no page.
-   * @type {number}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly page?: number
 }
 
 /**
@@ -653,17 +653,17 @@ export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .listPosts(
         requestParameters.sort,
+        requestParameters.keyword,
+        requestParameters.visible,
+        requestParameters.tag,
         requestParameters.sortOrder,
         requestParameters.publishPhase,
         requestParameters.category,
         requestParameters.contributor,
-        requestParameters.keyword,
-        requestParameters.visible,
-        requestParameters.tag,
         requestParameters.size,
+        requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
-        requestParameters.page,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
