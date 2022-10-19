@@ -196,6 +196,58 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Upgrade theme
+     * @param {string} name
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    upgradeTheme: async (name: string, file: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('upgradeTheme', 'name', name)
+      // verify required parameter 'file' is not null or undefined
+      assertParamExists('upgradeTheme', 'file', file)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/themes/{name}/upgrade`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+      const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)()
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      if (file !== undefined) {
+        localVarFormParams.append('file', file as any)
+      }
+
+      localVarHeaderParameter['Content-Type'] = 'multipart/form-data'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = localVarFormParams
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -260,6 +312,21 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
       const localVarAxiosArgs = await localVarAxiosParamCreator.reloadThemeSetting(name, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
+    /**
+     * Upgrade theme
+     * @param {string} name
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async upgradeTheme(
+      name: string,
+      file: any,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.upgradeTheme(name, file, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
   }
 }
 
@@ -313,6 +380,16 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
      */
     reloadThemeSetting(name: string, options?: any): AxiosPromise<Theme> {
       return localVarFp.reloadThemeSetting(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Upgrade theme
+     * @param {string} name
+     * @param {any} file
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    upgradeTheme(name: string, file: any, options?: any): AxiosPromise<void> {
+      return localVarFp.upgradeTheme(name, file, options).then((request) => request(axios, basePath))
     },
   }
 }
@@ -388,6 +465,27 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiReloadThemeSettingRequest {
 }
 
 /**
+ * Request parameters for upgradeTheme operation in ApiConsoleHaloRunV1alpha1ThemeApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1ThemeApiUpgradeThemeRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1ThemeApiUpgradeThemeRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiUpgradeTheme
+   */
+  readonly name: string
+
+  /**
+   *
+   * @type {any}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiUpgradeTheme
+   */
+  readonly file: any
+}
+
+/**
  * ApiConsoleHaloRunV1alpha1ThemeApi - object-oriented interface
  * @export
  * @class ApiConsoleHaloRunV1alpha1ThemeApi
@@ -446,6 +544,22 @@ export class ApiConsoleHaloRunV1alpha1ThemeApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
       .reloadThemeSetting(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Upgrade theme
+   * @param {ApiConsoleHaloRunV1alpha1ThemeApiUpgradeThemeRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApi
+   */
+  public upgradeTheme(
+    requestParameters: ApiConsoleHaloRunV1alpha1ThemeApiUpgradeThemeRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
+      .upgradeTheme(requestParameters.name, requestParameters.file, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

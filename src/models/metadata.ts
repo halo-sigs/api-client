@@ -13,11 +13,17 @@
  */
 
 /**
- *
+ * Metadata information
  * @export
  * @interface Metadata
  */
 export interface Metadata {
+  /**
+   * The name field will be generated automatically according to the given generateName field
+   * @type {string}
+   * @memberof Metadata
+   */
+  generateName?: string
   /**
    *
    * @type {Array<string>}
@@ -25,11 +31,11 @@ export interface Metadata {
    */
   finalizers?: Array<string> | null
   /**
-   *
+   * Metadata name
    * @type {string}
    * @memberof Metadata
    */
-  name: string
+  name?: string
   /**
    *
    * @type {{ [key: string]: string; }}
