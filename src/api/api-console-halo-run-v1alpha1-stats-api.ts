@@ -31,7 +31,7 @@ import {
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
 // @ts-ignore
-import { Stats } from '../models'
+import { DashboardStats } from '../models'
 /**
  * ApiConsoleHaloRunV1alpha1StatsApi - axios parameter creator
  * @export
@@ -90,7 +90,7 @@ export const ApiConsoleHaloRunV1alpha1StatsApiFp = function (configuration?: Con
      */
     async getStats(
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Stats>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DashboardStats>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getStats(options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -113,7 +113,7 @@ export const ApiConsoleHaloRunV1alpha1StatsApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getStats(options?: any): AxiosPromise<Stats> {
+    getStats(options?: any): AxiosPromise<DashboardStats> {
       return localVarFp.getStats(options).then((request) => request(axios, basePath))
     },
   }

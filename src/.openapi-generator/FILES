@@ -72,6 +72,7 @@ models/contributor.ts
 models/counter-list.ts
 models/counter-request.ts
 models/counter.ts
+models/dashboard-stats.ts
 models/excerpt.ts
 models/extension.ts
 models/file-reverse-proxy-provider.ts

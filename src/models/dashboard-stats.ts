@@ -15,31 +15,43 @@
 /**
  *
  * @export
- * @interface Stats
+ * @interface DashboardStats
  */
-export interface Stats {
+export interface DashboardStats {
   /**
    *
    * @type {number}
-   * @memberof Stats
+   * @memberof DashboardStats
    */
-  visit?: number
+  visits?: number
   /**
    *
    * @type {number}
-   * @memberof Stats
+   * @memberof DashboardStats
    */
-  upvote?: number
+  comments?: number
   /**
    *
    * @type {number}
-   * @memberof Stats
+   * @memberof DashboardStats
    */
-  totalComment?: number
+  approvedComments?: number
   /**
    *
    * @type {number}
-   * @memberof Stats
+   * @memberof DashboardStats
    */
-  approvedComment?: number
+  upvotes?: number
+  /**
+   *
+   * @type {number}
+   * @memberof DashboardStats
+   */
+  users?: number
+  /**
+   *
+   * @type {number}
+   * @memberof DashboardStats
+   */
+  posts?: number
 }

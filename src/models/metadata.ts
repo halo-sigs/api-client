@@ -13,7 +13,7 @@
  */
 
 /**
- * Metadata information
+ *
  * @export
  * @interface Metadata
  */
@@ -35,7 +35,7 @@ export interface Metadata {
    * @type {string}
    * @memberof Metadata
    */
-  name?: string
+  name: string
   /**
    *
    * @type {{ [key: string]: string; }}
