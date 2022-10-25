@@ -31,7 +31,7 @@ export interface PluginSpec {
    * @type {string}
    * @memberof PluginSpec
    */
-  version?: string
+  version: string
   /**
    *
    * @type {string}
