@@ -12,37 +12,34 @@
  * Do not edit the class manually.
  */
 
-import { LinkGroupSpec } from './link-group-spec'
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface LinkGroup
+ * @interface TemplateDescriptor
  */
-export interface LinkGroup {
-  /**
-   *
-   * @type {LinkGroupSpec}
-   * @memberof LinkGroup
-   */
-  spec?: LinkGroupSpec
+export interface TemplateDescriptor {
   /**
    *
    * @type {string}
-   * @memberof LinkGroup
+   * @memberof TemplateDescriptor
    */
-  apiVersion: string
+  name: string
   /**
    *
    * @type {string}
-   * @memberof LinkGroup
+   * @memberof TemplateDescriptor
    */
-  kind: string
+  description?: string
   /**
    *
-   * @type {Metadata}
-   * @memberof LinkGroup
+   * @type {string}
+   * @memberof TemplateDescriptor
    */
-  metadata: Metadata
+  screenshot?: string
+  /**
+   *
+   * @type {string}
+   * @memberof TemplateDescriptor
+   */
+  file: string
 }

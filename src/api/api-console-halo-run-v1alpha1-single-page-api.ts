@@ -89,11 +89,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
     /**
      * List single pages.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {string} [keyword] SinglePages filtered by keyword.
-     * @param {Array<string>} [contributor]
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED'} [publishPhase]
+     * @param {Array<string>} [contributor]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -103,11 +103,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
      */
     listSinglePages: async (
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       keyword?: string,
-      contributor?: Array<string>,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED',
+      contributor?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -138,16 +138,12 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
         localVarQueryParameter['sort'] = sort
       }
 
-      if (visible !== undefined) {
-        localVarQueryParameter['visible'] = visible
-      }
-
       if (keyword !== undefined) {
         localVarQueryParameter['keyword'] = keyword
       }
 
-      if (contributor) {
-        localVarQueryParameter['contributor'] = Array.from(contributor)
+      if (visible !== undefined) {
+        localVarQueryParameter['visible'] = visible
       }
 
       if (sortOrder !== undefined) {
@@ -156,6 +152,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
 
       if (publishPhase !== undefined) {
         localVarQueryParameter['publishPhase'] = publishPhase
+      }
+
+      if (contributor) {
+        localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
       if (size !== undefined) {
@@ -301,11 +301,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
     /**
      * List single pages.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {string} [keyword] SinglePages filtered by keyword.
-     * @param {Array<string>} [contributor]
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED'} [publishPhase]
+     * @param {Array<string>} [contributor]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -315,11 +315,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
      */
     async listSinglePages(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       keyword?: string,
-      contributor?: Array<string>,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED',
+      contributor?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -328,11 +328,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedSinglePageList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listSinglePages(
         sort,
-        visible,
         keyword,
-        contributor,
+        visible,
         sortOrder,
         publishPhase,
+        contributor,
         size,
         page,
         labelSelector,
@@ -395,11 +395,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
     /**
      * List single pages.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {string} [keyword] SinglePages filtered by keyword.
-     * @param {Array<string>} [contributor]
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED'} [publishPhase]
+     * @param {Array<string>} [contributor]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -409,11 +409,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
      */
     listSinglePages(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       keyword?: string,
-      contributor?: Array<string>,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED',
+      contributor?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -423,11 +423,11 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
       return localVarFp
         .listSinglePages(
           sort,
-          visible,
           keyword,
-          contributor,
+          visible,
           sortOrder,
           publishPhase,
+          contributor,
           size,
           page,
           labelSelector,
@@ -488,13 +488,6 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
   readonly sort?: 'PUBLISH_TIME' | 'CREATE_TIME'
 
   /**
-   *
-   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
-   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
-   */
-  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
-
-  /**
    * SinglePages filtered by keyword.
    * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
@@ -503,10 +496,10 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
 
   /**
    *
-   * @type {Array<string>}
+   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
-  readonly contributor?: Array<string>
+  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
 
   /**
    * ascending order If it is true; otherwise, it is in descending order.
@@ -521,6 +514,13 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED'
+
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
+   */
+  readonly contributor?: Array<string>
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -623,11 +623,11 @@ export class ApiConsoleHaloRunV1alpha1SinglePageApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1SinglePageApiFp(this.configuration)
       .listSinglePages(
         requestParameters.sort,
-        requestParameters.visible,
         requestParameters.keyword,
-        requestParameters.contributor,
+        requestParameters.visible,
         requestParameters.sortOrder,
         requestParameters.publishPhase,
+        requestParameters.contributor,
         requestParameters.size,
         requestParameters.page,
         requestParameters.labelSelector,

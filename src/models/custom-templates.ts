@@ -12,28 +12,30 @@
  * Do not edit the class manually.
  */
 
+import { TemplateDescriptor } from './template-descriptor'
+
 /**
  *
  * @export
- * @interface LinkGroupSpec
+ * @interface CustomTemplates
  */
-export interface LinkGroupSpec {
+export interface CustomTemplates {
   /**
    *
-   * @type {string}
-   * @memberof LinkGroupSpec
+   * @type {Array<TemplateDescriptor>}
+   * @memberof CustomTemplates
    */
-  displayName: string
+  post?: Array<TemplateDescriptor>
   /**
    *
-   * @type {number}
-   * @memberof LinkGroupSpec
+   * @type {Array<TemplateDescriptor>}
+   * @memberof CustomTemplates
    */
-  priority?: number
+  category?: Array<TemplateDescriptor>
   /**
-   * Names of links below this group.
-   * @type {Array<string>}
-   * @memberof LinkGroupSpec
+   *
+   * @type {Array<TemplateDescriptor>}
+   * @memberof CustomTemplates
    */
-  links?: Array<string>
+  page?: Array<TemplateDescriptor>
 }

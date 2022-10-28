@@ -13,6 +13,7 @@
  */
 
 import { Author } from './author'
+import { CustomTemplates } from './custom-templates'
 
 /**
  *
@@ -80,4 +81,10 @@ export interface ThemeSpec {
    * @memberof ThemeSpec
    */
   configMapName?: string
+  /**
+   *
+   * @type {CustomTemplates}
+   * @memberof ThemeSpec
+   */
+  customTemplates?: CustomTemplates
 }
