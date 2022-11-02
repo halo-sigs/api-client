@@ -60,6 +60,12 @@ export interface PluginStatus {
    * @memberof PluginStatus
    */
   stylesheet?: string
+  /**
+   *
+   * @type {string}
+   * @memberof PluginStatus
+   */
+  logo?: string
 }
 
 export const PluginStatusPhaseEnum = {
