@@ -64,7 +64,7 @@ models/condition.ts
 models/config-map-list.ts
 models/config-map.ts
 models/content-request.ts
-models/content-wrapper.ts
+models/content-response.ts
 models/content.ts
 models/contributor.ts
 models/counter-list.ts
@@ -147,7 +147,6 @@ models/snap-shot-spec.ts
 models/snapshot-list.ts
 models/snapshot.ts
 models/stats.ts
-models/subject-ref.ts
 models/subject.ts
 models/tag-list.ts
 models/tag-spec.ts

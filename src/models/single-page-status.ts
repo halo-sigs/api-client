@@ -62,4 +62,10 @@ export interface SinglePageStatus {
    * @memberof SinglePageStatus
    */
   contributors?: Array<string>
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof SinglePageStatus
+   */
+  releasedSnapshots?: Array<string>
 }

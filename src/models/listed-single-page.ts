@@ -36,6 +36,12 @@ export interface ListedSinglePage {
   contributors: Array<Contributor>
   /**
    *
+   * @type {Contributor}
+   * @memberof ListedSinglePage
+   */
+  owner: Contributor
+  /**
+   *
    * @type {Stats}
    * @memberof ListedSinglePage
    */

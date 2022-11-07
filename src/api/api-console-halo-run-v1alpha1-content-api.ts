@@ -33,9 +33,7 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { ContentRequest } from '../models'
 // @ts-ignore
-import { ContentWrapper } from '../models'
-// @ts-ignore
-import { SubjectRef } from '../models'
+import { ContentResponse } from '../models'
 /**
  * ApiConsoleHaloRunV1alpha1ContentApi - axios parameter creator
  * @export
@@ -128,57 +126,6 @@ export const ApiConsoleHaloRunV1alpha1ContentApiAxiosParamCreator = function (co
       }
     },
     /**
-     * Publish a snapshot content.
-     * @param {string} snapshotName
-     * @param {SubjectRef} subjectRef
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    publishSnapshotContent: async (
-      snapshotName: string,
-      subjectRef: SubjectRef,
-      options: AxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'snapshotName' is not null or undefined
-      assertParamExists('publishSnapshotContent', 'snapshotName', snapshotName)
-      // verify required parameter 'subjectRef' is not null or undefined
-      assertParamExists('publishSnapshotContent', 'subjectRef', subjectRef)
-      const localVarPath = `/apis/api.console.halo.run/v1alpha1/contents/{snapshotName}/publish`.replace(
-        `{${'snapshotName'}}`,
-        encodeURIComponent(String(snapshotName)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication BasicAuth required
-      // http basic authentication required
-      setBasicAuthToObject(localVarRequestOptions, configuration)
-
-      // authentication BearerAuth required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
-      localVarRequestOptions.data = serializeDataIfNeeded(subjectRef, localVarRequestOptions, configuration)
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * Update a snapshot content.
      * @param {string} snapshotName
      * @param {ContentRequest} contentRequest
@@ -248,7 +195,7 @@ export const ApiConsoleHaloRunV1alpha1ContentApiFp = function (configuration?: C
     async draftSnapshotContent(
       contentRequest: ContentRequest,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentWrapper>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentResponse>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.draftSnapshotContent(contentRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -261,27 +208,8 @@ export const ApiConsoleHaloRunV1alpha1ContentApiFp = function (configuration?: C
     async obtainSnapshotContent(
       snapshotName: string,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentWrapper>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentResponse>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.obtainSnapshotContent(snapshotName, options)
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
-    },
-    /**
-     * Publish a snapshot content.
-     * @param {string} snapshotName
-     * @param {SubjectRef} subjectRef
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async publishSnapshotContent(
-      snapshotName: string,
-      subjectRef: SubjectRef,
-      options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentWrapper>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.publishSnapshotContent(
-        snapshotName,
-        subjectRef,
-        options,
-      )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -295,7 +223,7 @@ export const ApiConsoleHaloRunV1alpha1ContentApiFp = function (configuration?: C
       snapshotName: string,
       contentRequest: ContentRequest,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentWrapper>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentResponse>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.updateSnapshotContent(
         snapshotName,
         contentRequest,
@@ -323,7 +251,7 @@ export const ApiConsoleHaloRunV1alpha1ContentApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    draftSnapshotContent(contentRequest: ContentRequest, options?: any): AxiosPromise<ContentWrapper> {
+    draftSnapshotContent(contentRequest: ContentRequest, options?: any): AxiosPromise<ContentResponse> {
       return localVarFp.draftSnapshotContent(contentRequest, options).then((request) => request(axios, basePath))
     },
     /**
@@ -332,20 +260,8 @@ export const ApiConsoleHaloRunV1alpha1ContentApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    obtainSnapshotContent(snapshotName: string, options?: any): AxiosPromise<ContentWrapper> {
+    obtainSnapshotContent(snapshotName: string, options?: any): AxiosPromise<ContentResponse> {
       return localVarFp.obtainSnapshotContent(snapshotName, options).then((request) => request(axios, basePath))
-    },
-    /**
-     * Publish a snapshot content.
-     * @param {string} snapshotName
-     * @param {SubjectRef} subjectRef
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    publishSnapshotContent(snapshotName: string, subjectRef: SubjectRef, options?: any): AxiosPromise<ContentWrapper> {
-      return localVarFp
-        .publishSnapshotContent(snapshotName, subjectRef, options)
-        .then((request) => request(axios, basePath))
     },
     /**
      * Update a snapshot content.
@@ -358,7 +274,7 @@ export const ApiConsoleHaloRunV1alpha1ContentApiFactory = function (
       snapshotName: string,
       contentRequest: ContentRequest,
       options?: any,
-    ): AxiosPromise<ContentWrapper> {
+    ): AxiosPromise<ContentResponse> {
       return localVarFp
         .updateSnapshotContent(snapshotName, contentRequest, options)
         .then((request) => request(axios, basePath))
@@ -392,27 +308,6 @@ export interface ApiConsoleHaloRunV1alpha1ContentApiObtainSnapshotContentRequest
    * @memberof ApiConsoleHaloRunV1alpha1ContentApiObtainSnapshotContent
    */
   readonly snapshotName: string
-}
-
-/**
- * Request parameters for publishSnapshotContent operation in ApiConsoleHaloRunV1alpha1ContentApi.
- * @export
- * @interface ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest
- */
-export interface ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest {
-  /**
-   *
-   * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContent
-   */
-  readonly snapshotName: string
-
-  /**
-   *
-   * @type {SubjectRef}
-   * @memberof ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContent
-   */
-  readonly subjectRef: SubjectRef
 }
 
 /**
@@ -472,22 +367,6 @@ export class ApiConsoleHaloRunV1alpha1ContentApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1ContentApiFp(this.configuration)
       .obtainSnapshotContent(requestParameters.snapshotName, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Publish a snapshot content.
-   * @param {ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest} requestParameters Request parameters.
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof ApiConsoleHaloRunV1alpha1ContentApi
-   */
-  public publishSnapshotContent(
-    requestParameters: ApiConsoleHaloRunV1alpha1ContentApiPublishSnapshotContentRequest,
-    options?: AxiosRequestConfig,
-  ) {
-    return ApiConsoleHaloRunV1alpha1ContentApiFp(this.configuration)
-      .publishSnapshotContent(requestParameters.snapshotName, requestParameters.subjectRef, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

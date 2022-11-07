@@ -79,7 +79,7 @@ export interface PostSpec {
    * @type {boolean}
    * @memberof PostSpec
    */
-  published: boolean
+  publish: boolean
   /**
    *
    * @type {string}

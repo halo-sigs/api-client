@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { SubjectRef } from './subject-ref'
+import { Ref } from './ref'
 
 /**
  *
@@ -22,10 +22,10 @@ import { SubjectRef } from './subject-ref'
 export interface SnapShotSpec {
   /**
    *
-   * @type {SubjectRef}
+   * @type {Ref}
    * @memberof SnapShotSpec
    */
-  subjectRef: SubjectRef
+  subjectRef: Ref
   /**
    *
    * @type {string}

@@ -79,7 +79,7 @@ export interface SinglePageSpec {
    * @type {boolean}
    * @memberof SinglePageSpec
    */
-  published: boolean
+  publish: boolean
   /**
    *
    * @type {string}

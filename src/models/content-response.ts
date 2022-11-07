@@ -15,19 +15,25 @@
 /**
  *
  * @export
- * @interface SubjectRef
+ * @interface ContentResponse
  */
-export interface SubjectRef {
+export interface ContentResponse {
   /**
    *
    * @type {string}
-   * @memberof SubjectRef
+   * @memberof ContentResponse
    */
-  kind: string
+  raw: string
   /**
    *
    * @type {string}
-   * @memberof SubjectRef
+   * @memberof ContentResponse
    */
-  name: string
+  content: string
+  /**
+   *
+   * @type {string}
+   * @memberof ContentResponse
+   */
+  rawType: string
 }

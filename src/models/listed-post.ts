@@ -50,6 +50,12 @@ export interface ListedPost {
   contributors: Array<Contributor>
   /**
    *
+   * @type {Contributor}
+   * @memberof ListedPost
+   */
+  owner: Contributor
+  /**
+   *
    * @type {Stats}
    * @memberof ListedPost
    */
