@@ -19,6 +19,12 @@
  */
 export interface ContentResponse {
   /**
+   * The headSnapshotName if updated or new name if created.
+   * @type {string}
+   * @memberof ContentResponse
+   */
+  snapshotName: string
+  /**
    *
    * @type {string}
    * @memberof ContentResponse
