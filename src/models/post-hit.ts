@@ -12,30 +12,40 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
-
 /**
  *
  * @export
- * @interface Extension
+ * @interface PostHit
  */
-export interface Extension {
+export interface PostHit {
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof PostHit
    */
-  kind: string
+  name?: string
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof PostHit
    */
-  apiVersion: string
+  title?: string
   /**
    *
-   * @type {Metadata}
-   * @memberof Extension
+   * @type {string}
+   * @memberof PostHit
    */
-  metadata: Metadata
+  content?: string
+  /**
+   *
+   * @type {string}
+   * @memberof PostHit
+   */
+  publishTimestamp?: string
+  /**
+   *
+   * @type {string}
+   * @memberof PostHit
+   */
+  permalink?: string
 }

@@ -86,13 +86,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
-     * @param {Array<string>} [tag]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
-     * @param {Array<string>} [contributor]
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {Array<string>} [category]
+     * @param {Array<string>} [tag]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
+     * @param {Array<string>} [category]
+     * @param {Array<string>} [contributor]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -102,13 +102,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
      */
     listPosts: async (
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      tag?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
-      contributor?: Array<string>,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED',
-      category?: Array<string>,
+      tag?: Array<string>,
       sortOrder?: boolean,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
+      category?: Array<string>,
+      contributor?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -139,10 +139,6 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['sort'] = sort
       }
 
-      if (tag) {
-        localVarQueryParameter['tag'] = Array.from(tag)
-      }
-
       if (keyword !== undefined) {
         localVarQueryParameter['keyword'] = keyword
       }
@@ -151,8 +147,12 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['visible'] = visible
       }
 
-      if (contributor) {
-        localVarQueryParameter['contributor'] = Array.from(contributor)
+      if (tag) {
+        localVarQueryParameter['tag'] = Array.from(tag)
+      }
+
+      if (sortOrder !== undefined) {
+        localVarQueryParameter['sortOrder'] = sortOrder
       }
 
       if (publishPhase !== undefined) {
@@ -163,8 +163,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['category'] = Array.from(category)
       }
 
-      if (sortOrder !== undefined) {
-        localVarQueryParameter['sortOrder'] = sortOrder
+      if (contributor) {
+        localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
       if (size !== undefined) {
@@ -202,6 +202,88 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
       // verify required parameter 'name' is not null or undefined
       assertParamExists('publishPost', 'name', name)
       const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts/{name}/publish`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Recycle a post.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    recyclePost: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('recyclePost', 'name', name)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts/{name}/recycle`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Publish a post.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unpublishPost: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('unpublishPost', 'name', name)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/posts/{name}/unpublish`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -310,13 +392,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
-     * @param {Array<string>} [tag]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
-     * @param {Array<string>} [contributor]
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {Array<string>} [category]
+     * @param {Array<string>} [tag]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
+     * @param {Array<string>} [category]
+     * @param {Array<string>} [contributor]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -326,13 +408,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
      */
     async listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      tag?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
-      contributor?: Array<string>,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED',
-      category?: Array<string>,
+      tag?: Array<string>,
       sortOrder?: boolean,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
+      category?: Array<string>,
+      contributor?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -341,13 +423,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
         sort,
-        tag,
         keyword,
         visible,
-        contributor,
+        tag,
+        sortOrder,
         publishPhase,
         category,
-        sortOrder,
+        contributor,
         size,
         page,
         labelSelector,
@@ -367,6 +449,32 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Post>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.publishPost(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Recycle a post.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async recyclePost(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.recyclePost(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Publish a post.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async unpublishPost(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Post>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.unpublishPost(name, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -410,13 +518,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
-     * @param {Array<string>} [tag]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
-     * @param {Array<string>} [contributor]
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {Array<string>} [category]
+     * @param {Array<string>} [tag]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
+     * @param {Array<string>} [category]
+     * @param {Array<string>} [contributor]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -426,13 +534,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
      */
     listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      tag?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
-      contributor?: Array<string>,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED',
-      category?: Array<string>,
+      tag?: Array<string>,
       sortOrder?: boolean,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
+      category?: Array<string>,
+      contributor?: Array<string>,
       size?: number,
       page?: number,
       labelSelector?: Array<string>,
@@ -442,13 +550,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
       return localVarFp
         .listPosts(
           sort,
-          tag,
           keyword,
           visible,
-          contributor,
+          tag,
+          sortOrder,
           publishPhase,
           category,
-          sortOrder,
+          contributor,
           size,
           page,
           labelSelector,
@@ -465,6 +573,24 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
      */
     publishPost(name: string, options?: any): AxiosPromise<Post> {
       return localVarFp.publishPost(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Recycle a post.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    recyclePost(name: string, options?: any): AxiosPromise<void> {
+      return localVarFp.recyclePost(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Publish a post.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unpublishPost(name: string, options?: any): AxiosPromise<Post> {
+      return localVarFp.unpublishPost(name, options).then((request) => request(axios, basePath))
     },
     /**
      * Update a post.
@@ -507,13 +633,6 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   readonly sort?: 'PUBLISH_TIME' | 'CREATE_TIME'
 
   /**
-   *
-   * @type {Array<string>}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly tag?: Array<string>
-
-  /**
    * Posts filtered by keyword.
    * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
@@ -532,14 +651,21 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
    * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
-  readonly contributor?: Array<string>
+  readonly tag?: Array<string>
+
+  /**
+   * ascending order If it is true; otherwise, it is in descending order.
+   * @type {boolean}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly sortOrder?: boolean
 
   /**
    *
-   * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED'}
+   * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
-  readonly publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PENDING' | 'PUBLISHED' | 'FAILED'
+  readonly publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'
 
   /**
    *
@@ -549,11 +675,11 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   readonly category?: Array<string>
 
   /**
-   * ascending order If it is true; otherwise, it is in descending order.
-   * @type {boolean}
+   *
+   * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
-  readonly sortOrder?: boolean
+  readonly contributor?: Array<string>
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -594,6 +720,34 @@ export interface ApiConsoleHaloRunV1alpha1PostApiPublishPostRequest {
    *
    * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiPublishPost
+   */
+  readonly name: string
+}
+
+/**
+ * Request parameters for recyclePost operation in ApiConsoleHaloRunV1alpha1PostApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1PostApiRecyclePostRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1PostApiRecyclePostRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiRecyclePost
+   */
+  readonly name: string
+}
+
+/**
+ * Request parameters for unpublishPost operation in ApiConsoleHaloRunV1alpha1PostApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1PostApiUnpublishPostRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1PostApiUnpublishPostRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiUnpublishPost
    */
   readonly name: string
 }
@@ -653,13 +807,13 @@ export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .listPosts(
         requestParameters.sort,
-        requestParameters.tag,
         requestParameters.keyword,
         requestParameters.visible,
-        requestParameters.contributor,
+        requestParameters.tag,
+        requestParameters.sortOrder,
         requestParameters.publishPhase,
         requestParameters.category,
-        requestParameters.sortOrder,
+        requestParameters.contributor,
         requestParameters.size,
         requestParameters.page,
         requestParameters.labelSelector,
@@ -682,6 +836,38 @@ export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .publishPost(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Recycle a post.
+   * @param {ApiConsoleHaloRunV1alpha1PostApiRecyclePostRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApi
+   */
+  public recyclePost(
+    requestParameters: ApiConsoleHaloRunV1alpha1PostApiRecyclePostRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
+      .recyclePost(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Publish a post.
+   * @param {ApiConsoleHaloRunV1alpha1PostApiUnpublishPostRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApi
+   */
+  public unpublishPost(
+    requestParameters: ApiConsoleHaloRunV1alpha1PostApiUnpublishPostRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
+      .unpublishPost(requestParameters.name, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

@@ -68,4 +68,10 @@ export interface ReverseProxyList {
    * @memberof ReverseProxyList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ReverseProxyList
+   */
+  totalPages: number
 }

@@ -68,4 +68,10 @@ export interface PluginList {
    * @memberof PluginList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof PluginList
+   */
+  totalPages: number
 }

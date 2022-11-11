@@ -68,4 +68,10 @@ export interface RoleBindingList {
    * @memberof RoleBindingList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof RoleBindingList
+   */
+  totalPages: number
 }

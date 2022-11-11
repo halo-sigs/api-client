@@ -68,4 +68,10 @@ export interface CategoryList {
    * @memberof CategoryList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof CategoryList
+   */
+  totalPages: number
 }

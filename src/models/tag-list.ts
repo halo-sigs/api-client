@@ -68,4 +68,10 @@ export interface TagList {
    * @memberof TagList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof TagList
+   */
+  totalPages: number
 }

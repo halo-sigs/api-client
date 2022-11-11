@@ -12,30 +12,42 @@
  * Do not edit the class manually.
  */
 
-import { Metadata } from './metadata'
+import { PostHit } from './post-hit'
 
 /**
  *
  * @export
- * @interface Extension
+ * @interface PostHits
  */
-export interface Extension {
+export interface PostHits {
+  /**
+   *
+   * @type {Array<PostHit>}
+   * @memberof PostHits
+   */
+  hits?: Array<PostHit>
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof PostHits
    */
-  kind: string
+  keyword?: string
   /**
    *
-   * @type {string}
-   * @memberof Extension
+   * @type {number}
+   * @memberof PostHits
    */
-  apiVersion: string
+  total?: number
   /**
    *
-   * @type {Metadata}
-   * @memberof Extension
+   * @type {number}
+   * @memberof PostHits
    */
-  metadata: Metadata
+  limit?: number
+  /**
+   *
+   * @type {number}
+   * @memberof PostHits
+   */
+  processingTimeMillis?: number
 }

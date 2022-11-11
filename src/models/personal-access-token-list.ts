@@ -68,4 +68,10 @@ export interface PersonalAccessTokenList {
    * @memberof PersonalAccessTokenList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof PersonalAccessTokenList
+   */
+  totalPages: number
 }

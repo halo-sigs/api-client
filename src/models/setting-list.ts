@@ -68,4 +68,10 @@ export interface SettingList {
    * @memberof SettingList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof SettingList
+   */
+  totalPages: number
 }

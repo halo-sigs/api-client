@@ -68,4 +68,10 @@ export interface SnapshotList {
    * @memberof SnapshotList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof SnapshotList
+   */
+  totalPages: number
 }

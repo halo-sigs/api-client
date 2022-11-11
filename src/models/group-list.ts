@@ -68,4 +68,10 @@ export interface GroupList {
    * @memberof GroupList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof GroupList
+   */
+  totalPages: number
 }

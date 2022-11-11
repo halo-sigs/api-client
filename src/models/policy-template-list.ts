@@ -68,4 +68,10 @@ export interface PolicyTemplateList {
    * @memberof PolicyTemplateList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof PolicyTemplateList
+   */
+  totalPages: number
 }

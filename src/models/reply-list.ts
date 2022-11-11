@@ -68,4 +68,10 @@ export interface ReplyList {
    * @memberof ReplyList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ReplyList
+   */
+  totalPages: number
 }

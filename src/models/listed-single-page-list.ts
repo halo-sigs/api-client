@@ -68,4 +68,10 @@ export interface ListedSinglePageList {
    * @memberof ListedSinglePageList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ListedSinglePageList
+   */
+  totalPages: number
 }

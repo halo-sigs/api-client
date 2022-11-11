@@ -68,4 +68,10 @@ export interface ListedCommentList {
    * @memberof ListedCommentList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ListedCommentList
+   */
+  totalPages: number
 }

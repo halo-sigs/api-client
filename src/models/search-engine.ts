@@ -13,29 +13,36 @@
  */
 
 import { Metadata } from './metadata'
+import { SearchEngineSpec } from './search-engine-spec'
 
 /**
  *
  * @export
- * @interface Extension
+ * @interface SearchEngine
  */
-export interface Extension {
+export interface SearchEngine {
   /**
    *
-   * @type {string}
-   * @memberof Extension
+   * @type {SearchEngineSpec}
+   * @memberof SearchEngine
    */
-  kind: string
+  spec: SearchEngineSpec
   /**
    *
    * @type {string}
-   * @memberof Extension
+   * @memberof SearchEngine
    */
   apiVersion: string
   /**
    *
+   * @type {string}
+   * @memberof SearchEngine
+   */
+  kind: string
+  /**
+   *
    * @type {Metadata}
-   * @memberof Extension
+   * @memberof SearchEngine
    */
   metadata: Metadata
 }

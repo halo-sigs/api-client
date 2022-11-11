@@ -68,4 +68,10 @@ export interface AttachmentList {
    * @memberof AttachmentList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof AttachmentList
+   */
+  totalPages: number
 }

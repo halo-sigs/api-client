@@ -68,4 +68,10 @@ export interface ConfigMapList {
    * @memberof ConfigMapList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ConfigMapList
+   */
+  totalPages: number
 }

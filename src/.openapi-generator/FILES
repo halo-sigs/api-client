@@ -4,6 +4,7 @@ api.ts
 api/api-console-halo-run-v1alpha1-attachment-api.ts
 api/api-console-halo-run-v1alpha1-comment-api.ts
 api/api-console-halo-run-v1alpha1-content-api.ts
+api/api-console-halo-run-v1alpha1-indices-api.ts
 api/api-console-halo-run-v1alpha1-plugin-api.ts
 api/api-console-halo-run-v1alpha1-post-api.ts
 api/api-console-halo-run-v1alpha1-reply-api.ts
@@ -12,6 +13,7 @@ api/api-console-halo-run-v1alpha1-stats-api.ts
 api/api-console-halo-run-v1alpha1-theme-api.ts
 api/api-console-halo-run-v1alpha1-user-api.ts
 api/api-halo-run-v1alpha1-comment-api.ts
+api/api-halo-run-v1alpha1-post-api.ts
 api/api-halo-run-v1alpha1-tracker-api.ts
 api/content-halo-run-v1alpha1-category-api.ts
 api/content-halo-run-v1alpha1-comment-api.ts
@@ -23,6 +25,7 @@ api/content-halo-run-v1alpha1-tag-api.ts
 api/metrics-halo-run-v1alpha1-counter-api.ts
 api/plugin-halo-run-v1alpha1-plugin-api.ts
 api/plugin-halo-run-v1alpha1-reverse-proxy-api.ts
+api/plugin-halo-run-v1alpha1-search-engine-api.ts
 api/storage-halo-run-v1alpha1-attachment-api.ts
 api/storage-halo-run-v1alpha1-group-api.ts
 api/storage-halo-run-v1alpha1-policy-api.ts
@@ -114,6 +117,8 @@ models/policy-template-list.ts
 models/policy-template-spec.ts
 models/policy-template.ts
 models/policy.ts
+models/post-hit.ts
+models/post-hits.ts
 models/post-list.ts
 models/post-request.ts
 models/post-spec.ts
@@ -134,6 +139,9 @@ models/role-binding.ts
 models/role-list.ts
 models/role-ref.ts
 models/role.ts
+models/search-engine-list.ts
+models/search-engine-spec.ts
+models/search-engine.ts
 models/setting-form.ts
 models/setting-list.ts
 models/setting-spec.ts

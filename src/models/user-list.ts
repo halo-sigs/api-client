@@ -68,4 +68,10 @@ export interface UserList {
    * @memberof UserList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof UserList
+   */
+  totalPages: number
 }

@@ -68,4 +68,10 @@ export interface CounterList {
    * @memberof CounterList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof CounterList
+   */
+  totalPages: number
 }

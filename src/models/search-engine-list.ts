@@ -12,66 +12,66 @@
  * Do not edit the class manually.
  */
 
-import { Theme } from './theme'
+import { SearchEngine } from './search-engine'
 
 /**
  *
  * @export
- * @interface ThemeList
+ * @interface SearchEngineList
  */
-export interface ThemeList {
+export interface SearchEngineList {
   /**
    * Page number, starts from 1. If not set or equal to 0, it means no pagination.
    * @type {number}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   page: number
   /**
    * Size of each page. If not set or equal to 0, it means no pagination.
    * @type {number}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   size: number
   /**
    * Total elements.
    * @type {number}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   total: number
   /**
    * A chunk of items.
-   * @type {Array<Theme>}
-   * @memberof ThemeList
+   * @type {Array<SearchEngine>}
+   * @memberof SearchEngineList
    */
-  items: Array<Theme>
+  items: Array<SearchEngine>
   /**
    * Indicates whether current page is the first page.
    * @type {boolean}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   first: boolean
   /**
    * Indicates whether current page is the last page.
    * @type {boolean}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   last: boolean
   /**
    * Indicates whether current page has previous page.
    * @type {boolean}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   hasNext: boolean
   /**
    * Indicates whether current page has previous page.
    * @type {boolean}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   hasPrevious: boolean
   /**
    * Indicates total pages.
    * @type {number}
-   * @memberof ThemeList
+   * @memberof SearchEngineList
    */
   totalPages: number
 }

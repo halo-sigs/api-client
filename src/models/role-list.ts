@@ -68,4 +68,10 @@ export interface RoleList {
    * @memberof RoleList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof RoleList
+   */
+  totalPages: number
 }

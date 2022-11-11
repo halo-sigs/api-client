@@ -68,4 +68,10 @@ export interface MenuList {
    * @memberof MenuList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof MenuList
+   */
+  totalPages: number
 }

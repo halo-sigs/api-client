@@ -68,4 +68,10 @@ export interface ListedPostList {
    * @memberof ListedPostList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ListedPostList
+   */
+  totalPages: number
 }

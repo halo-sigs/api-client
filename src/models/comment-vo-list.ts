@@ -68,4 +68,10 @@ export interface CommentVoList {
    * @memberof CommentVoList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof CommentVoList
+   */
+  totalPages: number
 }
