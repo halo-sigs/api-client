@@ -41,17 +41,17 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
     /**
      * Search posts with fuzzy query
      * @param {string} keyword
-     * @param {number} [limit]
      * @param {string} [highlightPreTag]
      * @param {string} [highlightPostTag]
+     * @param {number} [limit]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     searchPost: async (
       keyword: string,
-      limit?: number,
       highlightPreTag?: string,
       highlightPostTag?: string,
+      limit?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'keyword' is not null or undefined
@@ -76,20 +76,20 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-      if (keyword !== undefined) {
-        localVarQueryParameter['keyword'] = keyword
-      }
-
-      if (limit !== undefined) {
-        localVarQueryParameter['limit'] = limit
-      }
-
       if (highlightPreTag !== undefined) {
         localVarQueryParameter['highlightPreTag'] = highlightPreTag
       }
 
       if (highlightPostTag !== undefined) {
         localVarQueryParameter['highlightPostTag'] = highlightPostTag
+      }
+
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword
+      }
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -114,24 +114,24 @@ export const ApiHaloRunV1alpha1PostApiFp = function (configuration?: Configurati
     /**
      * Search posts with fuzzy query
      * @param {string} keyword
-     * @param {number} [limit]
      * @param {string} [highlightPreTag]
      * @param {string} [highlightPostTag]
+     * @param {number} [limit]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async searchPost(
       keyword: string,
-      limit?: number,
       highlightPreTag?: string,
       highlightPostTag?: string,
+      limit?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostHits>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.searchPost(
         keyword,
-        limit,
         highlightPreTag,
         highlightPostTag,
+        limit,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -153,21 +153,21 @@ export const ApiHaloRunV1alpha1PostApiFactory = function (
     /**
      * Search posts with fuzzy query
      * @param {string} keyword
-     * @param {number} [limit]
      * @param {string} [highlightPreTag]
      * @param {string} [highlightPostTag]
+     * @param {number} [limit]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     searchPost(
       keyword: string,
-      limit?: number,
       highlightPreTag?: string,
       highlightPostTag?: string,
+      limit?: number,
       options?: any,
     ): AxiosPromise<PostHits> {
       return localVarFp
-        .searchPost(keyword, limit, highlightPreTag, highlightPostTag, options)
+        .searchPost(keyword, highlightPreTag, highlightPostTag, limit, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -188,13 +188,6 @@ export interface ApiHaloRunV1alpha1PostApiSearchPostRequest {
 
   /**
    *
-   * @type {number}
-   * @memberof ApiHaloRunV1alpha1PostApiSearchPost
-   */
-  readonly limit?: number
-
-  /**
-   *
    * @type {string}
    * @memberof ApiHaloRunV1alpha1PostApiSearchPost
    */
@@ -206,6 +199,13 @@ export interface ApiHaloRunV1alpha1PostApiSearchPostRequest {
    * @memberof ApiHaloRunV1alpha1PostApiSearchPost
    */
   readonly highlightPostTag?: string
+
+  /**
+   *
+   * @type {number}
+   * @memberof ApiHaloRunV1alpha1PostApiSearchPost
+   */
+  readonly limit?: number
 }
 
 /**
@@ -226,9 +226,9 @@ export class ApiHaloRunV1alpha1PostApi extends BaseAPI {
     return ApiHaloRunV1alpha1PostApiFp(this.configuration)
       .searchPost(
         requestParameters.keyword,
-        requestParameters.limit,
         requestParameters.highlightPreTag,
         requestParameters.highlightPostTag,
+        requestParameters.limit,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
