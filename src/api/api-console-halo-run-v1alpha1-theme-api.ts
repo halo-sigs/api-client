@@ -90,18 +90,18 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
      * List themes.
      * @param {boolean} uninstalled
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listThemes: async (
       uninstalled: boolean,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'uninstalled' is not null or undefined
@@ -134,16 +134,16 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
         localVarQueryParameter['size'] = size
       }
 
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
       if (labelSelector) {
         localVarQueryParameter['labelSelector'] = labelSelector
       }
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
-      }
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -275,26 +275,26 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
      * List themes.
      * @param {boolean} uninstalled
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listThemes(
       uninstalled: boolean,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThemeList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listThemes(
         uninstalled,
         size,
+        page,
         labelSelector,
         fieldSelector,
-        page,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -354,22 +354,22 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
      * List themes.
      * @param {boolean} uninstalled
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listThemes(
       uninstalled: boolean,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: any,
     ): AxiosPromise<ThemeList> {
       return localVarFp
-        .listThemes(uninstalled, size, labelSelector, fieldSelector, page, options)
+        .listThemes(uninstalled, size, page, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -429,6 +429,13 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest {
   readonly size?: number
 
   /**
+   * The page number. Zero indicates no page.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
+   */
+  readonly page?: number
+
+  /**
    * Label selector for filtering.
    * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
@@ -441,13 +448,6 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest {
    * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
    */
   readonly fieldSelector?: Array<string>
-
-  /**
-   * The page number. Zero indicates no page.
-   * @type {number}
-   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
-   */
-  readonly page?: number
 }
 
 /**
@@ -523,9 +523,9 @@ export class ApiConsoleHaloRunV1alpha1ThemeApi extends BaseAPI {
       .listThemes(
         requestParameters.uninstalled,
         requestParameters.size,
+        requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
-        requestParameters.page,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
