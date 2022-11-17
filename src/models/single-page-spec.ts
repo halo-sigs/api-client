@@ -109,12 +109,6 @@ export interface SinglePageSpec {
    * @type {number}
    * @memberof SinglePageSpec
    */
-  version: number
-  /**
-   *
-   * @type {number}
-   * @memberof SinglePageSpec
-   */
   priority: number
   /**
    *

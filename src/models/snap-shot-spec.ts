@@ -55,19 +55,13 @@ export interface SnapShotSpec {
    * @type {string}
    * @memberof SnapShotSpec
    */
-  displayVersion: string
-  /**
-   *
-   * @type {number}
-   * @memberof SnapShotSpec
-   */
-  version: number
+  lastModifyTime?: string
   /**
    *
    * @type {string}
    * @memberof SnapShotSpec
    */
-  publishTime?: string
+  owner: string
   /**
    *
    * @type {Array<string>}

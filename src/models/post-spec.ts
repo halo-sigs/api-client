@@ -109,12 +109,6 @@ export interface PostSpec {
    * @type {number}
    * @memberof PostSpec
    */
-  version: number
-  /**
-   *
-   * @type {number}
-   * @memberof PostSpec
-   */
   priority: number
   /**
    *

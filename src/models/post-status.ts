@@ -62,10 +62,4 @@ export interface PostStatus {
    * @memberof PostStatus
    */
   contributors?: Array<string>
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof PostStatus
-   */
-  releasedSnapshots?: Array<string>
 }
