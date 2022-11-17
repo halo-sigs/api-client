@@ -43,9 +43,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
     /**
      *
      * @param {string} [policy] Name of policy
+     * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [group] Name of group
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
+     * @param {string} [group] Name of group
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -55,9 +56,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
      */
     searchAttachments: async (
       policy?: string,
+      sort?: Array<string>,
       displayName?: string,
-      group?: string,
       uploadedBy?: string,
+      group?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -88,16 +90,20 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
         localVarQueryParameter['policy'] = policy
       }
 
+      if (sort) {
+        localVarQueryParameter['sort'] = Array.from(sort)
+      }
+
       if (displayName !== undefined) {
         localVarQueryParameter['displayName'] = displayName
       }
 
-      if (group !== undefined) {
-        localVarQueryParameter['group'] = group
-      }
-
       if (uploadedBy !== undefined) {
         localVarQueryParameter['uploadedBy'] = uploadedBy
+      }
+
+      if (group !== undefined) {
+        localVarQueryParameter['group'] = group
       }
 
       if (size !== undefined) {
@@ -201,9 +207,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
     /**
      *
      * @param {string} [policy] Name of policy
+     * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [group] Name of group
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
+     * @param {string} [group] Name of group
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -213,9 +220,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
      */
     async searchAttachments(
       policy?: string,
+      sort?: Array<string>,
       displayName?: string,
-      group?: string,
       uploadedBy?: string,
+      group?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -224,9 +232,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.searchAttachments(
         policy,
+        sort,
         displayName,
-        group,
         uploadedBy,
+        group,
         size,
         labelSelector,
         fieldSelector,
@@ -269,9 +278,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
     /**
      *
      * @param {string} [policy] Name of policy
+     * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [group] Name of group
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
+     * @param {string} [group] Name of group
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -281,9 +291,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
      */
     searchAttachments(
       policy?: string,
+      sort?: Array<string>,
       displayName?: string,
-      group?: string,
       uploadedBy?: string,
+      group?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -291,7 +302,18 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
       options?: any,
     ): AxiosPromise<AttachmentList> {
       return localVarFp
-        .searchAttachments(policy, displayName, group, uploadedBy, size, labelSelector, fieldSelector, page, options)
+        .searchAttachments(
+          policy,
+          sort,
+          displayName,
+          uploadedBy,
+          group,
+          size,
+          labelSelector,
+          fieldSelector,
+          page,
+          options,
+        )
         .then((request) => request(axios, basePath))
     },
     /**
@@ -324,6 +346,13 @@ export interface ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest 
   readonly policy?: string
 
   /**
+   * Sort property and direction of the list result. Supported fields: creationTimestamp, size
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
+   */
+  readonly sort?: Array<string>
+
+  /**
    * Display name of attachment
    * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
@@ -331,18 +360,18 @@ export interface ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest 
   readonly displayName?: string
 
   /**
-   * Name of group
-   * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly group?: string
-
-  /**
    * Name of user who uploaded the attachment
    * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
    */
   readonly uploadedBy?: string
+
+  /**
+   * Name of group
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
+   */
+  readonly group?: string
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -422,9 +451,10 @@ export class ApiConsoleHaloRunV1alpha1AttachmentApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1AttachmentApiFp(this.configuration)
       .searchAttachments(
         requestParameters.policy,
+        requestParameters.sort,
         requestParameters.displayName,
-        requestParameters.group,
         requestParameters.uploadedBy,
+        requestParameters.group,
         requestParameters.size,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,

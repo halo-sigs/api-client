@@ -84,12 +84,12 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
         localVarQueryParameter['highlightPostTag'] = highlightPostTag
       }
 
-      if (limit !== undefined) {
-        localVarQueryParameter['limit'] = limit
-      }
-
       if (keyword !== undefined) {
         localVarQueryParameter['keyword'] = keyword
+      }
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)

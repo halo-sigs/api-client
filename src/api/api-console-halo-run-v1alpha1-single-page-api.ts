@@ -93,9 +93,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
     /**
      * List single pages.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {Array<string>} [contributor]
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {Array<string>} [contributor]
      * @param {string} [keyword] SinglePages filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {number} [size] Size of one page. Zero indicates no limit.
@@ -107,9 +107,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
      */
     listSinglePages: async (
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      contributor?: Array<string>,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       sortOrder?: boolean,
+      contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       size?: number,
@@ -142,16 +142,16 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
         localVarQueryParameter['sort'] = sort
       }
 
-      if (contributor) {
-        localVarQueryParameter['contributor'] = Array.from(contributor)
-      }
-
       if (publishPhase !== undefined) {
         localVarQueryParameter['publishPhase'] = publishPhase
       }
 
       if (sortOrder !== undefined) {
         localVarQueryParameter['sortOrder'] = sortOrder
+      }
+
+      if (contributor) {
+        localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
       if (keyword !== undefined) {
@@ -356,9 +356,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
     /**
      * List single pages.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {Array<string>} [contributor]
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {Array<string>} [contributor]
      * @param {string} [keyword] SinglePages filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {number} [size] Size of one page. Zero indicates no limit.
@@ -370,9 +370,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
      */
     async listSinglePages(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      contributor?: Array<string>,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       sortOrder?: boolean,
+      contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       size?: number,
@@ -383,9 +383,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedSinglePageList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listSinglePages(
         sort,
-        contributor,
         publishPhase,
         sortOrder,
+        contributor,
         keyword,
         visible,
         size,
@@ -465,9 +465,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
     /**
      * List single pages.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {Array<string>} [contributor]
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {Array<string>} [contributor]
      * @param {string} [keyword] SinglePages filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {number} [size] Size of one page. Zero indicates no limit.
@@ -479,9 +479,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
      */
     listSinglePages(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      contributor?: Array<string>,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       sortOrder?: boolean,
+      contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       size?: number,
@@ -493,9 +493,9 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
       return localVarFp
         .listSinglePages(
           sort,
-          contributor,
           publishPhase,
           sortOrder,
+          contributor,
           keyword,
           visible,
           size,
@@ -569,13 +569,6 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
 
   /**
    *
-   * @type {Array<string>}
-   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
-   */
-  readonly contributor?: Array<string>
-
-  /**
-   *
    * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
@@ -587,6 +580,13 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly sortOrder?: boolean
+
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
+   */
+  readonly contributor?: Array<string>
 
   /**
    * SinglePages filtered by keyword.
@@ -724,9 +724,9 @@ export class ApiConsoleHaloRunV1alpha1SinglePageApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1SinglePageApiFp(this.configuration)
       .listSinglePages(
         requestParameters.sort,
-        requestParameters.contributor,
         requestParameters.publishPhase,
         requestParameters.sortOrder,
+        requestParameters.contributor,
         requestParameters.keyword,
         requestParameters.visible,
         requestParameters.size,

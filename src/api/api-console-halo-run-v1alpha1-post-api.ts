@@ -88,13 +88,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
-     * @param {Array<string>} [contributor]
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
-     * @param {Array<string>} [tag]
+     * @param {Array<string>} [contributor]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -104,13 +104,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
      */
     listPosts: async (
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      contributor?: Array<string>,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
       sortOrder?: boolean,
-      tag?: Array<string>,
+      contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      tag?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -141,10 +141,6 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['sort'] = sort
       }
 
-      if (contributor) {
-        localVarQueryParameter['contributor'] = Array.from(contributor)
-      }
-
       if (publishPhase !== undefined) {
         localVarQueryParameter['publishPhase'] = publishPhase
       }
@@ -157,8 +153,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['sortOrder'] = sortOrder
       }
 
-      if (tag) {
-        localVarQueryParameter['tag'] = Array.from(tag)
+      if (contributor) {
+        localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
       if (keyword !== undefined) {
@@ -167,6 +163,10 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
 
       if (visible !== undefined) {
         localVarQueryParameter['visible'] = visible
+      }
+
+      if (tag) {
+        localVarQueryParameter['tag'] = Array.from(tag)
       }
 
       if (size !== undefined) {
@@ -454,13 +454,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
-     * @param {Array<string>} [contributor]
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
-     * @param {Array<string>} [tag]
+     * @param {Array<string>} [contributor]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -470,13 +470,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
      */
     async listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      contributor?: Array<string>,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
       sortOrder?: boolean,
-      tag?: Array<string>,
+      contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      tag?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -485,13 +485,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
         sort,
-        contributor,
         publishPhase,
         category,
         sortOrder,
-        tag,
+        contributor,
         keyword,
         visible,
+        tag,
         size,
         labelSelector,
         fieldSelector,
@@ -597,13 +597,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
-     * @param {Array<string>} [contributor]
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
-     * @param {Array<string>} [tag]
+     * @param {Array<string>} [contributor]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -613,13 +613,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
      */
     listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      contributor?: Array<string>,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
       sortOrder?: boolean,
-      tag?: Array<string>,
+      contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      tag?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -629,13 +629,13 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
       return localVarFp
         .listPosts(
           sort,
-          contributor,
           publishPhase,
           category,
           sortOrder,
-          tag,
+          contributor,
           keyword,
           visible,
+          tag,
           size,
           labelSelector,
           fieldSelector,
@@ -724,13 +724,6 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
 
   /**
    *
-   * @type {Array<string>}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly contributor?: Array<string>
-
-  /**
-   *
    * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
@@ -755,7 +748,7 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
    * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
-  readonly tag?: Array<string>
+  readonly contributor?: Array<string>
 
   /**
    * Posts filtered by keyword.
@@ -770,6 +763,13 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
+
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly tag?: Array<string>
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -925,13 +925,13 @@ export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .listPosts(
         requestParameters.sort,
-        requestParameters.contributor,
         requestParameters.publishPhase,
         requestParameters.category,
         requestParameters.sortOrder,
-        requestParameters.tag,
+        requestParameters.contributor,
         requestParameters.keyword,
         requestParameters.visible,
+        requestParameters.tag,
         requestParameters.size,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
