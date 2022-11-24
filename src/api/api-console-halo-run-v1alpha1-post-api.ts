@@ -88,9 +88,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {Array<string>} [contributor]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
@@ -104,9 +104,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
      */
     listPosts: async (
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
+      sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
-      sortOrder?: boolean,
       contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
@@ -141,16 +141,16 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['sort'] = sort
       }
 
+      if (sortOrder !== undefined) {
+        localVarQueryParameter['sortOrder'] = sortOrder
+      }
+
       if (publishPhase !== undefined) {
         localVarQueryParameter['publishPhase'] = publishPhase
       }
 
       if (category) {
         localVarQueryParameter['category'] = Array.from(category)
-      }
-
-      if (sortOrder !== undefined) {
-        localVarQueryParameter['sortOrder'] = sortOrder
       }
 
       if (contributor) {
@@ -454,9 +454,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {Array<string>} [contributor]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
@@ -470,9 +470,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
      */
     async listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
+      sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
-      sortOrder?: boolean,
       contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
@@ -485,9 +485,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedPostList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
         sort,
+        sortOrder,
         publishPhase,
         category,
-        sortOrder,
         contributor,
         keyword,
         visible,
@@ -597,9 +597,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
     /**
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {Array<string>} [contributor]
      * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
@@ -613,9 +613,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
      */
     listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
+      sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
-      sortOrder?: boolean,
       contributor?: Array<string>,
       keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
@@ -629,9 +629,9 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
       return localVarFp
         .listPosts(
           sort,
+          sortOrder,
           publishPhase,
           category,
-          sortOrder,
           contributor,
           keyword,
           visible,
@@ -723,6 +723,13 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   readonly sort?: 'PUBLISH_TIME' | 'CREATE_TIME'
 
   /**
+   * ascending order If it is true; otherwise, it is in descending order.
+   * @type {boolean}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly sortOrder?: boolean
+
+  /**
    *
    * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
@@ -735,13 +742,6 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly category?: Array<string>
-
-  /**
-   * ascending order If it is true; otherwise, it is in descending order.
-   * @type {boolean}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly sortOrder?: boolean
 
   /**
    *
@@ -925,9 +925,9 @@ export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1PostApiFp(this.configuration)
       .listPosts(
         requestParameters.sort,
+        requestParameters.sortOrder,
         requestParameters.publishPhase,
         requestParameters.category,
-        requestParameters.sortOrder,
         requestParameters.contributor,
         requestParameters.keyword,
         requestParameters.visible,

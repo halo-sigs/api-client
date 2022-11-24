@@ -45,8 +45,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
      * @param {string} [policy] Name of policy
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [group] Name of group
+     * @param {boolean} [ungrouped] Filter attachments without group. This parameter will ignore group parameter.
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -58,8 +59,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
       policy?: string,
       sort?: Array<string>,
       displayName?: string,
-      uploadedBy?: string,
       group?: string,
+      ungrouped?: boolean,
+      uploadedBy?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -98,12 +100,16 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
         localVarQueryParameter['displayName'] = displayName
       }
 
-      if (uploadedBy !== undefined) {
-        localVarQueryParameter['uploadedBy'] = uploadedBy
-      }
-
       if (group !== undefined) {
         localVarQueryParameter['group'] = group
+      }
+
+      if (ungrouped !== undefined) {
+        localVarQueryParameter['ungrouped'] = ungrouped
+      }
+
+      if (uploadedBy !== undefined) {
+        localVarQueryParameter['uploadedBy'] = uploadedBy
       }
 
       if (size !== undefined) {
@@ -209,8 +215,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
      * @param {string} [policy] Name of policy
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [group] Name of group
+     * @param {boolean} [ungrouped] Filter attachments without group. This parameter will ignore group parameter.
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -222,8 +229,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
       policy?: string,
       sort?: Array<string>,
       displayName?: string,
-      uploadedBy?: string,
       group?: string,
+      ungrouped?: boolean,
+      uploadedBy?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -234,8 +242,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
         policy,
         sort,
         displayName,
-        uploadedBy,
         group,
+        ungrouped,
+        uploadedBy,
         size,
         labelSelector,
         fieldSelector,
@@ -280,8 +289,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
      * @param {string} [policy] Name of policy
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
-     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [group] Name of group
+     * @param {boolean} [ungrouped] Filter attachments without group. This parameter will ignore group parameter.
+     * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -293,8 +303,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
       policy?: string,
       sort?: Array<string>,
       displayName?: string,
-      uploadedBy?: string,
       group?: string,
+      ungrouped?: boolean,
+      uploadedBy?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -306,8 +317,9 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
           policy,
           sort,
           displayName,
-          uploadedBy,
           group,
+          ungrouped,
+          uploadedBy,
           size,
           labelSelector,
           fieldSelector,
@@ -360,18 +372,25 @@ export interface ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest 
   readonly displayName?: string
 
   /**
-   * Name of user who uploaded the attachment
-   * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly uploadedBy?: string
-
-  /**
    * Name of group
    * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
    */
   readonly group?: string
+
+  /**
+   * Filter attachments without group. This parameter will ignore group parameter.
+   * @type {boolean}
+   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
+   */
+  readonly ungrouped?: boolean
+
+  /**
+   * Name of user who uploaded the attachment
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
+   */
+  readonly uploadedBy?: string
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -453,8 +472,9 @@ export class ApiConsoleHaloRunV1alpha1AttachmentApi extends BaseAPI {
         requestParameters.policy,
         requestParameters.sort,
         requestParameters.displayName,
-        requestParameters.uploadedBy,
         requestParameters.group,
+        requestParameters.ungrouped,
+        requestParameters.uploadedBy,
         requestParameters.size,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
