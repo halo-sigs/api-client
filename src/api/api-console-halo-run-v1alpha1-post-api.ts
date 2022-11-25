@@ -92,8 +92,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {Array<string>} [contributor]
-     * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {string} [keyword] Posts filtered by keyword.
      * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -108,8 +108,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
       contributor?: Array<string>,
-      keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      keyword?: string,
       tag?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
@@ -157,12 +157,12 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
-      if (keyword !== undefined) {
-        localVarQueryParameter['keyword'] = keyword
-      }
-
       if (visible !== undefined) {
         localVarQueryParameter['visible'] = visible
+      }
+
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword
       }
 
       if (tag) {
@@ -458,8 +458,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {Array<string>} [contributor]
-     * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {string} [keyword] Posts filtered by keyword.
      * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -474,8 +474,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
       contributor?: Array<string>,
-      keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      keyword?: string,
       tag?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
@@ -489,8 +489,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
         publishPhase,
         category,
         contributor,
-        keyword,
         visible,
+        keyword,
         tag,
         size,
         labelSelector,
@@ -601,8 +601,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {Array<string>} [category]
      * @param {Array<string>} [contributor]
-     * @param {string} [keyword] Posts filtered by keyword.
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
+     * @param {string} [keyword] Posts filtered by keyword.
      * @param {Array<string>} [tag]
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -617,8 +617,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       category?: Array<string>,
       contributor?: Array<string>,
-      keyword?: string,
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
+      keyword?: string,
       tag?: Array<string>,
       size?: number,
       labelSelector?: Array<string>,
@@ -633,8 +633,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
           publishPhase,
           category,
           contributor,
-          keyword,
           visible,
+          keyword,
           tag,
           size,
           labelSelector,
@@ -751,18 +751,18 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   readonly contributor?: Array<string>
 
   /**
-   * Posts filtered by keyword.
-   * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly keyword?: string
-
-  /**
    *
    * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
+
+  /**
+   * Posts filtered by keyword.
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly keyword?: string
 
   /**
    *
@@ -929,8 +929,8 @@ export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
         requestParameters.publishPhase,
         requestParameters.category,
         requestParameters.contributor,
-        requestParameters.keyword,
         requestParameters.visible,
+        requestParameters.keyword,
         requestParameters.tag,
         requestParameters.size,
         requestParameters.labelSelector,

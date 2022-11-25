@@ -164,7 +164,7 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
     reloadThemeSetting: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
       assertParamExists('reloadThemeSetting', 'name', name)
-      const localVarPath = `/apis/api.console.halo.run/v1alpha1/themes/{name}/reload-setting`.replace(
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/themes/{name}/reload`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
