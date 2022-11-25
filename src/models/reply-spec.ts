@@ -52,6 +52,12 @@ export interface ReplySpec {
   ipAddress?: string
   /**
    *
+   * @type {string}
+   * @memberof ReplySpec
+   */
+  approvedTime?: string
+  /**
+   *
    * @type {number}
    * @memberof ReplySpec
    */

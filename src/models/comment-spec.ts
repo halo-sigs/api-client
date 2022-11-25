@@ -53,6 +53,12 @@ export interface CommentSpec {
   ipAddress?: string
   /**
    *
+   * @type {string}
+   * @memberof CommentSpec
+   */
+  approvedTime?: string
+  /**
+   *
    * @type {number}
    * @memberof CommentSpec
    */
