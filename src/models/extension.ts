@@ -22,10 +22,10 @@ import { Metadata } from './metadata'
 export interface Extension {
   /**
    *
-   * @type {Metadata}
+   * @type {string}
    * @memberof Extension
    */
-  metadata: Metadata
+  apiVersion: string
   /**
    *
    * @type {string}
@@ -34,8 +34,8 @@ export interface Extension {
   kind: string
   /**
    *
-   * @type {string}
+   * @type {Metadata}
    * @memberof Extension
    */
-  apiVersion: string
+  metadata: Metadata
 }
