@@ -12,6 +12,8 @@
  * Do not edit the class manually.
  */
 
+import { Ref } from './ref'
+
 /**
  *
  * @export
@@ -25,15 +27,15 @@ export interface PolicySpec {
    */
   displayName: string
   /**
-   * Reference name of PolicyTemplate
-   * @type {string}
+   *
+   * @type {Ref}
    * @memberof PolicySpec
    */
-  templateName: string
+  templateRef?: Ref
   /**
-   * Reference name of ConfigMap extension
-   * @type {string}
+   *
+   * @type {Ref}
    * @memberof PolicySpec
    */
-  configMapName?: string
+  configMapRef?: Ref
 }

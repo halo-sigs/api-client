@@ -12,6 +12,8 @@
  * Do not edit the class manually.
  */
 
+import { Ref } from './ref'
+
 /**
  *
  * @export
@@ -26,8 +28,8 @@ export interface PolicyTemplateSpec {
   displayName?: string
   /**
    *
-   * @type {string}
+   * @type {Ref}
    * @memberof PolicyTemplateSpec
    */
-  settingName: string
+  settingRef?: Ref
 }

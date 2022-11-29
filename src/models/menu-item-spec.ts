@@ -49,23 +49,5 @@ export interface MenuItemSpec {
    * @type {Ref}
    * @memberof MenuItemSpec
    */
-  categoryRef?: Ref
-  /**
-   *
-   * @type {Ref}
-   * @memberof MenuItemSpec
-   */
-  tagRef?: Ref
-  /**
-   *
-   * @type {Ref}
-   * @memberof MenuItemSpec
-   */
-  postRef?: Ref
-  /**
-   *
-   * @type {Ref}
-   * @memberof MenuItemSpec
-   */
-  singlePageRef?: Ref
+  targetRef?: Ref
 }

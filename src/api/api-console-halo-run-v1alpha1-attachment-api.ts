@@ -42,10 +42,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
   return {
     /**
      *
+     * @param {string} [group] Name of group
      * @param {boolean} [ungrouped] Filter attachments without group. This parameter will ignore group parameter.
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [policy] Name of policy
-     * @param {string} [group] Name of group
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
      * @param {number} [page] The page number. Zero indicates no page.
@@ -56,10 +56,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
      * @throws {RequiredError}
      */
     searchAttachments: async (
+      group?: string,
       ungrouped?: boolean,
       uploadedBy?: string,
       policy?: string,
-      group?: string,
       sort?: Array<string>,
       displayName?: string,
       page?: number,
@@ -88,6 +88,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+      if (group !== undefined) {
+        localVarQueryParameter['group'] = group
+      }
+
       if (ungrouped !== undefined) {
         localVarQueryParameter['ungrouped'] = ungrouped
       }
@@ -98,10 +102,6 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
 
       if (policy !== undefined) {
         localVarQueryParameter['policy'] = policy
-      }
-
-      if (group !== undefined) {
-        localVarQueryParameter['group'] = group
       }
 
       if (sort) {
@@ -212,10 +212,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
   return {
     /**
      *
+     * @param {string} [group] Name of group
      * @param {boolean} [ungrouped] Filter attachments without group. This parameter will ignore group parameter.
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [policy] Name of policy
-     * @param {string} [group] Name of group
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
      * @param {number} [page] The page number. Zero indicates no page.
@@ -226,10 +226,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
      * @throws {RequiredError}
      */
     async searchAttachments(
+      group?: string,
       ungrouped?: boolean,
       uploadedBy?: string,
       policy?: string,
-      group?: string,
       sort?: Array<string>,
       displayName?: string,
       page?: number,
@@ -239,10 +239,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.searchAttachments(
+        group,
         ungrouped,
         uploadedBy,
         policy,
-        group,
         sort,
         displayName,
         page,
@@ -286,10 +286,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
   return {
     /**
      *
+     * @param {string} [group] Name of group
      * @param {boolean} [ungrouped] Filter attachments without group. This parameter will ignore group parameter.
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {string} [policy] Name of policy
-     * @param {string} [group] Name of group
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp, size
      * @param {string} [displayName] Display name of attachment
      * @param {number} [page] The page number. Zero indicates no page.
@@ -300,10 +300,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
      * @throws {RequiredError}
      */
     searchAttachments(
+      group?: string,
       ungrouped?: boolean,
       uploadedBy?: string,
       policy?: string,
-      group?: string,
       sort?: Array<string>,
       displayName?: string,
       page?: number,
@@ -314,10 +314,10 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
     ): AxiosPromise<AttachmentList> {
       return localVarFp
         .searchAttachments(
+          group,
           ungrouped,
           uploadedBy,
           policy,
-          group,
           sort,
           displayName,
           page,
@@ -351,6 +351,13 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
  */
 export interface ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest {
   /**
+   * Name of group
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
+   */
+  readonly group?: string
+
+  /**
    * Filter attachments without group. This parameter will ignore group parameter.
    * @type {boolean}
    * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
@@ -370,13 +377,6 @@ export interface ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest 
    * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
    */
   readonly policy?: string
-
-  /**
-   * Name of group
-   * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly group?: string
 
   /**
    * Sort property and direction of the list result. Supported fields: creationTimestamp, size
@@ -469,10 +469,10 @@ export class ApiConsoleHaloRunV1alpha1AttachmentApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1AttachmentApiFp(this.configuration)
       .searchAttachments(
+        requestParameters.group,
         requestParameters.ungrouped,
         requestParameters.uploadedBy,
         requestParameters.policy,
-        requestParameters.group,
         requestParameters.sort,
         requestParameters.displayName,
         requestParameters.page,

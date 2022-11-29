@@ -93,10 +93,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
     /**
      * List single pages.
      * @param {Array<string>} [contributor]
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -107,10 +107,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
      */
     listSinglePages: async (
       contributor?: Array<string>,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
       keyword?: string,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       page?: number,
       labelSelector?: Array<string>,
@@ -142,20 +142,20 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
         localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
-      if (publishPhase !== undefined) {
-        localVarQueryParameter['publishPhase'] = publishPhase
-      }
-
-      if (visible !== undefined) {
-        localVarQueryParameter['visible'] = visible
-      }
-
       if (sortOrder !== undefined) {
         localVarQueryParameter['sortOrder'] = sortOrder
       }
 
       if (keyword !== undefined) {
         localVarQueryParameter['keyword'] = keyword
+      }
+
+      if (publishPhase !== undefined) {
+        localVarQueryParameter['publishPhase'] = publishPhase
+      }
+
+      if (visible !== undefined) {
+        localVarQueryParameter['visible'] = visible
       }
 
       if (sort !== undefined) {
@@ -356,10 +356,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
     /**
      * List single pages.
      * @param {Array<string>} [contributor]
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -370,10 +370,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
      */
     async listSinglePages(
       contributor?: Array<string>,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
       keyword?: string,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       page?: number,
       labelSelector?: Array<string>,
@@ -383,10 +383,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedSinglePageList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listSinglePages(
         contributor,
-        publishPhase,
-        visible,
         sortOrder,
         keyword,
+        publishPhase,
+        visible,
         sort,
         page,
         labelSelector,
@@ -465,10 +465,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
     /**
      * List single pages.
      * @param {Array<string>} [contributor]
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
@@ -479,10 +479,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
      */
     listSinglePages(
       contributor?: Array<string>,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
       keyword?: string,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       page?: number,
       labelSelector?: Array<string>,
@@ -493,10 +493,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
       return localVarFp
         .listSinglePages(
           contributor,
-          publishPhase,
-          visible,
           sortOrder,
           keyword,
+          publishPhase,
+          visible,
           sort,
           page,
           labelSelector,
@@ -568,20 +568,6 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
   readonly contributor?: Array<string>
 
   /**
-   *
-   * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
-   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
-   */
-  readonly publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'
-
-  /**
-   *
-   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
-   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
-   */
-  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
-
-  /**
    * ascending order If it is true; otherwise, it is in descending order.
    * @type {boolean}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
@@ -594,6 +580,20 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly keyword?: string
+
+  /**
+   *
+   * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
+   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
+   */
+  readonly publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'
+
+  /**
+   *
+   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
+   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
+   */
+  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
 
   /**
    * SinglePage collation.
@@ -724,10 +724,10 @@ export class ApiConsoleHaloRunV1alpha1SinglePageApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1SinglePageApiFp(this.configuration)
       .listSinglePages(
         requestParameters.contributor,
-        requestParameters.publishPhase,
-        requestParameters.visible,
         requestParameters.sortOrder,
         requestParameters.keyword,
+        requestParameters.publishPhase,
+        requestParameters.visible,
         requestParameters.sort,
         requestParameters.page,
         requestParameters.labelSelector,
