@@ -1,6 +1,6 @@
 {
   "name": "@halo-dev/api-client",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "description": "",
   "scripts": {
     "build": "unbuild",
