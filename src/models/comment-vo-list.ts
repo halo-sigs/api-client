@@ -57,6 +57,12 @@ export interface CommentVoList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof CommentVoList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof CommentVoList
@@ -68,10 +74,4 @@ export interface CommentVoList {
    * @memberof CommentVoList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof CommentVoList
-   */
-  totalPages: number
 }

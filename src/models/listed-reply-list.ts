@@ -57,6 +57,12 @@ export interface ListedReplyList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ListedReplyList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof ListedReplyList
@@ -68,10 +74,4 @@ export interface ListedReplyList {
    * @memberof ListedReplyList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof ListedReplyList
-   */
-  totalPages: number
 }

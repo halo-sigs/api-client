@@ -57,6 +57,12 @@ export interface PersonalAccessTokenList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof PersonalAccessTokenList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof PersonalAccessTokenList
@@ -68,10 +74,4 @@ export interface PersonalAccessTokenList {
    * @memberof PersonalAccessTokenList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof PersonalAccessTokenList
-   */
-  totalPages: number
 }

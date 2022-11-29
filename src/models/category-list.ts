@@ -57,6 +57,12 @@ export interface CategoryList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof CategoryList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof CategoryList
@@ -68,10 +74,4 @@ export interface CategoryList {
    * @memberof CategoryList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof CategoryList
-   */
-  totalPages: number
 }

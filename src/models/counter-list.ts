@@ -57,6 +57,12 @@ export interface CounterList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof CounterList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof CounterList
@@ -68,10 +74,4 @@ export interface CounterList {
    * @memberof CounterList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof CounterList
-   */
-  totalPages: number
 }

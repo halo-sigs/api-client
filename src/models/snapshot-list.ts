@@ -57,6 +57,12 @@ export interface SnapshotList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof SnapshotList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof SnapshotList
@@ -68,10 +74,4 @@ export interface SnapshotList {
    * @memberof SnapshotList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof SnapshotList
-   */
-  totalPages: number
 }

@@ -25,12 +25,6 @@ export interface Extension {
    * @type {string}
    * @memberof Extension
    */
-  apiVersion: string
-  /**
-   *
-   * @type {string}
-   * @memberof Extension
-   */
   kind: string
   /**
    *
@@ -38,4 +32,10 @@ export interface Extension {
    * @memberof Extension
    */
   metadata: Metadata
+  /**
+   *
+   * @type {string}
+   * @memberof Extension
+   */
+  apiVersion: string
 }

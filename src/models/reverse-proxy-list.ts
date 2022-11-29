@@ -57,6 +57,12 @@ export interface ReverseProxyList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ReverseProxyList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof ReverseProxyList
@@ -68,10 +74,4 @@ export interface ReverseProxyList {
    * @memberof ReverseProxyList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof ReverseProxyList
-   */
-  totalPages: number
 }

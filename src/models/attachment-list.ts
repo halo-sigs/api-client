@@ -57,6 +57,12 @@ export interface AttachmentList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof AttachmentList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof AttachmentList
@@ -68,10 +74,4 @@ export interface AttachmentList {
    * @memberof AttachmentList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof AttachmentList
-   */
-  totalPages: number
 }

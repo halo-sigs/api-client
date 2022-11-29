@@ -184,15 +184,15 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
     /**
      * List comment replies.
      * @param {string} name
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listCommentReplies: async (
       name: string,
-      size?: number,
       page?: number,
+      size?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
@@ -220,12 +220,12 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
-      }
-
       if (page !== undefined) {
         localVarQueryParameter['page'] = page
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -239,30 +239,30 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
     },
     /**
      * List comments.
+     * @param {string} kind The comment subject kind.
      * @param {string} name The comment subject name.
      * @param {string} version The comment subject version.
-     * @param {string} kind The comment subject kind.
      * @param {string} [group] The comment subject group.
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listComments1: async (
+      kind: string,
       name: string,
       version: string,
-      kind: string,
       group?: string,
-      size?: number,
       page?: number,
+      size?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
+      // verify required parameter 'kind' is not null or undefined
+      assertParamExists('listComments1', 'kind', kind)
       // verify required parameter 'name' is not null or undefined
       assertParamExists('listComments1', 'name', name)
       // verify required parameter 'version' is not null or undefined
       assertParamExists('listComments1', 'version', version)
-      // verify required parameter 'kind' is not null or undefined
-      assertParamExists('listComments1', 'kind', kind)
       const localVarPath = `/apis/api.halo.run/v1alpha1/comments`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -283,6 +283,14 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+      if (kind !== undefined) {
+        localVarQueryParameter['kind'] = kind
+      }
+
+      if (group !== undefined) {
+        localVarQueryParameter['group'] = group
+      }
+
       if (name !== undefined) {
         localVarQueryParameter['name'] = name
       }
@@ -291,20 +299,12 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
         localVarQueryParameter['version'] = version
       }
 
-      if (group !== undefined) {
-        localVarQueryParameter['group'] = group
-      }
-
-      if (kind !== undefined) {
-        localVarQueryParameter['kind'] = kind
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
       }
 
       if (size !== undefined) {
         localVarQueryParameter['size'] = size
-      }
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -370,47 +370,47 @@ export const ApiHaloRunV1alpha1CommentApiFp = function (configuration?: Configur
     /**
      * List comment replies.
      * @param {string} name
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listCommentReplies(
       name: string,
-      size?: number,
       page?: number,
+      size?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReplyVoList>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listCommentReplies(name, size, page, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listCommentReplies(name, page, size, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
      * List comments.
+     * @param {string} kind The comment subject kind.
      * @param {string} name The comment subject name.
      * @param {string} version The comment subject version.
-     * @param {string} kind The comment subject kind.
      * @param {string} [group] The comment subject group.
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listComments1(
+      kind: string,
       name: string,
       version: string,
-      kind: string,
       group?: string,
-      size?: number,
       page?: number,
+      size?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommentVoList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listComments1(
+        kind,
         name,
         version,
-        kind,
         group,
-        size,
         page,
+        size,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -460,36 +460,36 @@ export const ApiHaloRunV1alpha1CommentApiFactory = function (
     /**
      * List comment replies.
      * @param {string} name
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listCommentReplies(name: string, size?: number, page?: number, options?: any): AxiosPromise<ReplyVoList> {
-      return localVarFp.listCommentReplies(name, size, page, options).then((request) => request(axios, basePath))
+    listCommentReplies(name: string, page?: number, size?: number, options?: any): AxiosPromise<ReplyVoList> {
+      return localVarFp.listCommentReplies(name, page, size, options).then((request) => request(axios, basePath))
     },
     /**
      * List comments.
+     * @param {string} kind The comment subject kind.
      * @param {string} name The comment subject name.
      * @param {string} version The comment subject version.
-     * @param {string} kind The comment subject kind.
      * @param {string} [group] The comment subject group.
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listComments1(
+      kind: string,
       name: string,
       version: string,
-      kind: string,
       group?: string,
-      size?: number,
       page?: number,
+      size?: number,
       options?: any,
     ): AxiosPromise<CommentVoList> {
       return localVarFp
-        .listComments1(name, version, kind, group, size, page, options)
+        .listComments1(kind, name, version, group, page, size, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -558,18 +558,18 @@ export interface ApiHaloRunV1alpha1CommentApiListCommentRepliesRequest {
   readonly name: string
 
   /**
-   * Size of one page. Zero indicates no limit.
-   * @type {number}
-   * @memberof ApiHaloRunV1alpha1CommentApiListCommentReplies
-   */
-  readonly size?: number
-
-  /**
    * The page number. Zero indicates no page.
    * @type {number}
    * @memberof ApiHaloRunV1alpha1CommentApiListCommentReplies
    */
   readonly page?: number
+
+  /**
+   * Size of one page. Zero indicates no limit.
+   * @type {number}
+   * @memberof ApiHaloRunV1alpha1CommentApiListCommentReplies
+   */
+  readonly size?: number
 }
 
 /**
@@ -578,6 +578,13 @@ export interface ApiHaloRunV1alpha1CommentApiListCommentRepliesRequest {
  * @interface ApiHaloRunV1alpha1CommentApiListComments1Request
  */
 export interface ApiHaloRunV1alpha1CommentApiListComments1Request {
+  /**
+   * The comment subject kind.
+   * @type {string}
+   * @memberof ApiHaloRunV1alpha1CommentApiListComments1
+   */
+  readonly kind: string
+
   /**
    * The comment subject name.
    * @type {string}
@@ -593,13 +600,6 @@ export interface ApiHaloRunV1alpha1CommentApiListComments1Request {
   readonly version: string
 
   /**
-   * The comment subject kind.
-   * @type {string}
-   * @memberof ApiHaloRunV1alpha1CommentApiListComments1
-   */
-  readonly kind: string
-
-  /**
    * The comment subject group.
    * @type {string}
    * @memberof ApiHaloRunV1alpha1CommentApiListComments1
@@ -607,18 +607,18 @@ export interface ApiHaloRunV1alpha1CommentApiListComments1Request {
   readonly group?: string
 
   /**
-   * Size of one page. Zero indicates no limit.
-   * @type {number}
-   * @memberof ApiHaloRunV1alpha1CommentApiListComments1
-   */
-  readonly size?: number
-
-  /**
    * The page number. Zero indicates no page.
    * @type {number}
    * @memberof ApiHaloRunV1alpha1CommentApiListComments1
    */
   readonly page?: number
+
+  /**
+   * Size of one page. Zero indicates no limit.
+   * @type {number}
+   * @memberof ApiHaloRunV1alpha1CommentApiListComments1
+   */
+  readonly size?: number
 }
 
 /**
@@ -685,7 +685,7 @@ export class ApiHaloRunV1alpha1CommentApi extends BaseAPI {
     options?: AxiosRequestConfig,
   ) {
     return ApiHaloRunV1alpha1CommentApiFp(this.configuration)
-      .listCommentReplies(requestParameters.name, requestParameters.size, requestParameters.page, options)
+      .listCommentReplies(requestParameters.name, requestParameters.page, requestParameters.size, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -702,12 +702,12 @@ export class ApiHaloRunV1alpha1CommentApi extends BaseAPI {
   ) {
     return ApiHaloRunV1alpha1CommentApiFp(this.configuration)
       .listComments1(
+        requestParameters.kind,
         requestParameters.name,
         requestParameters.version,
-        requestParameters.kind,
         requestParameters.group,
-        requestParameters.size,
         requestParameters.page,
+        requestParameters.size,
         options,
       )
       .then((request) => request(this.axios, this.basePath))

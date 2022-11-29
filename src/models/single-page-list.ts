@@ -57,6 +57,12 @@ export interface SinglePageList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof SinglePageList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof SinglePageList
@@ -68,10 +74,4 @@ export interface SinglePageList {
    * @memberof SinglePageList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof SinglePageList
-   */
-  totalPages: number
 }

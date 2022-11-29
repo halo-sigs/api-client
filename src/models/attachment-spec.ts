@@ -12,8 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { Ref } from './ref'
-
 /**
  *
  * @export
@@ -27,23 +25,23 @@ export interface AttachmentSpec {
    */
   displayName?: string
   /**
-   *
-   * @type {Ref}
+   * Group name
+   * @type {string}
    * @memberof AttachmentSpec
    */
-  groupRef?: Ref
+  groupName?: string
   /**
-   *
-   * @type {Ref}
+   * Policy name
+   * @type {string}
    * @memberof AttachmentSpec
    */
-  policyRef?: Ref
+  policyName?: string
   /**
-   *
-   * @type {Ref}
+   * Name of User who uploads the attachment
+   * @type {string}
    * @memberof AttachmentSpec
    */
-  uploadedBy?: Ref
+  ownerName?: string
   /**
    * Media type of attachment
    * @type {string}

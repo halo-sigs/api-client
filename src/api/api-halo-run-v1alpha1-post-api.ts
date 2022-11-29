@@ -76,10 +76,6 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-      if (keyword !== undefined) {
-        localVarQueryParameter['keyword'] = keyword
-      }
-
       if (limit !== undefined) {
         localVarQueryParameter['limit'] = limit
       }
@@ -90,6 +86,10 @@ export const ApiHaloRunV1alpha1PostApiAxiosParamCreator = function (configuratio
 
       if (highlightPostTag !== undefined) {
         localVarQueryParameter['highlightPostTag'] = highlightPostTag
+      }
+
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)

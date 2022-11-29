@@ -57,6 +57,12 @@ export interface PolicyTemplateList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof PolicyTemplateList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof PolicyTemplateList
@@ -68,10 +74,4 @@ export interface PolicyTemplateList {
    * @memberof PolicyTemplateList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof PolicyTemplateList
-   */
-  totalPages: number
 }

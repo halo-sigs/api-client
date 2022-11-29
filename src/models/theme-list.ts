@@ -57,6 +57,12 @@ export interface ThemeList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ThemeList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof ThemeList
@@ -68,10 +74,4 @@ export interface ThemeList {
    * @memberof ThemeList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof ThemeList
-   */
-  totalPages: number
 }

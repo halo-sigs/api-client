@@ -57,6 +57,12 @@ export interface PostList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof PostList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof PostList
@@ -68,10 +74,4 @@ export interface PostList {
    * @memberof PostList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof PostList
-   */
-  totalPages: number
 }

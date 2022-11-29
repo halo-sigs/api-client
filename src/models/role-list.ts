@@ -57,6 +57,12 @@ export interface RoleList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof RoleList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof RoleList
@@ -68,10 +74,4 @@ export interface RoleList {
    * @memberof RoleList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof RoleList
-   */
-  totalPages: number
 }

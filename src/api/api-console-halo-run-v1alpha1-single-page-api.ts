@@ -92,30 +92,30 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
     },
     /**
      * List single pages.
-     * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {Array<string>} [contributor]
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {Array<string>} [contributor]
-     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listSinglePages: async (
-      sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      keyword?: string,
+      contributor?: Array<string>,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
-      contributor?: Array<string>,
-      size?: number,
+      keyword?: string,
+      sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      size?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/api.console.halo.run/v1alpha1/singlepages`
@@ -138,12 +138,12 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (contributor) {
+        localVarQueryParameter['contributor'] = Array.from(contributor)
       }
 
-      if (keyword !== undefined) {
-        localVarQueryParameter['keyword'] = keyword
+      if (publishPhase !== undefined) {
+        localVarQueryParameter['publishPhase'] = publishPhase
       }
 
       if (visible !== undefined) {
@@ -154,16 +154,12 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
         localVarQueryParameter['sortOrder'] = sortOrder
       }
 
-      if (publishPhase !== undefined) {
-        localVarQueryParameter['publishPhase'] = publishPhase
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword
       }
 
-      if (contributor) {
-        localVarQueryParameter['contributor'] = Array.from(contributor)
-      }
-
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
+      if (sort !== undefined) {
+        localVarQueryParameter['sort'] = sort
       }
 
       if (page !== undefined) {
@@ -176,6 +172,10 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiAxiosParamCreator = function 
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -355,43 +355,43 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFp = function (configuration?
     },
     /**
      * List single pages.
-     * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {Array<string>} [contributor]
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {Array<string>} [contributor]
-     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listSinglePages(
-      sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      keyword?: string,
+      contributor?: Array<string>,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
-      contributor?: Array<string>,
-      size?: number,
+      keyword?: string,
+      sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      size?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedSinglePageList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listSinglePages(
-        sort,
-        keyword,
+        contributor,
+        publishPhase,
         visible,
         sortOrder,
-        publishPhase,
-        contributor,
-        size,
+        keyword,
+        sort,
         page,
         labelSelector,
         fieldSelector,
+        size,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -464,44 +464,44 @@ export const ApiConsoleHaloRunV1alpha1SinglePageApiFactory = function (
     },
     /**
      * List single pages.
-     * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
-     * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {Array<string>} [contributor]
+     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
      * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
-     * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
-     * @param {Array<string>} [contributor]
-     * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {string} [keyword] SinglePages filtered by keyword.
+     * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] SinglePage collation.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listSinglePages(
-      sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
-      keyword?: string,
+      contributor?: Array<string>,
+      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
       visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       sortOrder?: boolean,
-      publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
-      contributor?: Array<string>,
-      size?: number,
+      keyword?: string,
+      sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      size?: number,
       options?: any,
     ): AxiosPromise<ListedSinglePageList> {
       return localVarFp
         .listSinglePages(
-          sort,
-          keyword,
+          contributor,
+          publishPhase,
           visible,
           sortOrder,
-          publishPhase,
-          contributor,
-          size,
+          keyword,
+          sort,
           page,
           labelSelector,
           fieldSelector,
+          size,
           options,
         )
         .then((request) => request(axios, basePath))
@@ -561,18 +561,18 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiDraftSinglePageRequest {
  */
 export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
   /**
-   * SinglePage collation.
-   * @type {'PUBLISH_TIME' | 'CREATE_TIME'}
+   *
+   * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
-  readonly sort?: 'PUBLISH_TIME' | 'CREATE_TIME'
+  readonly contributor?: Array<string>
 
   /**
-   * SinglePages filtered by keyword.
-   * @type {string}
+   *
+   * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
-  readonly keyword?: string
+  readonly publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'
 
   /**
    *
@@ -589,25 +589,18 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
   readonly sortOrder?: boolean
 
   /**
-   *
-   * @type {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'}
+   * SinglePages filtered by keyword.
+   * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
-  readonly publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'
+  readonly keyword?: string
 
   /**
-   *
-   * @type {Array<string>}
+   * SinglePage collation.
+   * @type {'PUBLISH_TIME' | 'CREATE_TIME'}
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
-  readonly contributor?: Array<string>
-
-  /**
-   * Size of one page. Zero indicates no limit.
-   * @type {number}
-   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
-   */
-  readonly size?: number
+  readonly sort?: 'PUBLISH_TIME' | 'CREATE_TIME'
 
   /**
    * The page number. Zero indicates no page.
@@ -629,6 +622,13 @@ export interface ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePagesRequest {
    * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
    */
   readonly fieldSelector?: Array<string>
+
+  /**
+   * Size of one page. Zero indicates no limit.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1SinglePageApiListSinglePages
+   */
+  readonly size?: number
 }
 
 /**
@@ -723,16 +723,16 @@ export class ApiConsoleHaloRunV1alpha1SinglePageApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1SinglePageApiFp(this.configuration)
       .listSinglePages(
-        requestParameters.sort,
-        requestParameters.keyword,
+        requestParameters.contributor,
+        requestParameters.publishPhase,
         requestParameters.visible,
         requestParameters.sortOrder,
-        requestParameters.publishPhase,
-        requestParameters.contributor,
-        requestParameters.size,
+        requestParameters.keyword,
+        requestParameters.sort,
         requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
+        requestParameters.size,
         options,
       )
       .then((request) => request(this.axios, this.basePath))

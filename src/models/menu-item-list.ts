@@ -57,6 +57,12 @@ export interface MenuItemList {
    */
   last: boolean
   /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof MenuItemList
+   */
+  totalPages: number
+  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof MenuItemList
@@ -68,10 +74,4 @@ export interface MenuItemList {
    * @memberof MenuItemList
    */
   hasPrevious: boolean
-  /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof MenuItemList
-   */
-  totalPages: number
 }
