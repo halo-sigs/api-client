@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { Author } from './author'
 import { License } from './license'
 
 /**
@@ -34,10 +35,10 @@ export interface PluginSpec {
   version: string
   /**
    *
-   * @type {string}
+   * @type {Author}
    * @memberof PluginSpec
    */
-  author?: string
+  author?: Author
   /**
    *
    * @type {string}
