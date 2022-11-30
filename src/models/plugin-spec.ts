@@ -12,8 +12,8 @@
  * Do not edit the class manually.
  */
 
-import { Author } from './author'
 import { License } from './license'
+import { PluginAuthor } from './plugin-author'
 
 /**
  *
@@ -35,10 +35,10 @@ export interface PluginSpec {
   version: string
   /**
    *
-   * @type {Author}
+   * @type {PluginAuthor}
    * @memberof PluginSpec
    */
-  author?: Author
+  author?: PluginAuthor
   /**
    *
    * @type {string}

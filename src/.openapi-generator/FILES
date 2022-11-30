@@ -106,6 +106,7 @@ models/owner-info.ts
 models/personal-access-token-list.ts
 models/personal-access-token-spec.ts
 models/personal-access-token.ts
+models/plugin-author.ts
 models/plugin-list.ts
 models/plugin-spec.ts
 models/plugin-status.ts
