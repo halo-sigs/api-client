@@ -57,12 +57,6 @@ export interface TagList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof TagList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof TagList
@@ -74,4 +68,10 @@ export interface TagList {
    * @memberof TagList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof TagList
+   */
+  totalPages: number
 }

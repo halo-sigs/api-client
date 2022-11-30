@@ -57,12 +57,6 @@ export interface GroupList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof GroupList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof GroupList
@@ -74,4 +68,10 @@ export interface GroupList {
    * @memberof GroupList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof GroupList
+   */
+  totalPages: number
 }

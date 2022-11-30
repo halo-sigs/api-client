@@ -57,12 +57,6 @@ export interface RoleBindingList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof RoleBindingList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof RoleBindingList
@@ -74,4 +68,10 @@ export interface RoleBindingList {
    * @memberof RoleBindingList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof RoleBindingList
+   */
+  totalPages: number
 }

@@ -57,12 +57,6 @@ export interface SearchEngineList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof SearchEngineList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof SearchEngineList
@@ -74,4 +68,10 @@ export interface SearchEngineList {
    * @memberof SearchEngineList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof SearchEngineList
+   */
+  totalPages: number
 }

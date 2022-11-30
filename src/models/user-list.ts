@@ -57,12 +57,6 @@ export interface UserList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof UserList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof UserList
@@ -74,4 +68,10 @@ export interface UserList {
    * @memberof UserList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof UserList
+   */
+  totalPages: number
 }

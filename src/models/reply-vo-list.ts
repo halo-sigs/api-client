@@ -57,12 +57,6 @@ export interface ReplyVoList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof ReplyVoList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof ReplyVoList
@@ -74,4 +68,10 @@ export interface ReplyVoList {
    * @memberof ReplyVoList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ReplyVoList
+   */
+  totalPages: number
 }

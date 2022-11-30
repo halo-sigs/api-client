@@ -57,12 +57,6 @@ export interface SettingList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof SettingList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof SettingList
@@ -74,4 +68,10 @@ export interface SettingList {
    * @memberof SettingList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof SettingList
+   */
+  totalPages: number
 }

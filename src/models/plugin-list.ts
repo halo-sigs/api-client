@@ -57,12 +57,6 @@ export interface PluginList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof PluginList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof PluginList
@@ -74,4 +68,10 @@ export interface PluginList {
    * @memberof PluginList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof PluginList
+   */
+  totalPages: number
 }

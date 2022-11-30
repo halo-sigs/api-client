@@ -57,12 +57,6 @@ export interface ReplyList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof ReplyList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof ReplyList
@@ -74,4 +68,10 @@ export interface ReplyList {
    * @memberof ReplyList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ReplyList
+   */
+  totalPages: number
 }

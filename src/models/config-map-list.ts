@@ -57,12 +57,6 @@ export interface ConfigMapList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof ConfigMapList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof ConfigMapList
@@ -74,4 +68,10 @@ export interface ConfigMapList {
    * @memberof ConfigMapList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ConfigMapList
+   */
+  totalPages: number
 }

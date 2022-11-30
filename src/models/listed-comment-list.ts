@@ -57,12 +57,6 @@ export interface ListedCommentList {
    */
   last: boolean
   /**
-   * Indicates total pages.
-   * @type {number}
-   * @memberof ListedCommentList
-   */
-  totalPages: number
-  /**
    * Indicates whether current page has previous page.
    * @type {boolean}
    * @memberof ListedCommentList
@@ -74,4 +68,10 @@ export interface ListedCommentList {
    * @memberof ListedCommentList
    */
   hasPrevious: boolean
+  /**
+   * Indicates total pages.
+   * @type {number}
+   * @memberof ListedCommentList
+   */
+  totalPages: number
 }

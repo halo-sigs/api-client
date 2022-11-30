@@ -140,40 +140,40 @@ export const ApiConsoleHaloRunV1alpha1CommentApiAxiosParamCreator = function (co
     },
     /**
      * List comments.
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'} [sort] Comment collation.
      * @param {string} [keyword] Comments filtered by keyword.
-     * @param {boolean} [approved] Comments approved.
      * @param {boolean} [hidden] The comment is hidden from the theme side.
      * @param {boolean} [top] Comment top display.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {boolean} [approved] Comments approved.
      * @param {boolean} [allowNotification] Send notifications when there are new replies.
      * @param {string} [ownerKind] Commenter kind.
      * @param {string} [ownerName] Commenter name.
      * @param {string} [subjectKind] Comment subject kind.
      * @param {string} [subjectName] Comment subject name.
-     * @param {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'} [sort] Comment collation.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listComments: async (
-      sortOrder?: boolean,
+      sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME',
       keyword?: string,
-      approved?: boolean,
       hidden?: boolean,
       top?: boolean,
+      sortOrder?: boolean,
+      approved?: boolean,
       allowNotification?: boolean,
       ownerKind?: string,
       ownerName?: string,
       subjectKind?: string,
       subjectName?: string,
-      sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME',
+      size?: number,
       page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      size?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/api.console.halo.run/v1alpha1/comments`
@@ -196,16 +196,12 @@ export const ApiConsoleHaloRunV1alpha1CommentApiAxiosParamCreator = function (co
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-      if (sortOrder !== undefined) {
-        localVarQueryParameter['sortOrder'] = sortOrder
+      if (sort !== undefined) {
+        localVarQueryParameter['sort'] = sort
       }
 
       if (keyword !== undefined) {
         localVarQueryParameter['keyword'] = keyword
-      }
-
-      if (approved !== undefined) {
-        localVarQueryParameter['approved'] = approved
       }
 
       if (hidden !== undefined) {
@@ -214,6 +210,14 @@ export const ApiConsoleHaloRunV1alpha1CommentApiAxiosParamCreator = function (co
 
       if (top !== undefined) {
         localVarQueryParameter['top'] = top
+      }
+
+      if (sortOrder !== undefined) {
+        localVarQueryParameter['sortOrder'] = sortOrder
+      }
+
+      if (approved !== undefined) {
+        localVarQueryParameter['approved'] = approved
       }
 
       if (allowNotification !== undefined) {
@@ -236,8 +240,8 @@ export const ApiConsoleHaloRunV1alpha1CommentApiAxiosParamCreator = function (co
         localVarQueryParameter['subjectName'] = subjectName
       }
 
-      if (sort !== undefined) {
-        localVarQueryParameter['sort'] = sort
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size
       }
 
       if (page !== undefined) {
@@ -250,10 +254,6 @@ export const ApiConsoleHaloRunV1alpha1CommentApiAxiosParamCreator = function (co
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
-      }
-
-      if (size !== undefined) {
-        localVarQueryParameter['size'] = size
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -305,58 +305,58 @@ export const ApiConsoleHaloRunV1alpha1CommentApiFp = function (configuration?: C
     },
     /**
      * List comments.
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'} [sort] Comment collation.
      * @param {string} [keyword] Comments filtered by keyword.
-     * @param {boolean} [approved] Comments approved.
      * @param {boolean} [hidden] The comment is hidden from the theme side.
      * @param {boolean} [top] Comment top display.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {boolean} [approved] Comments approved.
      * @param {boolean} [allowNotification] Send notifications when there are new replies.
      * @param {string} [ownerKind] Commenter kind.
      * @param {string} [ownerName] Commenter name.
      * @param {string} [subjectKind] Comment subject kind.
      * @param {string} [subjectName] Comment subject name.
-     * @param {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'} [sort] Comment collation.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listComments(
-      sortOrder?: boolean,
+      sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME',
       keyword?: string,
-      approved?: boolean,
       hidden?: boolean,
       top?: boolean,
+      sortOrder?: boolean,
+      approved?: boolean,
       allowNotification?: boolean,
       ownerKind?: string,
       ownerName?: string,
       subjectKind?: string,
       subjectName?: string,
-      sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME',
+      size?: number,
       page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      size?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListedCommentList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listComments(
-        sortOrder,
+        sort,
         keyword,
-        approved,
         hidden,
         top,
+        sortOrder,
+        approved,
         allowNotification,
         ownerKind,
         ownerName,
         subjectKind,
         subjectName,
-        sort,
+        size,
         page,
         labelSelector,
         fieldSelector,
-        size,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -396,59 +396,59 @@ export const ApiConsoleHaloRunV1alpha1CommentApiFactory = function (
     },
     /**
      * List comments.
-     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'} [sort] Comment collation.
      * @param {string} [keyword] Comments filtered by keyword.
-     * @param {boolean} [approved] Comments approved.
      * @param {boolean} [hidden] The comment is hidden from the theme side.
      * @param {boolean} [top] Comment top display.
+     * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
+     * @param {boolean} [approved] Comments approved.
      * @param {boolean} [allowNotification] Send notifications when there are new replies.
      * @param {string} [ownerKind] Commenter kind.
      * @param {string} [ownerName] Commenter name.
      * @param {string} [subjectKind] Comment subject kind.
      * @param {string} [subjectName] Comment subject name.
-     * @param {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'} [sort] Comment collation.
+     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listComments(
-      sortOrder?: boolean,
+      sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME',
       keyword?: string,
-      approved?: boolean,
       hidden?: boolean,
       top?: boolean,
+      sortOrder?: boolean,
+      approved?: boolean,
       allowNotification?: boolean,
       ownerKind?: string,
       ownerName?: string,
       subjectKind?: string,
       subjectName?: string,
-      sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME',
+      size?: number,
       page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      size?: number,
       options?: any,
     ): AxiosPromise<ListedCommentList> {
       return localVarFp
         .listComments(
-          sortOrder,
+          sort,
           keyword,
-          approved,
           hidden,
           top,
+          sortOrder,
+          approved,
           allowNotification,
           ownerKind,
           ownerName,
           subjectKind,
           subjectName,
-          sort,
+          size,
           page,
           labelSelector,
           fieldSelector,
-          size,
           options,
         )
         .then((request) => request(axios, basePath))
@@ -498,11 +498,11 @@ export interface ApiConsoleHaloRunV1alpha1CommentApiCreateReplyRequest {
  */
 export interface ApiConsoleHaloRunV1alpha1CommentApiListCommentsRequest {
   /**
-   * ascending order If it is true; otherwise, it is in descending order.
-   * @type {boolean}
+   * Comment collation.
+   * @type {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'}
    * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
    */
-  readonly sortOrder?: boolean
+  readonly sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'
 
   /**
    * Comments filtered by keyword.
@@ -510,13 +510,6 @@ export interface ApiConsoleHaloRunV1alpha1CommentApiListCommentsRequest {
    * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
    */
   readonly keyword?: string
-
-  /**
-   * Comments approved.
-   * @type {boolean}
-   * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
-   */
-  readonly approved?: boolean
 
   /**
    * The comment is hidden from the theme side.
@@ -531,6 +524,20 @@ export interface ApiConsoleHaloRunV1alpha1CommentApiListCommentsRequest {
    * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
    */
   readonly top?: boolean
+
+  /**
+   * ascending order If it is true; otherwise, it is in descending order.
+   * @type {boolean}
+   * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
+   */
+  readonly sortOrder?: boolean
+
+  /**
+   * Comments approved.
+   * @type {boolean}
+   * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
+   */
+  readonly approved?: boolean
 
   /**
    * Send notifications when there are new replies.
@@ -568,11 +575,11 @@ export interface ApiConsoleHaloRunV1alpha1CommentApiListCommentsRequest {
   readonly subjectName?: string
 
   /**
-   * Comment collation.
-   * @type {'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'}
+   * Size of one page. Zero indicates no limit.
+   * @type {number}
    * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
    */
-  readonly sort?: 'LAST_REPLY_TIME' | 'REPLY_COUNT' | 'CREATE_TIME'
+  readonly size?: number
 
   /**
    * The page number. Zero indicates no page.
@@ -594,13 +601,6 @@ export interface ApiConsoleHaloRunV1alpha1CommentApiListCommentsRequest {
    * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
    */
   readonly fieldSelector?: Array<string>
-
-  /**
-   * Size of one page. Zero indicates no limit.
-   * @type {number}
-   * @memberof ApiConsoleHaloRunV1alpha1CommentApiListComments
-   */
-  readonly size?: number
 }
 
 /**
@@ -655,21 +655,21 @@ export class ApiConsoleHaloRunV1alpha1CommentApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1CommentApiFp(this.configuration)
       .listComments(
-        requestParameters.sortOrder,
+        requestParameters.sort,
         requestParameters.keyword,
-        requestParameters.approved,
         requestParameters.hidden,
         requestParameters.top,
+        requestParameters.sortOrder,
+        requestParameters.approved,
         requestParameters.allowNotification,
         requestParameters.ownerKind,
         requestParameters.ownerName,
         requestParameters.subjectKind,
         requestParameters.subjectName,
-        requestParameters.sort,
+        requestParameters.size,
         requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
-        requestParameters.size,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
