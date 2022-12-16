@@ -31,6 +31,8 @@ import {
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base'
 // @ts-ignore
+import { ConfigMap } from '../models'
+// @ts-ignore
 import { Theme } from '../models'
 // @ts-ignore
 import { ThemeList } from '../models'
@@ -197,6 +199,47 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
       }
     },
     /**
+     * Reset theme setting configMap.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    resetThemeSettingConfig: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('resetThemeSettingConfig', 'name', name)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/themes/{name}/resetconfig`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Upgrade theme
      * @param {string} name
      * @param {any} file
@@ -313,6 +356,19 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
+     * Reset theme setting configMap.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async resetThemeSettingConfig(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfigMap>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.resetThemeSettingConfig(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
      * Upgrade theme
      * @param {string} name
      * @param {any} file
@@ -380,6 +436,15 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
      */
     reload(name: string, options?: any): AxiosPromise<Theme> {
       return localVarFp.reload(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Reset theme setting configMap.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    resetThemeSettingConfig(name: string, options?: any): AxiosPromise<ConfigMap> {
+      return localVarFp.resetThemeSettingConfig(name, options).then((request) => request(axios, basePath))
     },
     /**
      * Upgrade theme
@@ -465,6 +530,20 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiReloadRequest {
 }
 
 /**
+ * Request parameters for resetThemeSettingConfig operation in ApiConsoleHaloRunV1alpha1ThemeApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1ThemeApiResetThemeSettingConfigRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1ThemeApiResetThemeSettingConfigRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiResetThemeSettingConfig
+   */
+  readonly name: string
+}
+
+/**
  * Request parameters for upgradeTheme operation in ApiConsoleHaloRunV1alpha1ThemeApi.
  * @export
  * @interface ApiConsoleHaloRunV1alpha1ThemeApiUpgradeThemeRequest
@@ -541,6 +620,22 @@ export class ApiConsoleHaloRunV1alpha1ThemeApi extends BaseAPI {
   public reload(requestParameters: ApiConsoleHaloRunV1alpha1ThemeApiReloadRequest, options?: AxiosRequestConfig) {
     return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
       .reload(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Reset theme setting configMap.
+   * @param {ApiConsoleHaloRunV1alpha1ThemeApiResetThemeSettingConfigRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApi
+   */
+  public resetThemeSettingConfig(
+    requestParameters: ApiConsoleHaloRunV1alpha1ThemeApiResetThemeSettingConfigRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
+      .resetThemeSettingConfig(requestParameters.name, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

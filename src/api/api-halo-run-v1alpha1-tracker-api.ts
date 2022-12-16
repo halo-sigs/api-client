@@ -182,7 +182,7 @@ export const ApiHaloRunV1alpha1TrackerApiFp = function (configuration?: Configur
     async count(
       counterRequest: CounterRequest,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.count(counterRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -195,7 +195,7 @@ export const ApiHaloRunV1alpha1TrackerApiFp = function (configuration?: Configur
     async downvote(
       voteRequest: VoteRequest,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.downvote(voteRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -208,7 +208,7 @@ export const ApiHaloRunV1alpha1TrackerApiFp = function (configuration?: Configur
     async upvote(
       voteRequest: VoteRequest,
       options?: AxiosRequestConfig,
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.upvote(voteRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
@@ -232,7 +232,7 @@ export const ApiHaloRunV1alpha1TrackerApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    count(counterRequest: CounterRequest, options?: any): AxiosPromise<number> {
+    count(counterRequest: CounterRequest, options?: any): AxiosPromise<void> {
       return localVarFp.count(counterRequest, options).then((request) => request(axios, basePath))
     },
     /**
@@ -241,7 +241,7 @@ export const ApiHaloRunV1alpha1TrackerApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    downvote(voteRequest: VoteRequest, options?: any): AxiosPromise<number> {
+    downvote(voteRequest: VoteRequest, options?: any): AxiosPromise<void> {
       return localVarFp.downvote(voteRequest, options).then((request) => request(axios, basePath))
     },
     /**
@@ -250,7 +250,7 @@ export const ApiHaloRunV1alpha1TrackerApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    upvote(voteRequest: VoteRequest, options?: any): AxiosPromise<number> {
+    upvote(voteRequest: VoteRequest, options?: any): AxiosPromise<void> {
       return localVarFp.upvote(voteRequest, options).then((request) => request(axios, basePath))
     },
   }

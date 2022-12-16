@@ -28,6 +28,12 @@ export interface UserStatus {
   lastLoginAt?: string
   /**
    *
+   * @type {string}
+   * @memberof UserStatus
+   */
+  permalink?: string
+  /**
+   *
    * @type {Array<LoginHistory>}
    * @memberof UserStatus
    */
