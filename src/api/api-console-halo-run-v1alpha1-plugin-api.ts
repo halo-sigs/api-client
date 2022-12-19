@@ -94,9 +94,9 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
      * @param {boolean} [enabled] Whether the plugin is enabled
      * @param {string} [keyword] Keyword of plugin name or description
      * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -105,9 +105,9 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
       enabled?: boolean,
       keyword?: string,
       size?: number,
-      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      page?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/api.console.halo.run/v1alpha1/plugins`
@@ -146,16 +146,16 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
         localVarQueryParameter['size'] = size
       }
 
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
-      }
-
       if (labelSelector) {
         localVarQueryParameter['labelSelector'] = labelSelector
       }
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -168,15 +168,15 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
       }
     },
     /**
-     * Reset plugin setting configMap.
+     * Reset the configMap of plugin setting.
      * @param {string} name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetPluginSettingConfig: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+    resetPluginConfig: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
-      assertParamExists('resetPluginSettingConfig', 'name', name)
-      const localVarPath = `/apis/api.console.halo.run/v1alpha1/plugins/{name}/resetconfig`.replace(
+      assertParamExists('resetPluginConfig', 'name', name)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/plugins/{name}/reset-config`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
       )
@@ -289,9 +289,9 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
      * @param {boolean} [enabled] Whether the plugin is enabled
      * @param {string} [keyword] Keyword of plugin name or description
      * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -300,9 +300,9 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
       enabled?: boolean,
       keyword?: string,
       size?: number,
-      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      page?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PluginList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPlugins(
@@ -310,24 +310,24 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
         enabled,
         keyword,
         size,
-        page,
         labelSelector,
         fieldSelector,
+        page,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
-     * Reset plugin setting configMap.
+     * Reset the configMap of plugin setting.
      * @param {string} name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async resetPluginSettingConfig(
+    async resetPluginConfig(
       name: string,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfigMap>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.resetPluginSettingConfig(name, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.resetPluginConfig(name, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -374,9 +374,9 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
      * @param {boolean} [enabled] Whether the plugin is enabled
      * @param {string} [keyword] Keyword of plugin name or description
      * @param {number} [size] Size of one page. Zero indicates no limit.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -385,23 +385,23 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
       enabled?: boolean,
       keyword?: string,
       size?: number,
-      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      page?: number,
       options?: any,
     ): AxiosPromise<PluginList> {
       return localVarFp
-        .listPlugins(sort, enabled, keyword, size, page, labelSelector, fieldSelector, options)
+        .listPlugins(sort, enabled, keyword, size, labelSelector, fieldSelector, page, options)
         .then((request) => request(axios, basePath))
     },
     /**
-     * Reset plugin setting configMap.
+     * Reset the configMap of plugin setting.
      * @param {string} name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetPluginSettingConfig(name: string, options?: any): AxiosPromise<ConfigMap> {
-      return localVarFp.resetPluginSettingConfig(name, options).then((request) => request(axios, basePath))
+    resetPluginConfig(name: string, options?: any): AxiosPromise<ConfigMap> {
+      return localVarFp.resetPluginConfig(name, options).then((request) => request(axios, basePath))
     },
     /**
      * Upgrade a plugin by uploading a Jar file
@@ -465,13 +465,6 @@ export interface ApiConsoleHaloRunV1alpha1PluginApiListPluginsRequest {
   readonly size?: number
 
   /**
-   * The page number. Zero indicates no page.
-   * @type {number}
-   * @memberof ApiConsoleHaloRunV1alpha1PluginApiListPlugins
-   */
-  readonly page?: number
-
-  /**
    * Label selector for filtering.
    * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1PluginApiListPlugins
@@ -484,18 +477,25 @@ export interface ApiConsoleHaloRunV1alpha1PluginApiListPluginsRequest {
    * @memberof ApiConsoleHaloRunV1alpha1PluginApiListPlugins
    */
   readonly fieldSelector?: Array<string>
+
+  /**
+   * The page number. Zero indicates no page.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiListPlugins
+   */
+  readonly page?: number
 }
 
 /**
- * Request parameters for resetPluginSettingConfig operation in ApiConsoleHaloRunV1alpha1PluginApi.
+ * Request parameters for resetPluginConfig operation in ApiConsoleHaloRunV1alpha1PluginApi.
  * @export
- * @interface ApiConsoleHaloRunV1alpha1PluginApiResetPluginSettingConfigRequest
+ * @interface ApiConsoleHaloRunV1alpha1PluginApiResetPluginConfigRequest
  */
-export interface ApiConsoleHaloRunV1alpha1PluginApiResetPluginSettingConfigRequest {
+export interface ApiConsoleHaloRunV1alpha1PluginApiResetPluginConfigRequest {
   /**
    *
    * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1PluginApiResetPluginSettingConfig
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiResetPluginConfig
    */
   readonly name: string
 }
@@ -561,27 +561,27 @@ export class ApiConsoleHaloRunV1alpha1PluginApi extends BaseAPI {
         requestParameters.enabled,
         requestParameters.keyword,
         requestParameters.size,
-        requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
+        requestParameters.page,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
-   * Reset plugin setting configMap.
-   * @param {ApiConsoleHaloRunV1alpha1PluginApiResetPluginSettingConfigRequest} requestParameters Request parameters.
+   * Reset the configMap of plugin setting.
+   * @param {ApiConsoleHaloRunV1alpha1PluginApiResetPluginConfigRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof ApiConsoleHaloRunV1alpha1PluginApi
    */
-  public resetPluginSettingConfig(
-    requestParameters: ApiConsoleHaloRunV1alpha1PluginApiResetPluginSettingConfigRequest,
+  public resetPluginConfig(
+    requestParameters: ApiConsoleHaloRunV1alpha1PluginApiResetPluginConfigRequest,
     options?: AxiosRequestConfig,
   ) {
     return ApiConsoleHaloRunV1alpha1PluginApiFp(this.configuration)
-      .resetPluginSettingConfig(requestParameters.name, options)
+      .resetPluginConfig(requestParameters.name, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
