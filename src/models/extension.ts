@@ -22,16 +22,16 @@ import { Metadata } from './metadata'
 export interface Extension {
   /**
    *
-   * @type {string}
-   * @memberof Extension
-   */
-  apiVersion: string
-  /**
-   *
    * @type {Metadata}
    * @memberof Extension
    */
   metadata: Metadata
+  /**
+   *
+   * @type {string}
+   * @memberof Extension
+   */
+  apiVersion: string
   /**
    *
    * @type {string}

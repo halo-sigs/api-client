@@ -33,6 +33,12 @@ export interface MenuItemSpec {
    */
   href?: string
   /**
+   * The <a> target attribute of this menu item.
+   * @type {string}
+   * @memberof MenuItemSpec
+   */
+  target?: MenuItemSpecTargetEnum
+  /**
    * The priority is for ordering.
    * @type {number}
    * @memberof MenuItemSpec
@@ -51,3 +57,12 @@ export interface MenuItemSpec {
    */
   targetRef?: Ref
 }
+
+export const MenuItemSpecTargetEnum = {
+  Blank: '_blank',
+  Self: '_self',
+  Parent: '_parent',
+  Top: '_top',
+} as const
+
+export type MenuItemSpecTargetEnum = typeof MenuItemSpecTargetEnum[keyof typeof MenuItemSpecTargetEnum]

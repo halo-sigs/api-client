@@ -91,8 +91,8 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
     /**
      * List plugins using query criteria and sort params
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp
-     * @param {string} [keyword] Keyword of plugin name or description
      * @param {boolean} [enabled] Whether the plugin is enabled
+     * @param {string} [keyword] Keyword of plugin name or description
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -102,8 +102,8 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
      */
     listPlugins: async (
       sort?: Array<string>,
-      keyword?: string,
       enabled?: boolean,
+      keyword?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -134,12 +134,12 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
         localVarQueryParameter['sort'] = Array.from(sort)
       }
 
-      if (keyword !== undefined) {
-        localVarQueryParameter['keyword'] = keyword
-      }
-
       if (enabled !== undefined) {
         localVarQueryParameter['enabled'] = enabled
+      }
+
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword
       }
 
       if (size !== undefined) {
@@ -286,8 +286,8 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
     /**
      * List plugins using query criteria and sort params
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp
-     * @param {string} [keyword] Keyword of plugin name or description
      * @param {boolean} [enabled] Whether the plugin is enabled
+     * @param {string} [keyword] Keyword of plugin name or description
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -297,8 +297,8 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
      */
     async listPlugins(
       sort?: Array<string>,
-      keyword?: string,
       enabled?: boolean,
+      keyword?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -307,8 +307,8 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PluginList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPlugins(
         sort,
-        keyword,
         enabled,
+        keyword,
         size,
         labelSelector,
         fieldSelector,
@@ -371,8 +371,8 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
     /**
      * List plugins using query criteria and sort params
      * @param {Array<string>} [sort] Sort property and direction of the list result. Supported fields: creationTimestamp
-     * @param {string} [keyword] Keyword of plugin name or description
      * @param {boolean} [enabled] Whether the plugin is enabled
+     * @param {string} [keyword] Keyword of plugin name or description
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
@@ -382,8 +382,8 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
      */
     listPlugins(
       sort?: Array<string>,
-      keyword?: string,
       enabled?: boolean,
+      keyword?: string,
       size?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
@@ -391,7 +391,7 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
       options?: any,
     ): AxiosPromise<PluginList> {
       return localVarFp
-        .listPlugins(sort, keyword, enabled, size, labelSelector, fieldSelector, page, options)
+        .listPlugins(sort, enabled, keyword, size, labelSelector, fieldSelector, page, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -444,18 +444,18 @@ export interface ApiConsoleHaloRunV1alpha1PluginApiListPluginsRequest {
   readonly sort?: Array<string>
 
   /**
-   * Keyword of plugin name or description
-   * @type {string}
-   * @memberof ApiConsoleHaloRunV1alpha1PluginApiListPlugins
-   */
-  readonly keyword?: string
-
-  /**
    * Whether the plugin is enabled
    * @type {boolean}
    * @memberof ApiConsoleHaloRunV1alpha1PluginApiListPlugins
    */
   readonly enabled?: boolean
+
+  /**
+   * Keyword of plugin name or description
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiListPlugins
+   */
+  readonly keyword?: string
 
   /**
    * Size of one page. Zero indicates no limit.
@@ -558,8 +558,8 @@ export class ApiConsoleHaloRunV1alpha1PluginApi extends BaseAPI {
     return ApiConsoleHaloRunV1alpha1PluginApiFp(this.configuration)
       .listPlugins(
         requestParameters.sort,
-        requestParameters.keyword,
         requestParameters.enabled,
+        requestParameters.keyword,
         requestParameters.size,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
