@@ -222,6 +222,47 @@ export const ApiConsoleHaloRunV1alpha1UserApiAxiosParamCreator = function (confi
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Update current user profile, but password.
+     * @param {User} user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateCurrentUser: async (user: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'user' is not null or undefined
+      assertParamExists('updateCurrentUser', 'user', user)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/users/-`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(user, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -286,6 +327,19 @@ export const ApiConsoleHaloRunV1alpha1UserApiFp = function (configuration?: Conf
       const localVarAxiosArgs = await localVarAxiosParamCreator.grantPermission(name, grantRequest, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
+    /**
+     * Update current user profile, but password.
+     * @param {User} user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateCurrentUser(
+      user: User,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateCurrentUser(user, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
   }
 }
 
@@ -336,6 +390,15 @@ export const ApiConsoleHaloRunV1alpha1UserApiFactory = function (
      */
     grantPermission(name: string, grantRequest: GrantRequest, options?: any): AxiosPromise<User> {
       return localVarFp.grantPermission(name, grantRequest, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Update current user profile, but password.
+     * @param {User} user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateCurrentUser(user: User, options?: any): AxiosPromise<User> {
+      return localVarFp.updateCurrentUser(user, options).then((request) => request(axios, basePath))
     },
   }
 }
@@ -394,6 +457,20 @@ export interface ApiConsoleHaloRunV1alpha1UserApiGrantPermissionRequest {
    * @memberof ApiConsoleHaloRunV1alpha1UserApiGrantPermission
    */
   readonly grantRequest: GrantRequest
+}
+
+/**
+ * Request parameters for updateCurrentUser operation in ApiConsoleHaloRunV1alpha1UserApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1UserApiUpdateCurrentUserRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1UserApiUpdateCurrentUserRequest {
+  /**
+   *
+   * @type {User}
+   * @memberof ApiConsoleHaloRunV1alpha1UserApiUpdateCurrentUser
+   */
+  readonly user: User
 }
 
 /**
@@ -460,6 +537,22 @@ export class ApiConsoleHaloRunV1alpha1UserApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1UserApiFp(this.configuration)
       .grantPermission(requestParameters.name, requestParameters.grantRequest, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update current user profile, but password.
+   * @param {ApiConsoleHaloRunV1alpha1UserApiUpdateCurrentUserRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1UserApi
+   */
+  public updateCurrentUser(
+    requestParameters: ApiConsoleHaloRunV1alpha1UserApiUpdateCurrentUserRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1UserApiFp(this.configuration)
+      .updateCurrentUser(requestParameters.user, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

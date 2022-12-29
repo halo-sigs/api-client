@@ -25,11 +25,11 @@ export interface AnnotationSettingSpec {
    * @type {GroupKind}
    * @memberof AnnotationSettingSpec
    */
-  targetRef?: GroupKind
+  targetRef: GroupKind
   /**
    *
    * @type {Array<object>}
    * @memberof AnnotationSettingSpec
    */
-  formSchema?: Array<object>
+  formSchema: Array<object>
 }

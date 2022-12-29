@@ -23,6 +23,7 @@ api/content-halo-run-v1alpha1-single-page-api.ts
 api/content-halo-run-v1alpha1-snapshot-api.ts
 api/content-halo-run-v1alpha1-tag-api.ts
 api/metrics-halo-run-v1alpha1-counter-api.ts
+api/migration-controller-api.ts
 api/plugin-halo-run-v1alpha1-plugin-api.ts
 api/plugin-halo-run-v1alpha1-reverse-proxy-api.ts
 api/plugin-halo-run-v1alpha1-search-engine-api.ts

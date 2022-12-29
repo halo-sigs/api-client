@@ -26,7 +26,7 @@ export interface AnnotationSetting {
    * @type {AnnotationSettingSpec}
    * @memberof AnnotationSetting
    */
-  spec?: AnnotationSettingSpec
+  spec: AnnotationSettingSpec
   /**
    *
    * @type {string}
