@@ -45,6 +45,47 @@ import { ThemeList } from '../models'
 export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (configuration?: Configuration) {
   return {
     /**
+     * Activate a theme by name.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    activateTheme: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('activateTheme', 'name', name)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/themes/{name}/activation`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Fetch the activated theme.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -211,18 +252,18 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
      * List themes.
      * @param {boolean} uninstalled
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listThemes: async (
       uninstalled: boolean,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'uninstalled' is not null or undefined
@@ -255,16 +296,16 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
         localVarQueryParameter['size'] = size
       }
 
+      if (page !== undefined) {
+        localVarQueryParameter['page'] = page
+      }
+
       if (labelSelector) {
         localVarQueryParameter['labelSelector'] = labelSelector
       }
 
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
-      }
-
-      if (page !== undefined) {
-        localVarQueryParameter['page'] = page
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -361,12 +402,19 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
     /**
      * Update the configMap of theme setting.
      * @param {string} name
+     * @param {ConfigMap} configMap
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateThemeConfig: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+    updateThemeConfig: async (
+      name: string,
+      configMap: ConfigMap,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
       // verify required parameter 'name' is not null or undefined
       assertParamExists('updateThemeConfig', 'name', name)
+      // verify required parameter 'configMap' is not null or undefined
+      assertParamExists('updateThemeConfig', 'configMap', configMap)
       const localVarPath = `/apis/api.console.halo.run/v1alpha1/themes/{name}/config`.replace(
         `{${'name'}}`,
         encodeURIComponent(String(name)),
@@ -390,9 +438,12 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator = function (conf
       // http bearer authentication required
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
       localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(configMap, localVarRequestOptions, configuration)
 
       return {
         url: toPathString(localVarUrlObj),
@@ -462,6 +513,19 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
   const localVarAxiosParamCreator = ApiConsoleHaloRunV1alpha1ThemeApiAxiosParamCreator(configuration)
   return {
     /**
+     * Activate a theme by name.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async activateTheme(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Theme>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.activateTheme(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
      * Fetch the activated theme.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -515,26 +579,26 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
      * List themes.
      * @param {boolean} uninstalled
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listThemes(
       uninstalled: boolean,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThemeList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listThemes(
         uninstalled,
         size,
+        page,
         labelSelector,
         fieldSelector,
-        page,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -568,14 +632,16 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFp = function (configuration?: Con
     /**
      * Update the configMap of theme setting.
      * @param {string} name
+     * @param {ConfigMap} configMap
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async updateThemeConfig(
       name: string,
+      configMap: ConfigMap,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfigMap>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.updateThemeConfig(name, options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateThemeConfig(name, configMap, options)
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
@@ -607,6 +673,15 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
 ) {
   const localVarFp = ApiConsoleHaloRunV1alpha1ThemeApiFp(configuration)
   return {
+    /**
+     * Activate a theme by name.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    activateTheme(name: string, options?: any): AxiosPromise<Theme> {
+      return localVarFp.activateTheme(name, options).then((request) => request(axios, basePath))
+    },
     /**
      * Fetch the activated theme.
      * @param {*} [options] Override http request option.
@@ -646,22 +721,22 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
      * List themes.
      * @param {boolean} uninstalled
      * @param {number} [size] Size of one page. Zero indicates no limit.
+     * @param {number} [page] The page number. Zero indicates no page.
      * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
-     * @param {number} [page] The page number. Zero indicates no page.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listThemes(
       uninstalled: boolean,
       size?: number,
+      page?: number,
       labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
-      page?: number,
       options?: any,
     ): AxiosPromise<ThemeList> {
       return localVarFp
-        .listThemes(uninstalled, size, labelSelector, fieldSelector, page, options)
+        .listThemes(uninstalled, size, page, labelSelector, fieldSelector, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -685,11 +760,12 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
     /**
      * Update the configMap of theme setting.
      * @param {string} name
+     * @param {ConfigMap} configMap
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateThemeConfig(name: string, options?: any): AxiosPromise<ConfigMap> {
-      return localVarFp.updateThemeConfig(name, options).then((request) => request(axios, basePath))
+    updateThemeConfig(name: string, configMap: ConfigMap, options?: any): AxiosPromise<ConfigMap> {
+      return localVarFp.updateThemeConfig(name, configMap, options).then((request) => request(axios, basePath))
     },
     /**
      * Upgrade theme
@@ -702,6 +778,20 @@ export const ApiConsoleHaloRunV1alpha1ThemeApiFactory = function (
       return localVarFp.upgradeTheme(name, file, options).then((request) => request(axios, basePath))
     },
   }
+}
+
+/**
+ * Request parameters for activateTheme operation in ApiConsoleHaloRunV1alpha1ThemeApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1ThemeApiActivateThemeRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1ThemeApiActivateThemeRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiActivateTheme
+   */
+  readonly name: string
 }
 
 /**
@@ -767,6 +857,13 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest {
   readonly size?: number
 
   /**
+   * The page number. Zero indicates no page.
+   * @type {number}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
+   */
+  readonly page?: number
+
+  /**
    * Label selector for filtering.
    * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
@@ -779,13 +876,6 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiListThemesRequest {
    * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
    */
   readonly fieldSelector?: Array<string>
-
-  /**
-   * The page number. Zero indicates no page.
-   * @type {number}
-   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiListThemes
-   */
-  readonly page?: number
 }
 
 /**
@@ -828,6 +918,13 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiUpdateThemeConfigRequest {
    * @memberof ApiConsoleHaloRunV1alpha1ThemeApiUpdateThemeConfig
    */
   readonly name: string
+
+  /**
+   *
+   * @type {ConfigMap}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApiUpdateThemeConfig
+   */
+  readonly configMap: ConfigMap
 }
 
 /**
@@ -858,6 +955,22 @@ export interface ApiConsoleHaloRunV1alpha1ThemeApiUpgradeThemeRequest {
  * @extends {BaseAPI}
  */
 export class ApiConsoleHaloRunV1alpha1ThemeApi extends BaseAPI {
+  /**
+   * Activate a theme by name.
+   * @param {ApiConsoleHaloRunV1alpha1ThemeApiActivateThemeRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1ThemeApi
+   */
+  public activateTheme(
+    requestParameters: ApiConsoleHaloRunV1alpha1ThemeApiActivateThemeRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
+      .activateTheme(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    * Fetch the activated theme.
    * @param {*} [options] Override http request option.
@@ -933,9 +1046,9 @@ export class ApiConsoleHaloRunV1alpha1ThemeApi extends BaseAPI {
       .listThemes(
         requestParameters.uninstalled,
         requestParameters.size,
+        requestParameters.page,
         requestParameters.labelSelector,
         requestParameters.fieldSelector,
-        requestParameters.page,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
@@ -982,7 +1095,7 @@ export class ApiConsoleHaloRunV1alpha1ThemeApi extends BaseAPI {
     options?: AxiosRequestConfig,
   ) {
     return ApiConsoleHaloRunV1alpha1ThemeApiFp(this.configuration)
-      .updateThemeConfig(requestParameters.name, options)
+      .updateThemeConfig(requestParameters.name, requestParameters.configMap, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

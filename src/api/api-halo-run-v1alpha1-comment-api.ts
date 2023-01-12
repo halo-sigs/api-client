@@ -291,12 +291,12 @@ export const ApiHaloRunV1alpha1CommentApiAxiosParamCreator = function (configura
         localVarQueryParameter['version'] = version
       }
 
-      if (group !== undefined) {
-        localVarQueryParameter['group'] = group
-      }
-
       if (kind !== undefined) {
         localVarQueryParameter['kind'] = kind
+      }
+
+      if (group !== undefined) {
+        localVarQueryParameter['group'] = group
       }
 
       if (size !== undefined) {
