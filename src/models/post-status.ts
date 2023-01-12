@@ -62,4 +62,10 @@ export interface PostStatus {
    * @memberof PostStatus
    */
   contributors?: Array<string>
+  /**
+   *
+   * @type {string}
+   * @memberof PostStatus
+   */
+  lastModifyTime?: string
 }

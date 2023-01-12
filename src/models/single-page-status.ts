@@ -62,4 +62,10 @@ export interface SinglePageStatus {
    * @memberof SinglePageStatus
    */
   contributors?: Array<string>
+  /**
+   *
+   * @type {string}
+   * @memberof SinglePageStatus
+   */
+  lastModifyTime?: string
 }
