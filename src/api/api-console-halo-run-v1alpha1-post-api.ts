@@ -89,8 +89,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
      * @param {Array<string>} [tag]
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {string} [keyword] Posts filtered by keyword.
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {Array<string>} [contributor]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
@@ -105,8 +105,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
     listPosts: async (
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       tag?: Array<string>,
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       keyword?: string,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       contributor?: Array<string>,
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
@@ -145,12 +145,12 @@ export const ApiConsoleHaloRunV1alpha1PostApiAxiosParamCreator = function (confi
         localVarQueryParameter['tag'] = Array.from(tag)
       }
 
-      if (visible !== undefined) {
-        localVarQueryParameter['visible'] = visible
-      }
-
       if (keyword !== undefined) {
         localVarQueryParameter['keyword'] = keyword
+      }
+
+      if (visible !== undefined) {
+        localVarQueryParameter['visible'] = visible
       }
 
       if (contributor) {
@@ -455,8 +455,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
      * @param {Array<string>} [tag]
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {string} [keyword] Posts filtered by keyword.
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {Array<string>} [contributor]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
@@ -471,8 +471,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
     async listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       tag?: Array<string>,
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       keyword?: string,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       contributor?: Array<string>,
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
@@ -486,8 +486,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFp = function (configuration?: Conf
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPosts(
         sort,
         tag,
-        visible,
         keyword,
+        visible,
         contributor,
         sortOrder,
         publishPhase,
@@ -598,8 +598,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
      * List posts.
      * @param {'PUBLISH_TIME' | 'CREATE_TIME'} [sort] Post collation.
      * @param {Array<string>} [tag]
-     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {string} [keyword] Posts filtered by keyword.
+     * @param {'PUBLIC' | 'INTERNAL' | 'PRIVATE'} [visible]
      * @param {Array<string>} [contributor]
      * @param {boolean} [sortOrder] ascending order If it is true; otherwise, it is in descending order.
      * @param {'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED'} [publishPhase]
@@ -614,8 +614,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
     listPosts(
       sort?: 'PUBLISH_TIME' | 'CREATE_TIME',
       tag?: Array<string>,
-      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       keyword?: string,
+      visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE',
       contributor?: Array<string>,
       sortOrder?: boolean,
       publishPhase?: 'DRAFT' | 'PENDING_APPROVAL' | 'PUBLISHED' | 'FAILED',
@@ -630,8 +630,8 @@ export const ApiConsoleHaloRunV1alpha1PostApiFactory = function (
         .listPosts(
           sort,
           tag,
-          visible,
           keyword,
+          visible,
           contributor,
           sortOrder,
           publishPhase,
@@ -730,18 +730,18 @@ export interface ApiConsoleHaloRunV1alpha1PostApiListPostsRequest {
   readonly tag?: Array<string>
 
   /**
-   *
-   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
-   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
-   */
-  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
-
-  /**
    * Posts filtered by keyword.
    * @type {string}
    * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
    */
   readonly keyword?: string
+
+  /**
+   *
+   * @type {'PUBLIC' | 'INTERNAL' | 'PRIVATE'}
+   * @memberof ApiConsoleHaloRunV1alpha1PostApiListPosts
+   */
+  readonly visible?: 'PUBLIC' | 'INTERNAL' | 'PRIVATE'
 
   /**
    *
@@ -926,8 +926,8 @@ export class ApiConsoleHaloRunV1alpha1PostApi extends BaseAPI {
       .listPosts(
         requestParameters.sort,
         requestParameters.tag,
-        requestParameters.visible,
         requestParameters.keyword,
+        requestParameters.visible,
         requestParameters.contributor,
         requestParameters.sortOrder,
         requestParameters.publishPhase,

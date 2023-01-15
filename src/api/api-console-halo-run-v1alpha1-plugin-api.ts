@@ -36,12 +36,96 @@ import { ConfigMap } from '../models'
 import { Plugin } from '../models'
 // @ts-ignore
 import { PluginList } from '../models'
+// @ts-ignore
+import { Setting } from '../models'
 /**
  * ApiConsoleHaloRunV1alpha1PluginApi - axios parameter creator
  * @export
  */
 export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (configuration?: Configuration) {
   return {
+    /**
+     * Fetch configMap of plugin by configured configMapName.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchPluginConfig: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('fetchPluginConfig', 'name', name)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/plugins/{name}/config`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Fetch setting of plugin.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchPluginSetting: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('fetchPluginSetting', 'name', name)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/plugins/{name}/setting`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
     /**
      * Install a plugin by uploading a Jar file.
      * @param {any} file
@@ -209,6 +293,57 @@ export const ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator = function (con
       }
     },
     /**
+     * Update the configMap of plugin setting.
+     * @param {string} name
+     * @param {ConfigMap} configMap
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatePluginConfig: async (
+      name: string,
+      configMap: ConfigMap,
+      options: AxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'name' is not null or undefined
+      assertParamExists('updatePluginConfig', 'name', name)
+      // verify required parameter 'configMap' is not null or undefined
+      assertParamExists('updatePluginConfig', 'configMap', configMap)
+      const localVarPath = `/apis/api.console.halo.run/v1alpha1/plugins/{name}/config`.replace(
+        `{${'name'}}`,
+        encodeURIComponent(String(name)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication BasicAuth required
+      // http basic authentication required
+      setBasicAuthToObject(localVarRequestOptions, configuration)
+
+      // authentication BearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers }
+      localVarRequestOptions.data = serializeDataIfNeeded(configMap, localVarRequestOptions, configuration)
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Upgrade a plugin by uploading a Jar file
      * @param {string} name
      * @param {any} file
@@ -271,6 +406,32 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
   const localVarAxiosParamCreator = ApiConsoleHaloRunV1alpha1PluginApiAxiosParamCreator(configuration)
   return {
     /**
+     * Fetch configMap of plugin by configured configMapName.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async fetchPluginConfig(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfigMap>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.fetchPluginConfig(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
+     * Fetch setting of plugin.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async fetchPluginSetting(
+      name: string,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Setting>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.fetchPluginSetting(name, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
      * Install a plugin by uploading a Jar file.
      * @param {any} file
      * @param {*} [options] Override http request option.
@@ -331,6 +492,21 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFp = function (configuration?: Co
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
     },
     /**
+     * Update the configMap of plugin setting.
+     * @param {string} name
+     * @param {ConfigMap} configMap
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatePluginConfig(
+      name: string,
+      configMap: ConfigMap,
+      options?: AxiosRequestConfig,
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfigMap>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatePluginConfig(name, configMap, options)
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
+    },
+    /**
      * Upgrade a plugin by uploading a Jar file
      * @param {string} name
      * @param {any} file
@@ -359,6 +535,24 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
 ) {
   const localVarFp = ApiConsoleHaloRunV1alpha1PluginApiFp(configuration)
   return {
+    /**
+     * Fetch configMap of plugin by configured configMapName.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchPluginConfig(name: string, options?: any): AxiosPromise<ConfigMap> {
+      return localVarFp.fetchPluginConfig(name, options).then((request) => request(axios, basePath))
+    },
+    /**
+     * Fetch setting of plugin.
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchPluginSetting(name: string, options?: any): AxiosPromise<Setting> {
+      return localVarFp.fetchPluginSetting(name, options).then((request) => request(axios, basePath))
+    },
     /**
      * Install a plugin by uploading a Jar file.
      * @param {any} file
@@ -404,6 +598,16 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
       return localVarFp.resetPluginConfig(name, options).then((request) => request(axios, basePath))
     },
     /**
+     * Update the configMap of plugin setting.
+     * @param {string} name
+     * @param {ConfigMap} configMap
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatePluginConfig(name: string, configMap: ConfigMap, options?: any): AxiosPromise<ConfigMap> {
+      return localVarFp.updatePluginConfig(name, configMap, options).then((request) => request(axios, basePath))
+    },
+    /**
      * Upgrade a plugin by uploading a Jar file
      * @param {string} name
      * @param {any} file
@@ -414,6 +618,34 @@ export const ApiConsoleHaloRunV1alpha1PluginApiFactory = function (
       return localVarFp.upgradePlugin(name, file, options).then((request) => request(axios, basePath))
     },
   }
+}
+
+/**
+ * Request parameters for fetchPluginConfig operation in ApiConsoleHaloRunV1alpha1PluginApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1PluginApiFetchPluginConfigRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1PluginApiFetchPluginConfigRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiFetchPluginConfig
+   */
+  readonly name: string
+}
+
+/**
+ * Request parameters for fetchPluginSetting operation in ApiConsoleHaloRunV1alpha1PluginApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1PluginApiFetchPluginSettingRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1PluginApiFetchPluginSettingRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiFetchPluginSetting
+   */
+  readonly name: string
 }
 
 /**
@@ -501,6 +733,27 @@ export interface ApiConsoleHaloRunV1alpha1PluginApiResetPluginConfigRequest {
 }
 
 /**
+ * Request parameters for updatePluginConfig operation in ApiConsoleHaloRunV1alpha1PluginApi.
+ * @export
+ * @interface ApiConsoleHaloRunV1alpha1PluginApiUpdatePluginConfigRequest
+ */
+export interface ApiConsoleHaloRunV1alpha1PluginApiUpdatePluginConfigRequest {
+  /**
+   *
+   * @type {string}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiUpdatePluginConfig
+   */
+  readonly name: string
+
+  /**
+   *
+   * @type {ConfigMap}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApiUpdatePluginConfig
+   */
+  readonly configMap: ConfigMap
+}
+
+/**
  * Request parameters for upgradePlugin operation in ApiConsoleHaloRunV1alpha1PluginApi.
  * @export
  * @interface ApiConsoleHaloRunV1alpha1PluginApiUpgradePluginRequest
@@ -528,6 +781,38 @@ export interface ApiConsoleHaloRunV1alpha1PluginApiUpgradePluginRequest {
  * @extends {BaseAPI}
  */
 export class ApiConsoleHaloRunV1alpha1PluginApi extends BaseAPI {
+  /**
+   * Fetch configMap of plugin by configured configMapName.
+   * @param {ApiConsoleHaloRunV1alpha1PluginApiFetchPluginConfigRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApi
+   */
+  public fetchPluginConfig(
+    requestParameters: ApiConsoleHaloRunV1alpha1PluginApiFetchPluginConfigRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PluginApiFp(this.configuration)
+      .fetchPluginConfig(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Fetch setting of plugin.
+   * @param {ApiConsoleHaloRunV1alpha1PluginApiFetchPluginSettingRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApi
+   */
+  public fetchPluginSetting(
+    requestParameters: ApiConsoleHaloRunV1alpha1PluginApiFetchPluginSettingRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PluginApiFp(this.configuration)
+      .fetchPluginSetting(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    * Install a plugin by uploading a Jar file.
    * @param {ApiConsoleHaloRunV1alpha1PluginApiInstallPluginRequest} requestParameters Request parameters.
@@ -582,6 +867,22 @@ export class ApiConsoleHaloRunV1alpha1PluginApi extends BaseAPI {
   ) {
     return ApiConsoleHaloRunV1alpha1PluginApiFp(this.configuration)
       .resetPluginConfig(requestParameters.name, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update the configMap of plugin setting.
+   * @param {ApiConsoleHaloRunV1alpha1PluginApiUpdatePluginConfigRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiConsoleHaloRunV1alpha1PluginApi
+   */
+  public updatePluginConfig(
+    requestParameters: ApiConsoleHaloRunV1alpha1PluginApiUpdatePluginConfigRequest,
+    options?: AxiosRequestConfig,
+  ) {
+    return ApiConsoleHaloRunV1alpha1PluginApiFp(this.configuration)
+      .updatePluginConfig(requestParameters.name, requestParameters.configMap, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
