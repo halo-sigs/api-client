@@ -12,6 +12,8 @@
  * Do not edit the class manually.
  */
 
+import { Condition } from './condition'
+
 /**
  *
  * @export
@@ -23,5 +25,25 @@ export interface ThemeStatus {
    * @type {string}
    * @memberof ThemeStatus
    */
+  phase?: ThemeStatusPhaseEnum
+  /**
+   *
+   * @type {Array<Condition>}
+   * @memberof ThemeStatus
+   */
+  conditions?: Array<Condition>
+  /**
+   *
+   * @type {string}
+   * @memberof ThemeStatus
+   */
   location?: string
 }
+
+export const ThemeStatusPhaseEnum = {
+  Ready: 'READY',
+  Failed: 'FAILED',
+  Unknown: 'UNKNOWN',
+} as const
+
+export type ThemeStatusPhaseEnum = typeof ThemeStatusPhaseEnum[keyof typeof ThemeStatusPhaseEnum]

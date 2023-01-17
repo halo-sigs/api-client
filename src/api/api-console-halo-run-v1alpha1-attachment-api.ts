@@ -50,8 +50,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
-     * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -64,8 +64,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
       uploadedBy?: string,
       size?: number,
       page?: number,
-      labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      labelSelector?: Array<string>,
       options: AxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/apis/api.console.halo.run/v1alpha1/attachments`
@@ -120,12 +120,12 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiAxiosParamCreator = function 
         localVarQueryParameter['page'] = page
       }
 
-      if (labelSelector) {
-        localVarQueryParameter['labelSelector'] = labelSelector
-      }
-
       if (fieldSelector) {
         localVarQueryParameter['fieldSelector'] = fieldSelector
+      }
+
+      if (labelSelector) {
+        localVarQueryParameter['labelSelector'] = labelSelector
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -220,8 +220,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
-     * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -234,8 +234,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
       uploadedBy?: string,
       size?: number,
       page?: number,
-      labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      labelSelector?: Array<string>,
       options?: AxiosRequestConfig,
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachmentList>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.searchAttachments(
@@ -247,8 +247,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFp = function (configuration?
         uploadedBy,
         size,
         page,
-        labelSelector,
         fieldSelector,
+        labelSelector,
         options,
       )
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)
@@ -294,8 +294,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
      * @param {string} [uploadedBy] Name of user who uploaded the attachment
      * @param {number} [size] Size of one page. Zero indicates no limit.
      * @param {number} [page] The page number. Zero indicates no page.
-     * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {Array<string>} [fieldSelector] Field selector for filtering.
+     * @param {Array<string>} [labelSelector] Label selector for filtering.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -308,8 +308,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
       uploadedBy?: string,
       size?: number,
       page?: number,
-      labelSelector?: Array<string>,
       fieldSelector?: Array<string>,
+      labelSelector?: Array<string>,
       options?: any,
     ): AxiosPromise<AttachmentList> {
       return localVarFp
@@ -322,8 +322,8 @@ export const ApiConsoleHaloRunV1alpha1AttachmentApiFactory = function (
           uploadedBy,
           size,
           page,
-          labelSelector,
           fieldSelector,
+          labelSelector,
           options,
         )
         .then((request) => request(axios, basePath))
@@ -407,18 +407,18 @@ export interface ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachmentsRequest 
   readonly page?: number
 
   /**
-   * Label selector for filtering.
-   * @type {Array<string>}
-   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
-   */
-  readonly labelSelector?: Array<string>
-
-  /**
    * Field selector for filtering.
    * @type {Array<string>}
    * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
    */
   readonly fieldSelector?: Array<string>
+
+  /**
+   * Label selector for filtering.
+   * @type {Array<string>}
+   * @memberof ApiConsoleHaloRunV1alpha1AttachmentApiSearchAttachments
+   */
+  readonly labelSelector?: Array<string>
 }
 
 /**
@@ -477,8 +477,8 @@ export class ApiConsoleHaloRunV1alpha1AttachmentApi extends BaseAPI {
         requestParameters.uploadedBy,
         requestParameters.size,
         requestParameters.page,
-        requestParameters.labelSelector,
         requestParameters.fieldSelector,
+        requestParameters.labelSelector,
         options,
       )
       .then((request) => request(this.axios, this.basePath))

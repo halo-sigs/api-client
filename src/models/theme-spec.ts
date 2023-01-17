@@ -64,11 +64,18 @@ export interface ThemeSpec {
    */
   version: string
   /**
+   * Deprecated, use `requires` instead.
+   * @type {string}
+   * @memberof ThemeSpec
+   * @deprecated
+   */
+  require?: string
+  /**
    *
    * @type {string}
    * @memberof ThemeSpec
    */
-  require: string
+  requires: string
   /**
    *
    * @type {string}
