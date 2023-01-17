@@ -3,7 +3,6 @@
 api.ts
 api/api-console-halo-run-v1alpha1-attachment-api.ts
 api/api-console-halo-run-v1alpha1-comment-api.ts
-api/api-console-halo-run-v1alpha1-content-api.ts
 api/api-console-halo-run-v1alpha1-indices-api.ts
 api/api-console-halo-run-v1alpha1-plugin-api.ts
 api/api-console-halo-run-v1alpha1-post-api.ts
@@ -23,7 +22,6 @@ api/content-halo-run-v1alpha1-single-page-api.ts
 api/content-halo-run-v1alpha1-snapshot-api.ts
 api/content-halo-run-v1alpha1-tag-api.ts
 api/metrics-halo-run-v1alpha1-counter-api.ts
-api/migration-controller-api.ts
 api/plugin-halo-run-v1alpha1-plugin-api.ts
 api/plugin-halo-run-v1alpha1-reverse-proxy-api.ts
 api/plugin-halo-run-v1alpha1-search-engine-api.ts
@@ -71,8 +69,7 @@ models/comment.ts
 models/condition.ts
 models/config-map-list.ts
 models/config-map.ts
-models/content-request.ts
-models/content-response.ts
+models/content-wrapper.ts
 models/content.ts
 models/contributor.ts
 models/counter-list.ts

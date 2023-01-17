@@ -15,31 +15,31 @@
 /**
  *
  * @export
- * @interface ContentResponse
+ * @interface ContentWrapper
  */
-export interface ContentResponse {
-  /**
-   * The headSnapshotName if updated or new name if created.
-   * @type {string}
-   * @memberof ContentResponse
-   */
-  snapshotName: string
+export interface ContentWrapper {
   /**
    *
    * @type {string}
-   * @memberof ContentResponse
+   * @memberof ContentWrapper
    */
-  raw: string
+  snapshotName?: string
   /**
    *
    * @type {string}
-   * @memberof ContentResponse
+   * @memberof ContentWrapper
    */
-  content: string
+  raw?: string
   /**
    *
    * @type {string}
-   * @memberof ContentResponse
+   * @memberof ContentWrapper
    */
-  rawType: string
+  content?: string
+  /**
+   *
+   * @type {string}
+   * @memberof ContentWrapper
+   */
+  rawType?: string
 }
