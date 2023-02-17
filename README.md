@@ -3,6 +3,10 @@
 Halo 2.0 的 JavaScript API 客户端请求库。使用 [OpenAPI Generator
 ](https://openapi-generator.tech/) 生成。
 
+> **Warning**
+>
+> 此仓库已归档，后续会托管在 <https://github.com/halo-dev/console/tree/main/packages/api-client>，方便开发调试以及跟随 Halo 发布版本。
+
 ## 开发环境
 
 ```bash
